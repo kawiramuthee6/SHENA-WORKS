@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink } from "lucide-react";
-import { Link } from "react-router-dom";
+import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink, ArrowLeft } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 import heroImage from "@/assets/hero-construction.jpg";
 
 // Black Perch Images
@@ -74,6 +75,7 @@ const projects: Project[] = [
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate();
 
   const openLightbox = (project: Project) => {
     setSelectedProject(project);
@@ -119,6 +121,23 @@ const PortfolioPage = () => {
         </div>
         
         <div className="container-custom relative z-10 pt-20">
+          {/* Back Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate(-1)}
+              className="text-cream/70 hover:text-cream hover:bg-cream/10"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back
+            </Button>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -343,6 +362,7 @@ const PortfolioPage = () => {
 
       <Footer />
       <WhatsAppButton />
+      <BackToTop />
     </div>
   );
 };
