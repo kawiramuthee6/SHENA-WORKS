@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
@@ -5,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
+import Testimonials from "@/components/Testimonials";
+import QuoteModal from "@/components/QuoteModal";
 import heroImage from "@/assets/hero-construction.jpg";
 import roadsImg from "@/assets/services/roads.jpg";
 import constructionImg from "@/assets/services/construction.jpg";
@@ -24,12 +28,12 @@ import {
 } from "lucide-react";
 
 const services = [
-  { icon: Route, title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg },
-  { icon: Building2, title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: constructionImg },
-  { icon: PenTool, title: "Architecture & Consultancy", description: "Creative designs and professional consultancy services.", image: architectureImg },
-  { icon: Palette, title: "Interior Design", description: "Innovative interiors that blend functionality with aesthetics.", image: interiorImg },
-  { icon: Calculator, title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: constructionImg },
-  { icon: ClipboardList, title: "Project Management", description: "End-to-end project management for smooth execution.", image: architectureImg },
+  { icon: Route, title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg, id: "roads" },
+  { icon: Building2, title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: constructionImg, id: "construction" },
+  { icon: PenTool, title: "Architecture & Consultancy", description: "Creative designs and professional consultancy services.", image: architectureImg, id: "architecture" },
+  { icon: Palette, title: "Interior Design", description: "Innovative interiors that blend functionality with aesthetics.", image: interiorImg, id: "interior" },
+  { icon: Calculator, title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: constructionImg, id: "boq" },
+  { icon: ClipboardList, title: "Project Management", description: "End-to-end project management for smooth execution.", image: architectureImg, id: "project-management" },
 ];
 
 const projects = [
@@ -39,9 +43,11 @@ const projects = [
 ];
 
 const Index = () => {
+  const [quoteModal, setQuoteModal] = useState(false);
+
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -56,11 +62,6 @@ const Index = () => {
 
         <div className="container-custom relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2, duration: 0.6 }} className="inline-flex items-center gap-2 bg-cream/10 backdrop-blur-sm border border-cream/20 rounded-full px-6 py-2 mb-8">
-              <span className="text-gold font-medium">Roads & Building Construction</span>
-              <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
-            </motion.div>
-
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-6">
               Connecting Communities. <span className="text-gradient-gold">Building the Future.</span>
             </motion.h1>
@@ -83,6 +84,26 @@ const Index = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-cream/50 rounded-full flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1.5 h-3 bg-gold rounded-full mt-2"
+            />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Services Preview */}
@@ -98,18 +119,27 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <motion.div key={service.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="group relative overflow-hidden rounded-2xl bg-card shadow-md hover:shadow-elegant transition-all duration-500">
-                <div className="relative h-48 overflow-hidden">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
-                  <div className="absolute bottom-4 left-4 w-14 h-14 bg-gold rounded-xl flex items-center justify-center shadow-lg">
-                    <service.icon className="w-7 h-7 text-navy-dark" />
+              <motion.div 
+                key={service.title} 
+                initial={{ opacity: 0, y: 30 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 0.5, delay: index * 0.1 }} 
+                className="group relative overflow-hidden rounded-2xl bg-card shadow-md hover:shadow-elegant transition-all duration-500"
+              >
+                <Link to={`/services#${service.id}`}>
+                  <div className="relative h-48 overflow-hidden">
+                    <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
+                    <div className="absolute bottom-4 left-4 w-14 h-14 bg-gold rounded-xl flex items-center justify-center shadow-lg">
+                      <service.icon className="w-7 h-7 text-navy-dark" />
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-gold transition-colors">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.description}</p>
-                </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-gold transition-colors">{service.title}</h3>
+                    <p className="text-muted-foreground">{service.description}</p>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -121,6 +151,9 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* Projects Preview */}
       <section className="py-24 bg-navy">
@@ -135,12 +168,14 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div key={project.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group relative overflow-hidden rounded-2xl aspect-[4/3]">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <h3 className="text-xl font-serif font-bold text-cream group-hover:text-gold transition-colors">{project.title}</h3>
-                  <p className="text-cream/70">{project.location}</p>
-                </div>
+                <Link to="/portfolio">
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                    <h3 className="text-xl font-serif font-bold text-cream group-hover:text-gold transition-colors">{project.title}</h3>
+                    <p className="text-cream/70">{project.location}</p>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -159,15 +194,22 @@ const Index = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">Ready to Start Your Project?</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">Contact us today for a free consultation and quote. Let's build something amazing together.</p>
-            <Button variant="gold" size="xl" asChild>
-              <Link to="/contact">Get In Touch</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="gold" size="xl" onClick={() => setQuoteModal(true)}>
+                Get a Free Quote
+              </Button>
+              <Button variant="navy" size="xl" asChild>
+                <Link to="/contact">Contact Us</Link>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
 
       <Footer />
       <WhatsAppButton />
+      <BackToTop />
+      <QuoteModal isOpen={quoteModal} onClose={() => setQuoteModal(false)} />
     </div>
   );
 };

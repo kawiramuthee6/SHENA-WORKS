@@ -24,7 +24,11 @@ const navItems = [
   { name: "Contact Us", href: "/contact" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  onQuoteClick?: () => void;
+}
+
+const Navbar = ({ onQuoteClick }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -107,8 +111,13 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
             ))}
-            <Button variant={scrolled || !isHomePage ? "gold" : "hero"} size="lg" asChild>
-              <Link to="/contact">Get Quote</Link>
+            <Button 
+              variant={scrolled || !isHomePage ? "gold" : "hero"} 
+              size="lg" 
+              onClick={onQuoteClick}
+              asChild={!onQuoteClick}
+            >
+              {onQuoteClick ? "Get Quote" : <Link to="/contact">Get Quote</Link>}
             </Button>
           </div>
 

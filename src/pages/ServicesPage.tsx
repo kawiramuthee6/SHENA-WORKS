@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Building2, 
   PenTool, 
@@ -7,13 +8,17 @@ import {
   ClipboardList,
   Route,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
+  ChevronDown,
+  ArrowLeft
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
+import QuoteModal from "@/components/QuoteModal";
 import heroImage from "@/assets/hero-construction.jpg";
 import roadsImg from "@/assets/services/roads.jpg";
 import constructionImg from "@/assets/services/construction.jpg";
@@ -120,6 +125,36 @@ const services = [
 ];
 
 const ServicesPage = () => {
+  const [activeService, setActiveService] = useState<string | null>(null);
+  const [quoteModal, setQuoteModal] = useState(false);
+  const [selectedServiceForQuote, setSelectedServiceForQuote] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Handle hash navigation
+    const hash = location.hash.replace('#', '');
+    if (hash && services.find(s => s.id === hash)) {
+      setActiveService(hash);
+      // Scroll to services section
+      setTimeout(() => {
+        const element = document.getElementById('services-accordion');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, [location.hash]);
+
+  const toggleService = (id: string) => {
+    setActiveService(activeService === id ? null : id);
+  };
+
+  const handleGetQuote = (serviceTitle: string) => {
+    setSelectedServiceForQuote(serviceTitle);
+    setQuoteModal(true);
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -136,6 +171,23 @@ const ServicesPage = () => {
         </div>
         
         <div className="container-custom relative z-10 pt-20">
+          {/* Back Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate(-1)}
+              className="text-cream/70 hover:text-cream hover:bg-cream/10"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back
+            </Button>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -148,70 +200,123 @@ const ServicesPage = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6">
               Our Services
             </h1>
-            <p className="text-cream/80 text-lg md:text-xl">
+            <p className="text-cream/80 text-lg md:text-xl mb-8">
               From roads that connect communities to buildings that inspire, we offer 
               comprehensive construction and design solutions tailored to your needs.
             </p>
+            <p className="text-gold text-sm">Click on any service below to learn more</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services List */}
-      <section className="py-20 bg-background">
-        <div className="container-custom">
+      {/* Services Accordion */}
+      <section id="services-accordion" className="py-20 bg-background">
+        <div className="container-custom max-w-4xl">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              id={service.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className={`grid lg:grid-cols-2 gap-12 items-center py-16 ${
-                index !== services.length - 1 ? "border-b border-border" : ""
-              }`}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              className="mb-4"
             >
-              {/* Image */}
-              <div className={`relative ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
+              {/* Accordion Header */}
+              <button
+                onClick={() => toggleService(service.id)}
+                className={`w-full flex items-center justify-between p-6 rounded-2xl transition-all duration-300 ${
+                  activeService === service.id
+                    ? "bg-navy text-cream shadow-elegant"
+                    : "bg-card hover:bg-muted shadow-md"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${
+                    activeService === service.id
+                      ? "bg-gold"
+                      : "bg-gold/20"
+                  }`}>
+                    <service.icon className={`w-7 h-7 ${
+                      activeService === service.id
+                        ? "text-navy-dark"
+                        : "text-gold"
+                    }`} />
+                  </div>
+                  <div className="text-left">
+                    <h3 className={`text-xl font-serif font-bold ${
+                      activeService === service.id ? "text-cream" : "text-foreground"
+                    }`}>
+                      {service.title}
+                    </h3>
+                    <p className={`text-sm mt-1 ${
+                      activeService === service.id ? "text-cream/70" : "text-muted-foreground"
+                    }`}>
+                      {service.shortDesc}
+                    </p>
+                  </div>
                 </div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gold rounded-2xl flex items-center justify-center shadow-gold-glow">
-                  <service.icon className="w-12 h-12 text-navy-dark" />
-                </div>
-              </div>
+                <motion.div
+                  animate={{ rotate: activeService === service.id ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className={`w-6 h-6 ${
+                    activeService === service.id ? "text-gold" : "text-muted-foreground"
+                  }`} />
+                </motion.div>
+              </button>
 
-              {/* Content */}
-              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
-                  {service.title}
-                </h2>
-                <p className="text-muted-foreground text-lg mb-6">
-                  {service.description}
-                </p>
-                
-                {/* Features */}
-                <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                  {service.features.map((feature) => (
-                    <div key={feature} className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-gold shrink-0" />
-                      <span className="text-foreground text-sm">{feature}</span>
+              {/* Accordion Content */}
+              <AnimatePresence>
+                {activeService === service.id && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-6 bg-card rounded-b-2xl shadow-md -mt-4 pt-8 border-t-0">
+                      <div className="grid lg:grid-cols-2 gap-8">
+                        {/* Image */}
+                        <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+                        </div>
+
+                        {/* Content */}
+                        <div>
+                          <p className="text-muted-foreground text-lg mb-6">
+                            {service.description}
+                          </p>
+                          
+                          {/* Features */}
+                          <div className="space-y-3 mb-6">
+                            {service.features.map((feature) => (
+                              <div key={feature} className="flex items-center gap-3">
+                                <CheckCircle className="w-5 h-5 text-gold shrink-0" />
+                                <span className="text-foreground">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+
+                          <Button 
+                            variant="gold" 
+                            size="lg" 
+                            onClick={() => handleGetQuote(service.title)}
+                          >
+                            Get a Quote
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                          </Button>
+                        </div>
+                      </div>
                     </div>
-                  ))}
-                </div>
-
-                <Button variant="gold" size="lg" asChild>
-                  <Link to="/contact">
-                    Get a Quote
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-              </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>
@@ -246,6 +351,12 @@ const ServicesPage = () => {
 
       <Footer />
       <WhatsAppButton />
+      <BackToTop />
+      <QuoteModal 
+        isOpen={quoteModal} 
+        onClose={() => setQuoteModal(false)} 
+        preSelectedService={selectedServiceForQuote}
+      />
     </div>
   );
 };
