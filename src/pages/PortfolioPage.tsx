@@ -20,6 +20,18 @@ import bp8 from "@/assets/projects/black-perch-8.jpeg";
 import bp9 from "@/assets/projects/black-perch-9.jpeg";
 import bp10 from "@/assets/projects/black-perch-10.jpeg";
 
+// Pin Hideout Images
+import pin1 from "@/assets/projects/pin-hideout-1.jpeg";
+import pin2 from "@/assets/projects/pin-hideout-2.jpeg";
+import pin3 from "@/assets/projects/pin-hideout-3.jpeg";
+import pin4 from "@/assets/projects/pin-hideout-4.jpeg";
+import pin5 from "@/assets/projects/pin-hideout-5.jpeg";
+import pin6 from "@/assets/projects/pin-hideout-6.jpeg";
+import pin7 from "@/assets/projects/pin-hideout-7.jpeg";
+import pin8 from "@/assets/projects/pin-hideout-8.jpeg";
+import pin9 from "@/assets/projects/pin-hideout-9.jpeg";
+import pin10 from "@/assets/projects/pin-hideout-10.jpeg";
+
 // Other Projects
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-1.jpg";
@@ -47,6 +59,17 @@ const projects: Project[] = [
     coverImage: bp4,
     images: [bp1, bp2, bp3, bp4, bp6, bp7, bp8, bp9, bp10],
     services: ["General Construction", "Interior Design", "Landscaping", "Road & Parking Construction"],
+  },
+  {
+    id: "pin-hideout",
+    title: "The Pin Hideout Limited",
+    location: "Kenya",
+    category: "Road & Cabro Construction",
+    description: "Complete cabro paving and road construction project for a commercial complex, including earthworks, drainage, and professional finishing.",
+    fullDescription: "The Pin Hideout Limited project showcases our expertise in road and cabro construction. This comprehensive project involved extensive earthworks and site preparation, stone base laying, professional cabro paving installation in multiple colors and patterns, and complete drainage systems. Our team utilized modern equipment including backhoe loaders for grading and leveling, ensuring precise surveying and quality workmanship throughout. The finished surface provides a durable, attractive parking and access area for this commercial establishment.",
+    coverImage: pin7,
+    images: [pin1, pin2, pin3, pin4, pin5, pin6, pin7, pin8, pin9, pin10],
+    services: ["Road Construction", "Cabro Installation", "Earthworks & Grading", "Drainage Systems"],
   },
   {
     id: "dukes-cottages",
