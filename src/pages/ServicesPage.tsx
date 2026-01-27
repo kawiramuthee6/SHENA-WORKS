@@ -21,9 +21,11 @@ import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
 import heroImage from "@/assets/hero-construction.jpg";
 import roadsImg from "@/assets/services/roads.jpg";
-import constructionImg from "@/assets/services/construction.jpg";
+import constructionVid from "@/assets/services/construction.mp4";
 import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
+import boqImg from "@/assets/services/boq.jpg";
+import projectMgmtImg from "@/assets/services/project-management.jpg";
 
 const services = [
   {
@@ -32,7 +34,8 @@ const services = [
     title: "Road Construction",
     shortDesc: "Expert road construction services including tarmac laying, repairs, cabro installation, and drainage systems.",
     description: "We specialize in comprehensive road construction services that connect communities and drive development. Our expertise covers everything from major highway construction to residential access roads.",
-    image: roadsImg,
+    media: roadsImg,
+    isVideo: false,
     features: [
       "Tarmac/Asphalt Road Construction",
       "Road Repairs & Rehabilitation",
@@ -48,7 +51,8 @@ const services = [
     title: "General Construction",
     shortDesc: "Comprehensive building services from residential homes to commercial complexes, delivered on time and within budget.",
     description: "From foundation to finish, we handle all aspects of building construction. Our experienced team delivers quality structures that meet international standards while respecting local contexts.",
-    image: constructionImg,
+    media: constructionVid,
+    isVideo: true,
     features: [
       "Residential Buildings",
       "Commercial Complexes",
@@ -64,7 +68,8 @@ const services = [
     title: "Architecture & Consultancy",
     shortDesc: "Creative architectural design and professional consultancy services that transform your vision into reality.",
     description: "Our architectural team combines creativity with technical expertise to design spaces that are functional, aesthetically pleasing, and sustainable. We provide end-to-end design solutions.",
-    image: architectureImg,
+    media: architectureImg,
+    isVideo: false,
     features: [
       "Architectural Design",
       "Feasibility Studies",
@@ -80,7 +85,8 @@ const services = [
     title: "Interior Design",
     shortDesc: "Innovative interior design solutions that blend functionality with aesthetics, creating inspiring spaces.",
     description: "We create interiors that reflect your personality and meet your functional needs. From concept to completion, our designers ensure every space tells a unique story.",
-    image: interiorImg,
+    media: interiorImg,
+    isVideo: false,
     features: [
       "Space Planning",
       "Furniture Selection & Custom Design",
@@ -96,7 +102,8 @@ const services = [
     title: "Bills of Quantities",
     shortDesc: "Accurate cost estimation and quantity surveying to ensure your project stays on budget.",
     description: "Our quantity surveyors provide detailed and accurate cost estimates that help you plan effectively. We ensure transparency and prevent budget overruns.",
-    image: constructionImg,
+    media: boqImg,
+    isVideo: false,
     features: [
       "Quantity Takeoffs",
       "Cost Estimation",
@@ -112,7 +119,8 @@ const services = [
     title: "Project Management",
     shortDesc: "End-to-end project management ensuring smooth execution, timely delivery, and quality standards.",
     description: "From inception to handover, our project managers ensure your project runs smoothly. We coordinate all stakeholders and manage resources for optimal outcomes.",
-    image: architectureImg,
+    media: projectMgmtImg,
+    isVideo: false,
     features: [
       "Project Planning & Scheduling",
       "Resource Management",
@@ -277,13 +285,24 @@ const ServicesPage = () => {
                   >
                     <div className="p-6 bg-card rounded-b-2xl shadow-md -mt-4 pt-8 border-t-0">
                       <div className="grid lg:grid-cols-2 gap-8">
-                        {/* Image */}
+                        {/* Image or Video */}
                         <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
-                          <img
-                            src={service.image}
-                            alt={service.title}
-                            className="w-full h-full object-cover"
-                          />
+                          {service.isVideo ? (
+                            <video
+                              src={service.media}
+                              className="w-full h-full object-cover"
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                            />
+                          ) : (
+                            <img
+                              src={service.media}
+                              alt={service.title}
+                              className="w-full h-full object-cover"
+                            />
+                          )}
                           <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
                         </div>
 

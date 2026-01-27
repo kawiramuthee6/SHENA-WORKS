@@ -8,46 +8,54 @@ import {
   Route
 } from "lucide-react";
 import roadsImg from "@/assets/services/roads.jpg";
-import constructionImg from "@/assets/services/construction.jpg";
+import constructionVid from "@/assets/services/construction.mp4";
 import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
+import boqImg from "@/assets/services/boq.jpg";
+import projectMgmtImg from "@/assets/services/project-management.jpg";
 
 const services = [
   {
     icon: Route,
     title: "Road Construction",
     description: "Expert road construction services including tarmac laying, repairs, cabro installation, drainage systems, and highway development.",
-    image: roadsImg,
+    media: roadsImg,
+    isVideo: false,
   },
   {
     icon: Building2,
     title: "General Construction",
     description: "Comprehensive building services from residential homes to commercial complexes, delivering quality structures on time and within budget.",
-    image: constructionImg,
+    media: constructionVid,
+    isVideo: true,
   },
   {
     icon: PenTool,
     title: "Architecture & Consultancy",
     description: "Creative architectural design and professional consultancy services. We transform your vision into detailed, buildable plans.",
-    image: architectureImg,
+    media: architectureImg,
+    isVideo: false,
   },
   {
     icon: Palette,
     title: "Interior Design",
     description: "Innovative interior design solutions that blend functionality with aesthetics, creating spaces that inspire and delight.",
-    image: interiorImg,
+    media: interiorImg,
+    isVideo: false,
   },
   {
     icon: Calculator,
     title: "Bills of Quantities",
     description: "Accurate cost estimation and quantity surveying services to ensure your project stays on budget from concept to completion.",
-    image: constructionImg,
+    media: boqImg,
+    isVideo: false,
   },
   {
     icon: ClipboardList,
     title: "Project Management",
     description: "End-to-end project management ensuring smooth execution, timely delivery, and adherence to quality standards.",
-    image: architectureImg,
+    media: projectMgmtImg,
+    isVideo: false,
   },
 ];
 
@@ -86,13 +94,24 @@ const Services = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative overflow-hidden rounded-2xl bg-card shadow-md hover:shadow-elegant transition-all duration-500"
             >
-              {/* Image */}
+              {/* Image or Video */}
               <div className="relative h-48 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                {service.isVideo ? (
+                  <video
+                    src={service.media}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={service.media}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
                 
                 {/* Icon */}
