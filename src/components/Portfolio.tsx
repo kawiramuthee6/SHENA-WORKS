@@ -13,7 +13,7 @@ import bp7 from "@/assets/projects/black-perch-7.jpeg";
 
 // Other Projects
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
-import stoneImg from "@/assets/projects/stone-lounge-1.jpg";
+import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
 
 interface Project {
   id: string;
