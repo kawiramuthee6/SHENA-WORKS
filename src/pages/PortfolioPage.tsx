@@ -34,7 +34,17 @@ import pin10 from "@/assets/projects/pin-hideout-10.jpeg";
 
 // Other Projects
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
-import stoneImg from "@/assets/projects/stone-lounge-1.jpg";
+
+// Stone Lounge Images
+import stone1 from "@/assets/projects/stone-lounge-1.jpeg";
+import stone2 from "@/assets/projects/stone-lounge-2.jpeg";
+import stone3 from "@/assets/projects/stone-lounge-3.jpeg";
+import stone4 from "@/assets/projects/stone-lounge-4.jpeg";
+import stone5 from "@/assets/projects/stone-lounge-5.jpeg";
+import stone6 from "@/assets/projects/stone-lounge-6.jpeg";
+import stone7 from "@/assets/projects/stone-lounge-7.jpeg";
+import stone8 from "@/assets/projects/stone-lounge-8.jpeg";
+import stone9 from "@/assets/projects/stone-lounge-9.jpeg";
 
 interface Project {
   id: string;
@@ -88,10 +98,10 @@ const projects: Project[] = [
     location: "Kenya",
     category: "Residential & Commercial",
     description: "A premium development combining luxury villas with a sophisticated lounge space featuring natural stone facades.",
-    fullDescription: "Stone Lounge & Villas showcases our capability to deliver high-end residential and commercial developments. The project features distinctive natural stone architecture, contemporary interior design, premium finishing materials, and integrated outdoor living spaces. This development exemplifies our commitment to creating spaces that combine aesthetic beauty with lasting quality.",
-    coverImage: stoneImg,
-    images: [stoneImg],
-    services: ["Architecture & Design", "General Construction", "Interior Design", "Project Management"],
+    fullDescription: "Stone Lounge & Villas showcases our capability to deliver high-end residential and commercial developments. The project features distinctive natural stone architecture, modern villa design with contemporary interiors, premium cabro paving throughout, professional drainage systems, and beautifully landscaped grounds. This comprehensive development exemplifies our commitment to creating spaces that combine aesthetic beauty with lasting quality and functionality.",
+    coverImage: stone4,
+    images: [stone1, stone2, stone3, stone4, stone5, stone6, stone7, stone8, stone9],
+    services: ["Architecture & Design", "General Construction", "Cabro Installation", "Drainage Systems", "Interior Design"],
   },
 ];
 
