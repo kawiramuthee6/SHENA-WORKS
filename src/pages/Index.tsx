@@ -16,7 +16,7 @@ import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
 import bp4 from "@/assets/projects/black-perch-4.jpeg";
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
-import stoneImg from "@/assets/projects/stone-lounge-1.jpg";
+import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
 
 import { 
   Building2, 
