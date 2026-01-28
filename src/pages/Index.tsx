@@ -29,12 +29,12 @@ import {
 } from "lucide-react";
 
 const services = [
-  { icon: Route, title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg, id: "roads" },
-  { icon: Building2, title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: bp4, id: "construction" },
-  { icon: PenTool, title: "Architecture & Consultancy", description: "Creative designs and professional consultancy services.", image: architectureImg, id: "architecture" },
-  { icon: Palette, title: "Interior Design", description: "Innovative interiors that blend functionality with aesthetics.", image: interiorImg, id: "interior" },
-  { icon: Calculator, title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: boqImg, id: "boq" },
-  { icon: ClipboardList, title: "Project Management", description: "End-to-end project management for smooth execution.", image: projectMgmtImg, id: "project-management" },
+  { icon: Route, title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg, path: "/services/road-construction" },
+  { icon: Building2, title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: bp4, path: "/services/general-construction" },
+  { icon: PenTool, title: "Architecture & Consultancy", description: "Creative designs and professional consultancy services.", image: architectureImg, path: "/services/architecture" },
+  { icon: Palette, title: "Interior Design", description: "Innovative interiors that blend functionality with aesthetics.", image: interiorImg, path: "/services/interior-design" },
+  { icon: Calculator, title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: boqImg, path: "/services/bills-of-quantities" },
+  { icon: ClipboardList, title: "Project Management", description: "End-to-end project management for smooth execution.", image: projectMgmtImg, path: "/services/project-management" },
 ];
 
 const projects = [
@@ -128,7 +128,7 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }} 
                 className="group relative overflow-hidden rounded-2xl bg-card shadow-md hover:shadow-elegant transition-all duration-500"
               >
-                <Link to={`/services#${service.id}`}>
+                <Link to={service.path}>
                   <div className="relative h-48 overflow-hidden">
                     <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
