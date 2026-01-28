@@ -11,8 +11,19 @@ import bp4 from "@/assets/projects/black-perch-4.jpeg";
 import bp6 from "@/assets/projects/black-perch-6.jpeg";
 import bp7 from "@/assets/projects/black-perch-7.jpeg";
 
-// Other Projects
-import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
+// Dukes Cottages Images
+import dukes1 from "@/assets/projects/dukes-cottages-1.jpg";
+import dukes2 from "@/assets/projects/dukes-cottages-2.jpg";
+import dukes3 from "@/assets/projects/dukes-cottages-3.jpg";
+import dukes4 from "@/assets/projects/dukes-cottages-4.jpg";
+import dukes5 from "@/assets/projects/dukes-cottages-5.jpg";
+import dukes6 from "@/assets/projects/dukes-cottages-6.jpg";
+import dukes7 from "@/assets/projects/dukes-cottages-7.jpg";
+import dukes8 from "@/assets/projects/dukes-cottages-8.jpg";
+import dukes9 from "@/assets/projects/dukes-cottages-9.jpg";
+import dukes10 from "@/assets/projects/dukes-cottages-10.jpg";
+
+// Stone Lounge
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
 
 interface Project {
@@ -42,9 +53,9 @@ const projects: Project[] = [
     location: "Kenya",
     category: "Hospitality Construction",
     description:
-      "An elegant hospitality complex featuring modern cottages, a fine dining restaurant, and beautifully landscaped gardens. This project demonstrates our ability to create luxurious, functional spaces.",
-    coverImage: dukesImg,
-    images: [dukesImg],
+      "An elegant hospitality complex featuring modern cottages, a fine dining restaurant, and beautifully landscaped gardens with cabro paving. This project demonstrates our ability to create luxurious, functional spaces.",
+    coverImage: dukes1,
+    images: [dukes1, dukes2, dukes3, dukes4, dukes5, dukes6, dukes7, dukes8, dukes9, dukes10],
   },
   {
     id: "stone-lounge",

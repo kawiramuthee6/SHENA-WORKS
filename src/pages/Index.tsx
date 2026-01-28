@@ -11,9 +11,10 @@ import Testimonials from "@/components/Testimonials";
 import QuoteModal from "@/components/QuoteModal";
 import heroImage from "@/assets/hero-construction.jpg";
 import roadsImg from "@/assets/services/roads.jpg";
-import constructionImg from "@/assets/services/roads.jpg";
 import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
+import boqImg from "@/assets/services/boq.jpg";
+import projectMgmtImg from "@/assets/services/project-management.jpg";
 import bp4 from "@/assets/projects/black-perch-4.jpeg";
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
@@ -29,11 +30,11 @@ import {
 
 const services = [
   { icon: Route, title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg, id: "roads" },
-  { icon: Building2, title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: constructionImg, id: "construction" },
+  { icon: Building2, title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: bp4, id: "construction" },
   { icon: PenTool, title: "Architecture & Consultancy", description: "Creative designs and professional consultancy services.", image: architectureImg, id: "architecture" },
   { icon: Palette, title: "Interior Design", description: "Innovative interiors that blend functionality with aesthetics.", image: interiorImg, id: "interior" },
-  { icon: Calculator, title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: constructionImg, id: "boq" },
-  { icon: ClipboardList, title: "Project Management", description: "End-to-end project management for smooth execution.", image: architectureImg, id: "project-management" },
+  { icon: Calculator, title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: boqImg, id: "boq" },
+  { icon: ClipboardList, title: "Project Management", description: "End-to-end project management for smooth execution.", image: projectMgmtImg, id: "project-management" },
 ];
 
 const projects = [
