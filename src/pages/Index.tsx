@@ -11,7 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import QuoteModal from "@/components/QuoteModal";
 import heroImage from "@/assets/hero-construction.jpg";
 import roadsImg from "@/assets/services/roads.jpg";
-import constructionImg from "@/assets/services/construction.jpg";
+import constructionImg from "@/assets/services/roads.jpg";
 import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
 import bp4 from "@/assets/projects/black-perch-4.jpeg";
