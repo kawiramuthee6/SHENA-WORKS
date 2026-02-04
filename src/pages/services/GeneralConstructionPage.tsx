@@ -7,14 +7,15 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
+import Breadcrumb from "@/components/Breadcrumb";
 import { useState } from "react";
 
 // Import construction images
-import bp1 from "@/assets/projects/black-perch-1.jpeg";
-import bp2 from "@/assets/projects/black-perch-2.jpeg";
-import bp3 from "@/assets/projects/black-perch-3.jpeg";
-import bp4 from "@/assets/projects/black-perch-4.jpeg";
-import bp6 from "@/assets/projects/black-perch-6.jpeg";
+import bp1 from "@/assets/services/general const/gc1.jpeg";
+import bp2 from "@/assets/services/general const/gc2.jpeg";
+import bp3 from "@/assets/services/general const/gc3.jpeg";
+import bp4 from "@/assets/services/general const/gc4.jpeg";
+import bp6 from "@/assets/services/general const/gc5.jpeg";
 import bp7 from "@/assets/projects/black-perch-7.jpeg";
 import constructionVid from "@/assets/services/construction.mp4";
 
@@ -31,7 +32,7 @@ const features = [
 
 const galleryImages = [
   { src: bp1, alt: "Black Perch Lounge - Exterior" },
-  { src: bp2, alt: "Black Perch Lounge - Interior" },
+  { src: bp2, alt: "Dukes Cottages 2" },
   { src: bp3, alt: "Black Perch Lounge - Details" },
   { src: bp4, alt: "Black Perch Lounge - Architecture" },
   { src: bp6, alt: "Black Perch Lounge - Structure" },
@@ -44,7 +45,7 @@ const GeneralConstructionPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section with Video */}
       <section className="relative pt-20 pb-32 overflow-hidden">
@@ -65,16 +66,22 @@ const GeneralConstructionPage = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-8 flex items-center gap-4"
           >
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               onClick={() => navigate(-1)}
               className="text-cream/70 hover:text-cream hover:bg-cream/10"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
             </Button>
+            <Breadcrumb
+              items={[
+                { label: "Services", href: "/services" },
+                { label: "General Construction" }
+              ]}
+            />
           </motion.div>
 
           <motion.div
@@ -152,9 +159,9 @@ const GeneralConstructionPage = () => {
               className="relative overflow-hidden rounded-2xl aspect-[4/3] shadow-elegant"
             >
               <img
-                src={bp4}
+                src={bp6}
                 alt="General Construction Work"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </div>

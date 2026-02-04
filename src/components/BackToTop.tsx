@@ -29,11 +29,14 @@ const BackToTop = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={scrollToTop}
-          className="fixed bottom-24 right-6 z-40 w-12 h-12 bg-gold text-navy-dark rounded-full shadow-gold-glow flex items-center justify-center hover:scale-110 transition-transform duration-300"
+          className="fixed bottom-24 right-6 z-40 w-12 h-12 bg-gold text-navy-dark rounded-full shadow-gold-glow flex items-center justify-center hover:scale-110 transition-transform duration-200"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
           aria-label="Back to top"
         >
           <ArrowUp className="w-5 h-5" />

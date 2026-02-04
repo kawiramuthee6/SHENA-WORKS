@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
+import QuoteModal from "@/components/QuoteModal";
 import heroImage from "@/assets/hero-construction.jpg";
 
 // Black Perch Images
@@ -32,8 +33,17 @@ import pin8 from "@/assets/projects/pin-hideout-8.jpeg";
 import pin9 from "@/assets/projects/pin-hideout-9.jpeg";
 import pin10 from "@/assets/projects/pin-hideout-10.jpeg";
 
-// Other Projects
-import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
+// Dukes Cottages Images
+import dukes1 from "@/assets/projects/dukes-cottages-1.jpg";
+import dukes2 from "@/assets/projects/dukes-cottages-2.jpg";
+import dukes3 from "@/assets/projects/dukes-cottages-3.jpg";
+import dukes4 from "@/assets/projects/dukes-cottages-4.jpg";
+import dukes5 from "@/assets/projects/dukes-cottages-5.jpg";
+import dukes6 from "@/assets/projects/dukes-cottages-6.jpg";
+import dukes7 from "@/assets/projects/dukes-cottages-7.jpg";
+import dukes8 from "@/assets/projects/dukes-cottages-8.jpg";
+import dukes9 from "@/assets/projects/dukes-cottages-9.jpg";
+import dukes10 from "@/assets/projects/dukes-cottages-10.jpg";
 
 // Stone Lounge Images
 import stone1 from "@/assets/projects/stone-lounge-1.jpeg";
@@ -88,8 +98,8 @@ const projects: Project[] = [
     category: "Hospitality Construction",
     description: "An elegant hospitality complex featuring modern cottages, a fine dining restaurant, and beautifully landscaped gardens.",
     fullDescription: "Dukes Cottages represents our expertise in hospitality sector development. This comprehensive project includes multiple luxury cottages designed for comfort and privacy, a full-service restaurant with modern kitchen facilities, and extensive garden landscaping. Every element was carefully planned to create a cohesive guest experience that combines elegance with functionality.",
-    coverImage: dukesImg,
-    images: [dukesImg],
+    coverImage: dukes1,
+    images: [dukes1, dukes2, dukes3, dukes4, dukes5, dukes6, dukes7, dukes8, dukes9, dukes10],
     services: ["Architecture & Design", "General Construction", "Interior Design", "Landscaping"],
   },
   {
@@ -108,6 +118,7 @@ const projects: Project[] = [
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [quoteModal, setQuoteModal] = useState(false);
   const navigate = useNavigate();
 
   const openLightbox = (project: Project) => {
@@ -140,7 +151,7 @@ const PortfolioPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 overflow-hidden">
@@ -396,6 +407,7 @@ const PortfolioPage = () => {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
+      <QuoteModal isOpen={quoteModal} onClose={() => setQuoteModal(false)} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
@@ -46,6 +46,15 @@ const projects = [
 const Index = () => {
   const [quoteModal, setQuoteModal] = useState(false);
 
+  // Preload critical images
+  useEffect(() => {
+    const preloadImages = [heroImage];
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar onQuoteClick={() => setQuoteModal(true)} />
@@ -53,7 +62,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Road Construction" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Road Construction" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy-dark/90" />
         </div>
 
@@ -85,26 +94,6 @@ const Index = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-cream/50 rounded-full flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-3 bg-gold rounded-full mt-2"
-            />
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* Services Preview */}
@@ -130,7 +119,7 @@ const Index = () => {
               >
                 <Link to={service.path}>
                   <div className="relative h-48 overflow-hidden">
-                    <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
                     <div className="absolute bottom-4 left-4 w-14 h-14 bg-gold rounded-xl flex items-center justify-center shadow-lg">
                       <service.icon className="w-7 h-7 text-navy-dark" />
@@ -170,7 +159,7 @@ const Index = () => {
             {projects.map((project, index) => (
               <motion.div key={project.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group relative overflow-hidden rounded-2xl aspect-[4/3]">
                 <Link to="/portfolio">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   <div className="absolute inset-0 p-6 flex flex-col justify-end">
                     <h3 className="text-xl font-serif font-bold text-cream group-hover:text-gold transition-colors">{project.title}</h3>

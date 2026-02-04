@@ -78,11 +78,12 @@ const Footer = () => {
           >
             <h4 className="text-lg font-serif font-bold text-cream mb-6">Our Services</h4>
             <ul className="space-y-3">
-              <li><Link to="/services#roads" className="text-cream/70 hover:text-gold transition-colors">Road Construction</Link></li>
-              <li><Link to="/services#construction" className="text-cream/70 hover:text-gold transition-colors">General Construction</Link></li>
-              <li><Link to="/services#architecture" className="text-cream/70 hover:text-gold transition-colors">Architecture</Link></li>
-              <li><Link to="/services#interior" className="text-cream/70 hover:text-gold transition-colors">Interior Design</Link></li>
-              <li><Link to="/services#project-management" className="text-cream/70 hover:text-gold transition-colors">Project Management</Link></li>
+              <li><Link to="/services/road-construction" className="text-cream/70 hover:text-gold transition-colors">Road Construction</Link></li>
+              <li><Link to="/services/general-construction" className="text-cream/70 hover:text-gold transition-colors">General Construction</Link></li>
+              <li><Link to="/services/architecture" className="text-cream/70 hover:text-gold transition-colors">Architecture</Link></li>
+              <li><Link to="/services/interior-design" className="text-cream/70 hover:text-gold transition-colors">Interior Design</Link></li>
+              <li><Link to="/services/bills-of-quantities" className="text-cream/70 hover:text-gold transition-colors">Bills of Quantities</Link></li>
+              <li><Link to="/services/project-management" className="text-cream/70 hover:text-gold transition-colors">Project Management</Link></li>
             </ul>
           </motion.div>
 

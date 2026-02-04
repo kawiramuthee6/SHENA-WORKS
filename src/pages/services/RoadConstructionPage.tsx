@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
+import Breadcrumb from "@/components/Breadcrumb";
 import { useState } from "react";
 import roadsImg from "@/assets/services/roads.jpg";
 
@@ -27,7 +28,7 @@ const RoadConstructionPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 overflow-hidden">
@@ -45,16 +46,22 @@ const RoadConstructionPage = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-8 flex items-center gap-4"
           >
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               onClick={() => navigate(-1)}
               className="text-cream/70 hover:text-cream hover:bg-cream/10"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
             </Button>
+            <Breadcrumb
+              items={[
+                { label: "Services", href: "/services" },
+                { label: "Road Construction" }
+              ]}
+            />
           </motion.div>
 
           <motion.div

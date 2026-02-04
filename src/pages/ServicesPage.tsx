@@ -88,7 +88,7 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 overflow-hidden">

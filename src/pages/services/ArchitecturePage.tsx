@@ -7,16 +7,17 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
+import Breadcrumb from "@/components/Breadcrumb";
 import { useState } from "react";
 import architectureImg from "@/assets/services/architecture.jpg";
 
 // Import additional images for gallery
-import sl1 from "@/assets/projects/stone-lounge-1.jpeg";
-import sl2 from "@/assets/projects/stone-lounge-2.jpeg";
-import sl3 from "@/assets/projects/stone-lounge-3.jpeg";
-import sl4 from "@/assets/projects/stone-lounge-4.jpeg";
-import sl5 from "@/assets/projects/stone-lounge-5.jpeg";
-import sl6 from "@/assets/projects/stone-lounge-6.jpeg";
+import sl1 from "@/assets/services/arch/arch1.jpeg";
+import sl2 from "@/assets/services/arch/arch2.jpeg";
+import sl3 from "@/assets/services/arch/arch3.jpeg";
+import sl4 from "@/assets/services/general const/gc2.jpeg";
+import sl5 from "@/assets/services/general const/gc1.jpeg";
+import sl6 from "@/assets/projects/dukes-cottages-9.jpg";
 
 const features = [
   "Architectural Design",
@@ -44,7 +45,7 @@ const ArchitecturePage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 overflow-hidden">
@@ -62,16 +63,22 @@ const ArchitecturePage = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-8 flex items-center gap-4"
           >
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               onClick={() => navigate(-1)}
               className="text-cream/70 hover:text-cream hover:bg-cream/10"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
             </Button>
+            <Breadcrumb
+              items={[
+                { label: "Services", href: "/services" },
+                { label: "Architecture & Consultancy" }
+              ]}
+            />
           </motion.div>
 
           <motion.div
