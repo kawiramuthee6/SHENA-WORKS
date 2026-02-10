@@ -21,7 +21,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import heroImage from "@/assets/hero-construction.jpg";
+import heroImage from "@/assets/shena-works-logo.png";
 
 const directors = [
   {

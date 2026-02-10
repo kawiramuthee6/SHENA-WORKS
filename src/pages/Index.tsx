@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
@@ -9,7 +9,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import Testimonials from "@/components/Testimonials";
 import QuoteModal from "@/components/QuoteModal";
-import heroImage from "@/assets/hero-construction.jpg";
+import heroImage from "@/assets/shena-works-logo.png";
 import roadsImg from "@/assets/services/roads.jpg";
 import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
@@ -27,6 +27,58 @@ import {
   ClipboardList,
   Route
 } from "lucide-react";
+
+// ============================================================
+// ANIMATION CONSTANTS - Reusable motion configurations
+// ============================================================
+
+/** Base animation variant for hero text elements */
+const HERO_TEXT_VARIANT = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8 },
+} as const;
+
+/** Tagline animation with slight delay for staggered entrance */
+const TAGLINE_ANIMATION = {
+  ...HERO_TEXT_VARIANT,
+  transition: { ...HERO_TEXT_VARIANT.transition, delay: 0.6 },
+} as const;
+
+// ============================================================
+// REUSABLE COMPONENTS
+// ============================================================
+
+interface HeroTextProps {
+  /** Content to render inside the paragraph */
+  children: ReactNode;
+  /** Custom animation variant (optional) */
+  animation?: typeof TAGLINE_ANIMATION;
+  /** Additional CSS classes (optional) */
+  className?: string;
+}
+
+/**
+ * Reusable motion paragraph component for hero sections.
+ * Provides consistent animation patterns and styling for tagline text.
+ * 
+ * @example
+ * <HeroText>Your tagline here</HeroText>
+ */
+const HeroText = ({ 
+  children, 
+  animation = TAGLINE_ANIMATION,
+  className = "text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10"
+}: HeroTextProps) => (
+  <motion.p
+    initial={animation.initial}
+    animate={animation.animate}
+    transition={animation.transition}
+    className={className}
+  >
+    {children}
+  </motion.p>
+);
 
 const services = [
   { icon: Route, title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg, path: "/services/road-construction" },
@@ -72,17 +124,17 @@ const Index = () => {
 
         <div className="container-custom relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto">
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-6">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-6 drop-shadow-lg">
               Connecting Communities. <span className="text-gradient-gold">Building the Future.</span>
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8 }} className="text-2xl md:text-3xl font-serif text-gold-light mb-6">
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8 }} className="text-2xl md:text-3xl font-serif text-gold-light mb-4 drop-shadow-md">
               Shena Works Limited
             </motion.p>
 
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.8 }} className="text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10">
-              Our firm provides a comprehensive and integrated approach to design. From initial feasibility studies to final project supervision, we ensure every detail aligns with our client's vision, budget, and timeline.
-            </motion.p>
+            <HeroText className="text-lg md:text-xl text-cream max-w-2xl mx-auto mb-10 bg-warm-gray/20 backdrop-blur-sm rounded-xl px-6 py-4 border border-cream/10 shadow-lg">
+              Roads & Building Construction Contractors.
+            </HeroText>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="hero" size="xl" asChild>

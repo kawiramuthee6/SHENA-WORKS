@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Building2,
@@ -7,7 +8,11 @@ import {
   Calculator,
   ClipboardList,
   Route,
-  ArrowRight
+  ArrowRight,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Eye
 } from "lucide-react";
 import roadsImg from "@/assets/services/roads.jpg";
 import constructionVid from "@/assets/services/construction.mp4";
@@ -16,7 +21,37 @@ import interiorImg from "@/assets/services/interior.jpg";
 import boqImg from "@/assets/services/boq.jpg";
 import projectMgmtImg from "@/assets/services/project-management.jpg";
 
-const services = [
+// Architecture Images
+import arch1 from "@/assets/services/arch/arch1.jpeg";
+import arch2 from "@/assets/services/arch/arch2.jpeg";
+import arch3 from "@/assets/services/arch/arch3.jpeg";
+
+// Interior Design Images
+import int1 from "@/assets/services/interior/int1.jpeg";
+import int2 from "@/assets/services/interior/int2.jpeg";
+import int3 from "@/assets/services/interior/int3.jpeg";
+import int4 from "@/assets/services/interior/int4.jpeg";
+import int5 from "@/assets/services/interior/int5.jpeg";
+import int6 from "@/assets/services/interior/int6.jpeg";
+
+// General Construction Images
+import gc1 from "@/assets/services/general const/gc1.jpeg";
+import gc2 from "@/assets/services/general const/gc2.jpeg";
+import gc3 from "@/assets/services/general const/gc3.jpeg";
+import gc4 from "@/assets/services/general const/gc4.jpeg";
+import gc5 from "@/assets/services/general const/gc5.jpeg";
+
+interface Service {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  media: string;
+  isVideo?: boolean;
+  path: string;
+  gallery?: string[];
+}
+
+const services: Service[] = [
   {
     icon: Route,
     title: "Road Construction",
@@ -32,6 +67,7 @@ const services = [
     media: constructionVid,
     isVideo: true,
     path: "/services/general-construction",
+    gallery: [gc1, gc2, gc3, gc4, gc5],
   },
   {
     icon: PenTool,
@@ -40,6 +76,7 @@ const services = [
     media: architectureImg,
     isVideo: false,
     path: "/services/architecture",
+    gallery: [arch1, arch2, arch3],
   },
   {
     icon: Palette,
@@ -48,6 +85,7 @@ const services = [
     media: interiorImg,
     isVideo: false,
     path: "/services/interior-design",
+    gallery: [int1, int2, int3, int4, int5, int6],
   },
   {
     icon: Calculator,
@@ -68,6 +106,39 @@ const services = [
 ];
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openGallery = (service: Service, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (service.gallery && service.gallery.length > 0) {
+      setSelectedService(service);
+      setCurrentImageIndex(0);
+    }
+  };
+
+  const closeGallery = () => {
+    setSelectedService(null);
+    setCurrentImageIndex(0);
+  };
+
+  const nextImage = () => {
+    if (selectedService && selectedService.gallery) {
+      setCurrentImageIndex((prev) =>
+        prev === selectedService.gallery!.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedService && selectedService.gallery) {
+      setCurrentImageIndex((prev) =>
+        prev === 0 ? selectedService.gallery!.length - 1 : prev - 1
+      );
+    }
+  };
+
   return (
     <section id="services" className="py-24 bg-background">
       <div className="container-custom">
@@ -129,6 +200,17 @@ const Services = () => {
                   <div className="absolute bottom-4 left-4 w-14 h-14 bg-gold rounded-xl flex items-center justify-center shadow-gold-glow">
                     <service.icon className="w-7 h-7 text-navy-dark" />
                   </div>
+
+                  {/* Gallery Button */}
+                  {service.gallery && service.gallery.length > 0 && (
+                    <button
+                      onClick={(e) => openGallery(service, e)}
+                      className="absolute top-4 right-4 w-10 h-10 bg-navy/80 hover:bg-gold rounded-full flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100"
+                      title="View Gallery"
+                    >
+                      <Eye className="w-5 h-5 text-cream group-hover:text-navy-dark" />
+                    </button>
+                  )}
                 </div>
 
                 {/* Content */}
@@ -140,8 +222,17 @@ const Services = () => {
                     {service.description}
                   </p>
                   <div className="flex items-center text-gold font-medium">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    {service.gallery && service.gallery.length > 0 ? (
+                      <>
+                        View Gallery
+                        <Eye className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </>
+                    ) : (
+                      <>
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -152,6 +243,79 @@ const Services = () => {
           ))}
         </div>
       </div>
+
+      {/* Gallery Lightbox */}
+      <AnimatePresence>
+        {selectedService && selectedService.gallery && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-navy-dark/95 flex items-center justify-center p-4"
+            onClick={closeGallery}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-5xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={closeGallery}
+                className="absolute -top-12 right-0 text-cream hover:text-gold transition-colors"
+              >
+                <X className="w-8 h-8" />
+              </button>
+
+              {/* Image */}
+              <div className="relative aspect-video bg-navy rounded-2xl overflow-hidden">
+                <img
+                  src={selectedService.gallery[currentImageIndex]}
+                  alt={`${selectedService.title} - Image ${currentImageIndex + 1}`}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Navigation Arrows */}
+                {selectedService.gallery.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-colors"
+                    >
+                      <ChevronLeft className="w-6 h-6" />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-colors"
+                    >
+                      <ChevronRight className="w-6 h-6" />
+                    </button>
+                  </>
+                )}
+
+                {/* Image Counter */}
+                {selectedService.gallery.length > 1 && (
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-navy/80 px-4 py-2 rounded-full text-cream text-sm">
+                    {currentImageIndex + 1} / {selectedService.gallery.length}
+                  </div>
+                )}
+              </div>
+
+              {/* Service Info */}
+              <div className="mt-6 text-center">
+                <h3 className="text-2xl font-serif font-bold text-cream mb-2">
+                  {selectedService.title}
+                </h3>
+                <p className="text-cream/70 max-w-2xl mx-auto">
+                  {selectedService.description}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

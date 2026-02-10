@@ -17,7 +17,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
-import heroImage from "@/assets/hero-construction.jpg";
+import heroImage from "@/assets/shena-works-logo.png";
 import roadsImg from "@/assets/services/roads.jpg";
 import constructionVid from "@/assets/services/construction.mp4";
 import architectureImg from "@/assets/services/architecture.jpg";

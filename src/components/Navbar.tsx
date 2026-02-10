@@ -54,8 +54,8 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled || !isHomePage
-          ? "bg-card/95 backdrop-blur-md shadow-elegant"
-          : "bg-transparent"
+          ? "bg-card/98 backdrop-blur-xl shadow-elegant border-b border-gold/10"
+          : "bg-gradient-to-b from-navy-dark/90 via-navy/70 to-transparent border-b border-cream/5"
       }`}
     >
       <div className="container-custom">
@@ -76,12 +76,12 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
               >
                 <Link
                   to={item.href}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1 ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-1 ${
                     isActive(item.href)
-                      ? "text-gold"
+                      ? "text-gold bg-gradient-to-r from-gold/20 to-gold/5 shadow-md border border-gold/20"
                       : scrolled || !isHomePage
-                      ? "text-foreground hover:text-accent"
-                      : "text-cream hover:text-gold"
+                      ? "text-foreground hover:text-accent hover:bg-accent/10"
+                      : "text-cream hover:text-gold hover:bg-warm-gray/20"
                   }`}
                 >
                   {item.name}

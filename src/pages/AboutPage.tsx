@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import heroImage from "@/assets/hero-construction.jpg";
+import heroImage from "@/assets/shena-works-logo.png";
 
 const values = [
   {
@@ -121,12 +121,11 @@ const AboutPage = () => {
                 </p>
                 <p>
                   Our team brings together expertise in civil engineering, architecture, interior design, 
-                  and project management. This integrated approach ensures that every project benefits 
+                  project management among others. This integrated approach ensures that every project benefits 
                   from seamless coordination and exceptional attention to detail.
                 </p>
                 <p>
-                  Today, we are proud to serve clients across Meru, Nairobi, and beyond, building 
-                  infrastructure that connects communities and structures that stand the test of time.
+                  Today, we are proud to serve clients across Kenya and beyond from our offices in Meru and Nairobi. As a NEMA, NCA, KERRA, and KeNHA-certified firm, we are committed to building the vital infrastructure that connects communities and creating structures that stand the test of time.
                 </p>
               </div>
             </motion.div>
