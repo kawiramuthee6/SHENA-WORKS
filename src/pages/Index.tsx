@@ -1,7 +1,7 @@
-import { useState, useEffect, type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback, type ReactNode } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -18,6 +18,9 @@ import projectMgmtImg from "@/assets/services/project-management.jpg";
 import bp4 from "@/assets/projects/black-perch-4.jpeg";
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
+import hero1 from "@/assets/hero/hero-1.jpg";
+import hero2 from "@/assets/hero/hero-2.jpg";
+import hero3 from "@/assets/hero/hero-3.jpg";
 
 import { 
   Building2, 
@@ -29,51 +32,41 @@ import {
 } from "lucide-react";
 
 // ============================================================
-// ANIMATION CONSTANTS - Reusable motion configurations
+// HERO SLIDESHOW DATA
 // ============================================================
 
-/** Base animation variant for hero text elements */
-const HERO_TEXT_VARIANT = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8 },
-} as const;
-
-/** Tagline animation with slight delay for staggered entrance */
-const TAGLINE_ANIMATION = {
-  ...HERO_TEXT_VARIANT,
-  transition: { ...HERO_TEXT_VARIANT.transition, delay: 0.6 },
-} as const;
+const heroSlides = [
+  {
+    image: hero1,
+    title: "Design and Build",
+    subtitle: "Transforming spaces with innovative construction and elegant finishing.",
+  },
+  {
+    image: hero2,
+    title: "Roads & Infrastructure",
+    subtitle: "Connecting communities through quality road construction and cabro works.",
+  },
+  {
+    image: hero3,
+    title: "Commercial Projects",
+    subtitle: "Delivering world-class commercial spaces built to last.",
+  },
+];
 
 // ============================================================
 // REUSABLE COMPONENTS
 // ============================================================
 
 interface HeroTextProps {
-  /** Content to render inside the paragraph */
   children: ReactNode;
-  /** Custom animation variant (optional) */
-  animation?: typeof TAGLINE_ANIMATION;
-  /** Additional CSS classes (optional) */
   className?: string;
 }
 
-/**
- * Reusable motion paragraph component for hero sections.
- * Provides consistent animation patterns and styling for tagline text.
- * 
- * @example
- * <HeroText>Your tagline here</HeroText>
- */
-const HeroText = ({ 
-  children, 
-  animation = TAGLINE_ANIMATION,
-  className = "text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10"
-}: HeroTextProps) => (
+const HeroText = ({ children, className = "text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10" }: HeroTextProps) => (
   <motion.p
-    initial={animation.initial}
-    animate={animation.animate}
-    transition={animation.transition}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.6 }}
     className={className}
   >
     {children}
@@ -97,13 +90,27 @@ const projects = [
 
 const Index = () => {
   const [quoteModal, setQuoteModal] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Preload critical images
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  // Auto-advance slides
   useEffect(() => {
-    const preloadImages = [heroImage];
-    preloadImages.forEach((src) => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
+  // Preload hero images
+  useEffect(() => {
+    heroSlides.forEach((slide) => {
       const img = new Image();
-      img.src = src;
+      img.src = slide.image;
     });
   }, []);
 
@@ -111,40 +118,98 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
-      {/* Hero Section */}
+      {/* Hero Section - Fullscreen Slideshow */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="Road Construction" className="w-full h-full object-cover" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy-dark/90" />
-        </div>
+        {/* Sliding Background Images */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <img
+              src={heroSlides[currentSlide].image}
+              alt={heroSlides[currentSlide].title}
+              className="w-full h-full object-cover"
+              loading="eager"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/85 via-navy/60 to-navy-dark/40" />
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Floating Elements */}
-        <motion.div animate={{ y: [-10, 10, -10] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/4 left-[10%] w-20 h-20 bg-gold/20 rounded-full blur-xl" />
-        <motion.div animate={{ y: [10, -10, 10] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-1/3 right-[15%] w-32 h-32 bg-gold/15 rounded-full blur-2xl" />
+        {/* Content - Left aligned like reference */}
+        <div className="container-custom relative z-10">
+          <div className="max-w-3xl">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <motion.h1
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-4"
+                >
+                  {heroSlides[currentSlide].title}
+                </motion.h1>
 
-        <div className="container-custom relative z-10 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto">
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-6 drop-shadow-lg">
-              Connecting Communities. <span className="text-gradient-gold">Building the Future.</span>
-            </motion.h1>
+                {/* Gold accent bar like reference */}
+                <div className="w-16 h-1 bg-gold mb-8" />
 
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8 }} className="text-2xl md:text-3xl font-serif text-gold-light mb-4 drop-shadow-md">
-              Shena Works Limited
-            </motion.p>
+                <p className="text-lg md:text-xl text-cream/90 max-w-2xl mb-10 leading-relaxed">
+                  {heroSlides[currentSlide].subtitle}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
-            <HeroText className="text-lg md:text-xl text-cream max-w-2xl mx-auto mb-10 bg-warm-gray/20 backdrop-blur-sm rounded-xl px-6 py-4 border border-cream/10 shadow-lg">
-              Roads & Building Construction Contractors.
-            </HeroText>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="flex flex-col sm:flex-row items-start gap-4"
+            >
               <Button variant="hero" size="xl" asChild>
-                <Link to="/services">Our Services <ArrowRight className="ml-2 h-5 w-5" /></Link>
+                <Link to="/services">Get Started <ArrowRight className="ml-2 h-5 w-5" /></Link>
               </Button>
               <Button variant="heroOutline" size="xl" asChild>
                 <Link to="/portfolio"><Play className="mr-2 h-5 w-5" /> View Our Work</Link>
               </Button>
             </motion.div>
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Slide Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-cream/10 backdrop-blur-sm border border-cream/20 flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-all duration-300"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-cream/10 backdrop-blur-sm border border-cream/20 flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-all duration-300"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                index === currentSlide ? "w-10 bg-gold" : "w-4 bg-cream/40 hover:bg-cream/60"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
