@@ -38,18 +38,18 @@ import {
 const heroSlides = [
   {
     image: hero1,
-    title: "Design and Build",
-    subtitle: "Transforming spaces with innovative construction and elegant finishing.",
+    title: "Connecting Communities.\nBuilding the Future.",
+    subtitle: "Shena Works Limited — Roads & Building Construction Contractors.",
   },
   {
     image: hero2,
-    title: "Roads & Infrastructure",
-    subtitle: "Connecting communities through quality road construction and cabro works.",
+    title: "Roads That Connect.\nStructures That Last.",
+    subtitle: "Quality road construction, cabro works, and infrastructure development across Kenya.",
   },
   {
     image: hero3,
-    title: "Commercial Projects",
-    subtitle: "Delivering world-class commercial spaces built to last.",
+    title: "Your Vision.\nOur Expertise.",
+    subtitle: "From architectural design to project completion — we deliver excellence.",
   },
 ];
 
@@ -102,7 +102,7 @@ const Index = () => {
 
   // Auto-advance slides
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
+    const timer = setInterval(nextSlide, 8000);
     return () => clearInterval(timer);
   }, [nextSlide]);
 
@@ -152,7 +152,7 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <motion.h1
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-4"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-4 whitespace-pre-line"
                 >
                   {heroSlides[currentSlide].title}
                 </motion.h1>

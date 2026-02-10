@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
-import heroImage from "@/assets/shena-works-logo.png";
+import heroImage from "@/assets/hero/hero-3.jpg";
 
 // Black Perch Images
 import bp1 from "@/assets/projects/black-perch-1.jpeg";

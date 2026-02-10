@@ -52,11 +52,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || !isHomePage
-          ? "bg-card/98 backdrop-blur-xl shadow-elegant border-b border-gold/10"
-          : "bg-gradient-to-b from-navy-dark/90 via-navy/70 to-transparent border-b border-cream/5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-card/98 backdrop-blur-xl shadow-elegant border-b border-gold/10`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
@@ -79,9 +75,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-1 ${
                     isActive(item.href)
                       ? "text-gold bg-gradient-to-r from-gold/20 to-gold/5 shadow-md border border-gold/20"
-                      : scrolled || !isHomePage
-                      ? "text-foreground hover:text-accent hover:bg-accent/10"
-                      : "text-cream hover:text-gold hover:bg-warm-gray/20"
+                      : "text-foreground hover:text-accent hover:bg-accent/10"
                   }`}
                 >
                   {item.name}
@@ -113,7 +107,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
             ))}
             {onQuoteClick ? (
               <Button
-                variant={scrolled || !isHomePage ? "gold" : "hero"}
+                variant="gold"
                 size="lg"
                 onClick={onQuoteClick}
               >
@@ -121,7 +115,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
               </Button>
             ) : (
               <Button
-                variant={scrolled || !isHomePage ? "gold" : "hero"}
+                variant="gold"
                 size="lg"
                 asChild
               >
@@ -133,9 +127,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-md ${
-              scrolled || !isHomePage ? "text-foreground" : "text-cream"
-            }`}
+            className="lg:hidden p-2 rounded-md text-foreground"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
