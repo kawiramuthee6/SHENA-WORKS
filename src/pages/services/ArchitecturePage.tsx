@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, PenTool, CheckCircle } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -41,7 +41,6 @@ const galleryImages = [
 
 const ArchitecturePage = () => {
   const [quoteModal, setQuoteModal] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen">
@@ -63,16 +62,8 @@ const ArchitecturePage = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8 flex items-center gap-4"
+            className="mb-8"
           >
-            <Button
-              variant="ghost"
-              onClick={() => navigate(-1)}
-              className="text-cream/70 hover:text-cream hover:bg-cream/10"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
-            </Button>
             <Breadcrumb
               items={[
                 { label: "Services", href: "/services" },
@@ -87,9 +78,6 @@ const ArchitecturePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="w-20 h-20 bg-gold rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-gold-glow">
-              <PenTool className="w-10 h-10 text-navy-dark" />
-            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6">
               Architecture & Consultancy
             </h1>
