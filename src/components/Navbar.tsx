@@ -74,8 +74,8 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                   to={item.href}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-1 ${
                     isActive(item.href)
-                      ? "text-gold bg-gradient-to-r from-gold/20 to-gold/5 shadow-md border border-gold/20"
-                      : "text-foreground hover:text-accent hover:bg-accent/10"
+                      ? "text-navy-dark bg-warm-gray"
+                      : "text-foreground/80 hover:text-navy-dark hover:bg-muted"
                   }`}
                 >
                   {item.name}
@@ -95,7 +95,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                         <Link
                           key={subItem.name}
                           to={subItem.href}
-                          className="block px-4 py-3 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                          className="block px-4 py-3 text-sm text-foreground/80 hover:bg-muted hover:text-navy-dark transition-colors"
                         >
                           {subItem.name}
                         </Link>
@@ -151,8 +151,8 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                           className={`block w-full text-left px-4 py-3 rounded-md mx-2 transition-colors flex items-center justify-between ${
                             isActive(item.href)
-                              ? "text-gold bg-accent/50"
-                              : "text-foreground hover:bg-accent/30"
+                              ? "text-navy-dark bg-warm-gray"
+                              : "text-foreground/80 hover:bg-muted"
                           }`}
                         >
                           {item.name}
@@ -186,8 +186,8 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                         onClick={() => setIsOpen(false)}
                         className={`block px-4 py-3 rounded-md mx-2 transition-colors ${
                           isActive(item.href)
-                            ? "text-gold bg-accent/50"
-                            : "text-foreground hover:bg-accent/30"
+                            ? "text-navy-dark bg-warm-gray"
+                            : "text-foreground/80 hover:bg-muted"
                         }`}
                       >
                         {item.name}
