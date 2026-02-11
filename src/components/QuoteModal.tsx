@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Move } from "lucide-react";
+import { X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -38,13 +38,12 @@ const QuoteModal = ({ isOpen, onClose, preSelectedService }: QuoteModalProps) =>
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [modalSize, setModalSize] = useState({ width: 600, height: 650 });
+  const [modalSize, setModalSize] = useState({ width: 500, height: 580 });
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const modalRef = useRef<HTMLDivElement>(null);
   const isDraggingRef = useRef(false);
-  const isResizingRef = useRef(false);
+  const resizeDirectionRef = useRef<string | null>(null);
 
-  // Center modal on mount
   useEffect(() => {
     if (isOpen && typeof window !== 'undefined') {
       const centerX = (window.innerWidth - modalSize.width) / 2;
@@ -56,11 +55,7 @@ const QuoteModal = ({ isOpen, onClose, preSelectedService }: QuoteModalProps) =>
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Company WhatsApp number (format: country code + number, no + or spaces)
     const companyWhatsApp = "254707243053";
-    
-    // Format the message with quote details
     const message = `*New Quote Request from Website*
 
 *Name:* ${formData.name}
@@ -71,13 +66,8 @@ const QuoteModal = ({ isOpen, onClose, preSelectedService }: QuoteModalProps) =>
 
 *Project Details:*
 ${formData.message}`;
-    
-    // Create WhatsApp URL with encoded message
     const whatsappUrl = `https://wa.me/${companyWhatsApp}?text=${encodeURIComponent(message)}`;
-    
-    // Open WhatsApp in new tab
     window.open(whatsappUrl, '_blank');
-    
     toast.success("Opening WhatsApp to send your quote request!");
     setIsSubmitting(false);
     setFormData({ name: "", email: "", phone: "", service: "", budget: "", message: "" });
@@ -88,88 +78,91 @@ ${formData.message}`;
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // Handle dragging the modal
+  // Drag from header
   const handleDragStart = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest('.no-drag')) return;
-    
     isDraggingRef.current = true;
     const startX = e.clientX - modalPosition.x;
     const startY = e.clientY - modalPosition.y;
 
     const handleMouseMove = (moveEvent: MouseEvent) => {
       if (!isDraggingRef.current) return;
-      const newX = moveEvent.clientX - startX;
-      const newY = moveEvent.clientY - startY;
-      
-      // Keep modal within viewport bounds
       const maxX = window.innerWidth - modalSize.width;
       const maxY = window.innerHeight - modalSize.height;
-      
       setModalPosition({
-        x: Math.max(0, Math.min(newX, maxX)),
-        y: Math.max(0, Math.min(newY, maxY))
+        x: Math.max(0, Math.min(moveEvent.clientX - startX, maxX)),
+        y: Math.max(0, Math.min(moveEvent.clientY - startY, maxY))
       });
     };
-
     const handleMouseUp = () => {
       isDraggingRef.current = false;
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
   };
 
-  // Handle resizing the modal
-  const handleResizeStart = (e: React.MouseEvent) => {
+  // Resize from edges
+  const handleResizeStart = (direction: string) => (e: React.MouseEvent) => {
     e.stopPropagation();
-    isResizingRef.current = true;
+    e.preventDefault();
+    resizeDirectionRef.current = direction;
     const startX = e.clientX;
     const startY = e.clientY;
     const startWidth = modalSize.width;
     const startHeight = modalSize.height;
+    const startPosX = modalPosition.x;
+    const startPosY = modalPosition.y;
 
     const handleMouseMove = (moveEvent: MouseEvent) => {
-      if (!isResizingRef.current) return;
-      const deltaX = moveEvent.clientX - startX;
-      const deltaY = moveEvent.clientY - startY;
-      
-      const newWidth = Math.max(400, Math.min(window.innerWidth - 40, startWidth + deltaX));
-      const newHeight = Math.max(500, Math.min(window.innerHeight - 40, startHeight + deltaY));
-      
-      setModalSize({ width: newWidth, height: newHeight });
-    };
+      if (!resizeDirectionRef.current) return;
+      const dx = moveEvent.clientX - startX;
+      const dy = moveEvent.clientY - startY;
+      let newW = startWidth, newH = startHeight, newX = startPosX, newY = startPosY;
 
+      if (direction.includes('right')) newW = Math.max(380, startWidth + dx);
+      if (direction.includes('bottom')) newH = Math.max(400, startHeight + dy);
+      if (direction.includes('left')) {
+        newW = Math.max(380, startWidth - dx);
+        newX = startPosX + (startWidth - newW);
+      }
+      if (direction.includes('top')) {
+        newH = Math.max(400, startHeight - dy);
+        newY = startPosY + (startHeight - newH);
+      }
+
+      setModalSize({ width: newW, height: newH });
+      setModalPosition({ x: newX, y: newY });
+    };
     const handleMouseUp = () => {
-      isResizingRef.current = false;
+      resizeDirectionRef.current = null;
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
   };
+
+  const edgeClass = "absolute z-10";
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-navy-dark/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
           />
 
-          {/* Modal */}
           <motion.div
             ref={modalRef}
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             style={{
               position: 'fixed',
               left: `${modalPosition.x}px`,
@@ -177,156 +170,101 @@ ${formData.message}`;
               width: `${modalSize.width}px`,
               height: `${modalSize.height}px`,
             }}
-            className="bg-card rounded-2xl shadow-2xl z-50 overflow-hidden flex flex-col"
+            className="bg-white rounded-xl shadow-2xl z-50 overflow-hidden flex flex-col border border-gray-200"
           >
-            {/* Draggable Header */}
-            <div 
-              className="bg-gradient-to-r from-navy to-navy-dark p-6 text-cream flex-shrink-0 cursor-move select-none"
+            {/* Resize edges */}
+            <div className={`${edgeClass} top-0 left-2 right-2 h-1 cursor-ns-resize`} onMouseDown={handleResizeStart('top')} />
+            <div className={`${edgeClass} bottom-0 left-2 right-2 h-1 cursor-ns-resize`} onMouseDown={handleResizeStart('bottom')} />
+            <div className={`${edgeClass} left-0 top-2 bottom-2 w-1 cursor-ew-resize`} onMouseDown={handleResizeStart('left')} />
+            <div className={`${edgeClass} right-0 top-2 bottom-2 w-1 cursor-ew-resize`} onMouseDown={handleResizeStart('right')} />
+            {/* Corner resize */}
+            <div className={`${edgeClass} top-0 left-0 w-3 h-3 cursor-nwse-resize`} onMouseDown={handleResizeStart('top-left')} />
+            <div className={`${edgeClass} top-0 right-0 w-3 h-3 cursor-nesw-resize`} onMouseDown={handleResizeStart('top-right')} />
+            <div className={`${edgeClass} bottom-0 left-0 w-3 h-3 cursor-nesw-resize`} onMouseDown={handleResizeStart('bottom-left')} />
+            <div className={`${edgeClass} bottom-0 right-0 w-3 h-3 cursor-nwse-resize`} onMouseDown={handleResizeStart('bottom-right')}>
+              <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-gray-300" />
+            </div>
+
+            {/* Header - draggable */}
+            <div
+              className="bg-white px-5 py-4 flex-shrink-0 cursor-move select-none border-b border-gray-100"
               onMouseDown={handleDragStart}
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Move className="w-5 h-5 text-cream/50" />
-                  <div>
-                    <h2 className="text-2xl font-serif font-bold">Get a Quote</h2>
-                    <p className="text-cream/70 text-sm mt-1">Drag to move • Resize from corner</p>
-                  </div>
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900">Get a Quote</h2>
+                  <p className="text-gray-400 text-xs mt-0.5">Tell us about your project</p>
                 </div>
                 <button
                   onClick={onClose}
-                  className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-cream/20 transition-colors no-drag"
+                  className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors no-drag"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 text-gray-500" />
                 </button>
               </div>
             </div>
 
-            {/* Scrollable Form Content */}
+            {/* Form */}
             <div className="flex-1 overflow-y-auto no-drag">
-              <form onSubmit={handleSubmit} className="p-6 space-y-4 pb-8">
-              <div className="grid sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="p-5 space-y-3 pb-6">
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-medium text-gray-600 mb-1">Full Name *</label>
+                    <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" required className="bg-gray-50 border-gray-200 h-9 text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-gray-600 mb-1">Phone *</label>
+                    <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="+254 7XX XXX XXX" required className="bg-gray-50 border-gray-200 h-9 text-sm" />
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Full Name *</label>
-                  <Input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    required
-                    className="bg-muted"
-                  />
+                  <label className="block text-xs font-medium text-gray-600 mb-1">Email *</label>
+                  <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" required className="bg-gray-50 border-gray-200 h-9 text-sm" />
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Phone *</label>
-                  <Input
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+254 7XX XXX XXX"
-                    required
-                    className="bg-muted"
-                  />
+                  <label className="block text-xs font-medium text-gray-600 mb-1">Service Required *</label>
+                  <Select value={formData.service} onValueChange={(value) => setFormData(prev => ({ ...prev, service: value }))}>
+                    <SelectTrigger className="bg-gray-50 border-gray-200 h-9 text-sm">
+                      <SelectValue placeholder="Select a service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {services.map((service) => (
+                        <SelectItem key={service} value={service}>{service}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Email *</label>
-                <Input
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="your@email.com"
-                  required
-                  className="bg-muted"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Service Required *</label>
-                <Select value={formData.service} onValueChange={(value) => setFormData(prev => ({ ...prev, service: value }))}>
-                  <SelectTrigger className="bg-muted">
-                    <SelectValue placeholder="Select a service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {services.map((service) => (
-                      <SelectItem key={service} value={service}>
-                        {service}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Estimated Budget</label>
-                <Input
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  placeholder="e.g., KES 500,000 - 1,000,000"
-                  className="bg-muted"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Project Details *</label>
-                <Textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your project, location, timeline, etc."
-                  rows={5}
-                  required
-                  className="bg-muted resize-y min-h-[120px] max-h-[400px]"
-                />
-              </div>
-
-              <Button 
-                type="submit" 
-                variant="gold" 
-                size="lg" 
-                className="w-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5 border-2 border-navy-dark border-t-transparent rounded-full mr-2"
-                    />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 mr-2" />
-                    Request Quote
-                  </>
-                )}
-              </Button>
-
-              <p className="text-xs text-muted-foreground text-center">
-                We typically respond within 24 hours during business days.
-              </p>
-            </form>
-            </div>
-
-            {/* Resize Handle - Bottom Right Corner */}
-            <div 
-              className="absolute bottom-0 right-0 w-8 h-8 cursor-nwse-resize group"
-              onMouseDown={handleResizeStart}
-            >
-              <div className="absolute bottom-1 right-1 flex flex-col items-end gap-0.5">
-                <div className="flex gap-0.5">
-                  <div className="w-1 h-1 bg-muted-foreground/40 group-hover:bg-muted-foreground rounded-full"></div>
-                  <div className="w-1 h-1 bg-muted-foreground/40 group-hover:bg-muted-foreground rounded-full"></div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">Estimated Budget</label>
+                  <Input name="budget" value={formData.budget} onChange={handleChange} placeholder="e.g., KES 500,000 - 1,000,000" className="bg-gray-50 border-gray-200 h-9 text-sm" />
                 </div>
-                <div className="flex gap-0.5">
-                  <div className="w-1 h-1 bg-muted-foreground/40 group-hover:bg-muted-foreground rounded-full"></div>
-                  <div className="w-1 h-1 bg-muted-foreground/40 group-hover:bg-muted-foreground rounded-full"></div>
+
+                <div>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">Project Details *</label>
+                  <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project, location, timeline, etc." rows={4} required className="bg-gray-50 border-gray-200 resize-y min-h-[90px] max-h-[300px] text-sm" />
                 </div>
-              </div>
+
+                <Button type="submit" variant="gold" className="w-full h-10" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} className="w-4 h-4 border-2 border-cream border-t-transparent rounded-full mr-2" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Request Quote
+                    </>
+                  )}
+                </Button>
+
+                <p className="text-[11px] text-gray-400 text-center">
+                  We typically respond within 24 hours during business days.
+                </p>
+              </form>
             </div>
           </motion.div>
         </>
