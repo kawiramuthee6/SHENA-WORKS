@@ -102,7 +102,7 @@ const Index = () => {
 
   // Auto-advance slides
   useEffect(() => {
-    const timer = setInterval(nextSlide, 8000);
+    const timer = setInterval(nextSlide, 10000);
     return () => clearInterval(timer);
   }, [nextSlide]);
 
@@ -119,7 +119,7 @@ const Index = () => {
       <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section - Fullscreen Slideshow */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Sliding Background Images */}
         <AnimatePresence mode="wait">
           <motion.div
