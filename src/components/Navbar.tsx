@@ -108,7 +108,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
             {onQuoteClick ? (
               <Button
                 variant="gold"
-                size="lg"
+                size="default"
                 onClick={onQuoteClick}
               >
                 Get Quote
@@ -116,7 +116,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
             ) : (
               <Button
                 variant="gold"
-                size="lg"
+                size="default"
                 asChild
               >
                 <Link to="/contact">Get Quote</Link>
