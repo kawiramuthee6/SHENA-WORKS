@@ -18,7 +18,7 @@ const buttonVariants = cva(
         // Custom Shena Works variants
         hero: "bg-gold text-navy-dark font-semibold hover:bg-gold-light shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
         heroOutline: "border-2 border-cream text-cream hover:bg-cream hover:text-navy font-semibold",
-        gold: "bg-gradient-to-r from-gold to-gold-light text-navy-dark font-semibold hover:shadow-lg transform hover:-translate-y-0.5",
+        gold: "bg-navy-dark text-cream font-semibold hover:bg-navy-light transition-colors",
         navy: "bg-navy text-cream hover:bg-navy-light font-medium",
         navyOutline: "border-2 border-navy text-navy hover:bg-navy hover:text-cream font-medium",
       },
