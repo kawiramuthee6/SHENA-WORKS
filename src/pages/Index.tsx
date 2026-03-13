@@ -119,7 +119,7 @@ const Index = () => {
       <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section - Fullscreen Slideshow */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
         {/* Sliding Background Images */}
         <AnimatePresence mode="wait">
           <motion.div
