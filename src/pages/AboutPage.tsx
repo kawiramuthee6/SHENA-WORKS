@@ -49,7 +49,7 @@ const AboutPage = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden">
+      <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
