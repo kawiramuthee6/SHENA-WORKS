@@ -52,7 +52,7 @@ const BillsOfQuantitiesPage = () => {
       <Navbar onQuoteClick={() => setQuoteModal(true)} />
       
       {/* Hero Section - No Image, Just Gradient */}
-      <section className="relative pt-20 pb-32 overflow-hidden bg-gradient-to-b from-navy via-navy-dark to-navy">
+      <section className="relative pb-32 overflow-hidden bg-gradient-to-b from-navy via-navy-dark to-navy">
         <div className="container-custom relative z-10 pt-20">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
