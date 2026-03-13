@@ -23,7 +23,6 @@ const Footer = () => {
     <footer className="bg-navy-dark pt-16 pb-8">
       <div className="container-custom">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Company Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +39,7 @@ const Footer = () => {
               <a href="#" className="w-10 h-10 bg-cream/10 rounded-lg flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-all duration-300">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-cream/10 rounded-lg flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-all duration-300">
+              <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-cream/10 rounded-lg flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-all duration-300">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 bg-cream/10 rounded-lg flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-all duration-300">
@@ -52,13 +51,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
             <h4 className="text-lg font-serif font-bold text-cream mb-6">Quick Links</h4>
             <ul className="space-y-3">
               <li><Link to="/" className="text-cream/70 hover:text-gold transition-colors">Home</Link></li>
@@ -69,13 +62,7 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
             <h4 className="text-lg font-serif font-bold text-cream mb-6">Our Services</h4>
             <ul className="space-y-3">
               <li><Link to="/services/road-construction" className="text-cream/70 hover:text-gold transition-colors">Road Construction</Link></li>
@@ -87,13 +74,7 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
             <h4 className="text-lg font-serif font-bold text-cream mb-6">Contact Us</h4>
             <ul className="space-y-4">
               <li>
@@ -118,13 +99,11 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Divider */}
         <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-cream/50 text-sm text-center md:text-left">
             © {currentYear} Shena Works Limited. All rights reserved.
           </p>
           
-          {/* Scroll to Top */}
           <button
             onClick={scrollToTop}
             className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold hover:bg-gold hover:text-navy-dark transition-all duration-300"

@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/shena-works-logo.png";
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
+  { name: "HOME", href: "/" },
+  { name: "ABOUT US", href: "/about" },
   {
-    name: "What We Do",
+    name: "WHAT WE DO",
     href: "/services",
     dropdown: [
       { name: "Road Construction", href: "/services/road-construction" },
@@ -20,8 +20,8 @@ const navItems = [
       { name: "Project Management", href: "/services/project-management" },
     ]
   },
-  { name: "Our Work", href: "/portfolio" },
-  { name: "Contact Us", href: "/contact" },
+  { name: "OUR WORK", href: "/portfolio" },
+  { name: "CONTACT US", href: "/contact" },
 ];
 
 interface NavbarProps {
@@ -40,7 +40,6 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -80,9 +79,9 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+            {/* Logo - larger */}
             <Link to="/" className="flex items-center space-x-2 flex-shrink-0" onClick={() => setIsOpen(false)}>
-              <img src={logo} alt="Shena Works Limited" className="h-14 w-auto" />
+              <img src={logo} alt="Shena Works Limited" className="h-16 w-auto" />
             </Link>
 
             {/* Desktop Navigation - Centered */}
@@ -97,10 +96,10 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                   >
                     <Link
                       to={item.href}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-1 ${
+                      className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
                         isActive(item.href)
-                          ? "text-navy-dark border-b-2 border-accent rounded-none"
-                          : "text-muted-foreground hover:text-navy-dark"
+                          ? "text-navy-dark border-b-2 border-accent"
+                          : "text-foreground hover:text-navy-light"
                       }`}
                     >
                       {item.name}
@@ -144,11 +143,11 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
             <div className="hidden lg:block flex-shrink-0">
               {onQuoteClick ? (
                 <Button variant="gold" size="default" onClick={onQuoteClick}>
-                  Get Quote
+                  GET QUOTE
                 </Button>
               ) : (
                 <Button variant="gold" size="default" asChild>
-                  <Link to="/contact">Get Quote</Link>
+                  <Link to="/contact">GET QUOTE</Link>
                 </Button>
               )}
             </div>
@@ -169,7 +168,6 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -177,8 +175,6 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
               onClick={() => setIsOpen(false)}
               className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] lg:hidden"
             />
-
-            {/* Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -186,9 +182,8 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-white z-[70] lg:hidden flex flex-col shadow-2xl"
             >
-              {/* Drawer Header */}
               <div className="flex items-center justify-between px-5 h-20 border-b border-border/50">
-                <img src={logo} alt="Shena Works" className="h-10 w-auto" />
+                <img src={logo} alt="Shena Works" className="h-12 w-auto" />
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 rounded-lg hover:bg-muted transition-colors"
@@ -198,7 +193,6 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                 </button>
               </div>
 
-              {/* Drawer Links */}
               <div className="flex-1 overflow-y-auto py-4">
                 {navItems.map((item) => (
                   <div key={item.name}>
@@ -206,10 +200,10 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                       <div>
                         <button
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                          className={`flex items-center justify-between w-full px-6 py-3.5 text-[15px] transition-colors ${
+                          className={`flex items-center justify-between w-full px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
                             isActive(item.href)
-                              ? "text-navy-dark font-semibold"
-                              : "text-foreground/70 hover:text-navy-dark"
+                              ? "text-navy-dark"
+                              : "text-foreground hover:text-navy-light"
                           }`}
                         >
                           {item.name}
@@ -245,10 +239,10 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                       <Link
                         to={item.href}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-6 py-3.5 text-[15px] transition-colors ${
+                        className={`block px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
                           isActive(item.href)
-                            ? "text-navy-dark font-semibold"
-                            : "text-foreground/70 hover:text-navy-dark"
+                            ? "text-navy-dark"
+                            : "text-foreground hover:text-navy-light"
                         }`}
                       >
                         {item.name}
@@ -259,15 +253,14 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                 ))}
               </div>
 
-              {/* Drawer Footer */}
               <div className="p-5 border-t border-border/50 space-y-3">
                 {onQuoteClick ? (
                   <Button variant="gold" className="w-full" onClick={() => { onQuoteClick(); setIsOpen(false); }}>
-                    Get Quote
+                    GET QUOTE
                   </Button>
                 ) : (
                   <Button variant="gold" className="w-full" asChild>
-                    <Link to="/contact" onClick={() => setIsOpen(false)}>Get Quote</Link>
+                    <Link to="/contact" onClick={() => setIsOpen(false)}>GET QUOTE</Link>
                   </Button>
                 )}
                 <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground pt-1">

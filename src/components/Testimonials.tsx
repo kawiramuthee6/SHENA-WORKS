@@ -34,29 +34,24 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-24 bg-muted/50">
+    <section className="py-16 md:py-24 bg-muted/50">
       <div className="container-custom">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
         >
-          <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider mb-4">
-            Testimonials
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-6">
-            What Our <span className="text-gradient-gold">Clients Say</span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-4">
+            WHAT OUR CLIENTS SAY
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base md:text-lg">
             Don't just take our word for it. Here's what our valued clients have to say about working with us.
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
@@ -64,34 +59,30 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative bg-card rounded-2xl p-8 shadow-md hover:shadow-elegant transition-shadow duration-500"
+              className="relative bg-card rounded-2xl p-6 md:p-8 shadow-md hover:shadow-elegant transition-shadow duration-500"
             >
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6 w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center">
-                <Quote className="w-6 h-6 text-gold" />
+              <div className="absolute top-5 right-5 w-10 h-10 md:w-12 md:h-12 bg-gold/10 rounded-full flex items-center justify-center">
+                <Quote className="w-5 h-5 md:w-6 md:h-6 text-gold" />
               </div>
 
-              {/* Rating */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-gold fill-gold" />
+                  <Star key={i} className="w-4 h-4 md:w-5 md:h-5 text-gold fill-gold" />
                 ))}
               </div>
 
-              {/* Content */}
-              <p className="text-foreground/80 text-lg leading-relaxed mb-6">
+              <p className="text-foreground/80 text-base md:text-lg leading-relaxed mb-5">
                 "{testimonial.content}"
               </p>
 
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-gold to-gold-light rounded-full flex items-center justify-center text-navy-dark font-bold text-lg">
+              <div className="flex items-center gap-3 md:gap-4">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-gold to-gold-light rounded-full flex items-center justify-center text-navy-dark font-bold text-base md:text-lg">
                   {testimonial.name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                  <p className="text-sm text-gold">{testimonial.company}</p>
+                  <h4 className="font-semibold text-foreground text-sm md:text-base">{testimonial.name}</h4>
+                  <p className="text-xs md:text-sm text-muted-foreground">{testimonial.role}</p>
+                  <p className="text-xs md:text-sm text-gold">{testimonial.company}</p>
                 </div>
               </div>
             </motion.div>
