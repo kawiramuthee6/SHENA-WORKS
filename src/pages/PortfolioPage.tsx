@@ -391,7 +391,7 @@ const PortfolioPage = () => {
                       key={idx}
                       onClick={() => setCurrentImageIndex(idx)}
                       className={`shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
-                        idx === currentImageIndex ? "border-gold" : "border-transparent"
+                        idx === currentImageIndex ? "border-cream" : "border-transparent"
                       }`}
                     >
                       <img src={img} alt="" className="w-full h-full object-cover" />
