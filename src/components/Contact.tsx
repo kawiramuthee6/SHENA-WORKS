@@ -209,8 +209,8 @@ const Contact = () => {
           >
             {/* Company Email */}
             <div className="bg-navy rounded-2xl p-6 text-center">
-              <div className="w-14 h-14 bg-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Building className="w-7 h-7 text-gold" />
+              <div className="w-14 h-14 bg-cream/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Building className="w-7 h-7 text-cream" />
               </div>
               <h3 className="text-lg font-serif font-bold text-cream mb-2">
                 Shena Works Limited
