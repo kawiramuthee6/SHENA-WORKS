@@ -187,7 +187,7 @@ const Portfolio = () => {
                 {/* Close Button */}
                 <button
                   onClick={closeLightbox}
-                  className="absolute -top-12 right-0 text-cream hover:text-gold transition-colors"
+                  className="absolute -top-12 right-0 text-cream hover:text-cream/70 transition-colors"
                 >
                   <X className="w-8 h-8" />
                 </button>
