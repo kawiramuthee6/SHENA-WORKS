@@ -88,7 +88,7 @@ const Contact = () => {
             Contact Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-6">
-            Let's Build <span className="text-gradient-gold">Together</span>
+            Let's Build <span className="text-navy-dark font-bold">Together</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Ready to start your project? Get in touch with our team and let's 
