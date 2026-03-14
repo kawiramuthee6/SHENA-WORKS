@@ -125,7 +125,7 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-3 bg-gold rounded-full mt-2"
+              className="w-1.5 h-3 bg-cream rounded-full mt-2"
             />
           </motion.div>
         </motion.div>
