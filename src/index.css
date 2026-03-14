@@ -24,9 +24,9 @@
     --secondary: 40 20% 96%;
     --secondary-foreground: 222 47% 18%;
 
-    /* Gold Accent from logo */
-    --accent: 38 50% 55%;
-    --accent-foreground: 222 47% 12%;
+    /* Teal Accent */
+    --accent: 222 47% 18%;
+    --accent-foreground: 45 40% 95%;
 
     --muted: 220 15% 94%;
     --muted-foreground: 220 10% 45%;
