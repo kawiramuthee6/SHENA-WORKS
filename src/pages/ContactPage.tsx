@@ -9,10 +9,8 @@ import {
   User,
   Building,
   Clock,
-  CheckCircle,
-  ArrowLeft
+  CheckCircle
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -51,7 +49,6 @@ const ContactPage = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -62,15 +59,11 @@ const ContactPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
     toast({
       title: "Message Sent!",
       description: "We'll get back to you as soon as possible.",
     });
-
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     setIsSubmitting(false);
   };
@@ -90,43 +83,19 @@ const ContactPage = () => {
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Construction"
-            className="w-full h-full object-cover"
-          />
+          <img src={heroImage} alt="Construction" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" />
         </div>
         
         <div className="container-custom relative z-10 pt-20">
-          {/* Back Button */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <Button 
-              variant="ghost" 
-              onClick={() => navigate(-1)}
-              className="text-cream/70 hover:text-cream hover:bg-cream/10"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
-            </Button>
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6 uppercase tracking-wide">
               Contact Us
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6">
-              Get In Touch
             </h1>
             <p className="text-cream/80 text-lg md:text-xl">
               Ready to start your project? We'd love to hear from you. 
@@ -146,11 +115,11 @@ const ContactPage = () => {
               transition={{ duration: 0.5 }}
               className="bg-card rounded-2xl p-6 shadow-elegant text-center"
             >
-              <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-7 h-7 text-gold" />
+              <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-7 h-7 text-navy-dark" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Call Us</h3>
-              <a href="tel:+254718971896" className="text-muted-foreground hover:text-gold transition-colors">
+              <a href="tel:+254718971896" className="text-muted-foreground hover:text-navy-dark transition-colors">
                 +254 718 971 896
               </a>
             </motion.div>
@@ -161,11 +130,11 @@ const ContactPage = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-card rounded-2xl p-6 shadow-elegant text-center"
             >
-              <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-7 h-7 text-gold" />
+              <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-7 h-7 text-navy-dark" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Email Us</h3>
-              <a href="mailto:shenaworksltd@gmail.com" className="text-muted-foreground hover:text-gold transition-colors">
+              <a href="mailto:shenaworksltd@gmail.com" className="text-muted-foreground hover:text-navy-dark transition-colors">
                 shenaworksltd@gmail.com
               </a>
             </motion.div>
@@ -176,8 +145,8 @@ const ContactPage = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-card rounded-2xl p-6 shadow-elegant text-center"
             >
-              <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-7 h-7 text-gold" />
+              <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-7 h-7 text-navy-dark" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Working Hours</h3>
               <p className="text-muted-foreground">Mon - Sat: 8AM - 6PM</p>
@@ -207,89 +176,30 @@ const ContactPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Your Name *
-                      </label>
-                      <Input
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Doe"
-                        required
-                        className="h-12"
-                      />
+                      <label className="block text-sm font-medium text-foreground mb-2">Your Name *</label>
+                      <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" required className="h-12" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Email Address *
-                      </label>
-                      <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@example.com"
-                        required
-                        className="h-12"
-                      />
+                      <label className="block text-sm font-medium text-foreground mb-2">Email Address *</label>
+                      <Input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" required className="h-12" />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Phone Number
-                      </label>
-                      <Input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+254 700 000 000"
-                        className="h-12"
-                      />
+                      <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
+                      <Input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+254 700 000 000" className="h-12" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Subject *
-                      </label>
-                      <Input
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        placeholder="Project Inquiry"
-                        required
-                        className="h-12"
-                      />
+                      <label className="block text-sm font-medium text-foreground mb-2">Subject *</label>
+                      <Input name="subject" value={formData.subject} onChange={handleChange} placeholder="Project Inquiry" required className="h-12" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Your Message *
-                    </label>
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your project..."
-                      required
-                      rows={5}
-                    />
+                    <label className="block text-sm font-medium text-foreground mb-2">Your Message *</label>
+                    <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." required rows={5} />
                   </div>
-                  <Button
-                    type="submit"
-                    variant="gold"
-                    size="xl"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="ml-2 h-5 w-5" />
-                      </>
-                    )}
+                  <Button type="submit" variant="gold" size="xl" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : (<>Send Message <Send className="ml-2 h-5 w-5" /></>)}
                   </Button>
                 </form>
               </div>
@@ -306,18 +216,13 @@ const ContactPage = () => {
               {/* Company Email */}
               <div className="bg-navy rounded-2xl p-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-gold/20 rounded-xl flex items-center justify-center shrink-0">
-                    <Building className="w-7 h-7 text-gold" />
+                  <div className="w-14 h-14 bg-cream/10 rounded-xl flex items-center justify-center shrink-0">
+                    <Building className="w-7 h-7 text-cream" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-serif font-bold text-cream">
-                      Shena Works Limited
-                    </h3>
+                    <h3 className="text-lg font-serif font-bold text-cream">Shena Works Limited</h3>
                     <p className="text-cream/70 text-sm">Roads & Building Construction Contractors</p>
-                    <a
-                      href="mailto:shenaworksltd@gmail.com"
-                      className="text-gold hover:text-gold-light transition-colors"
-                    >
+                    <a href="mailto:shenaworksltd@gmail.com" className="text-cream/90 hover:text-cream transition-colors">
                       shenaworksltd@gmail.com
                     </a>
                   </div>
@@ -336,37 +241,22 @@ const ContactPage = () => {
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 bg-navy rounded-xl flex items-center justify-center shrink-0">
-                      <User className="w-7 h-7 text-gold" />
+                      <User className="w-7 h-7 text-cream" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-serif font-bold text-foreground">
-                        {director.name}
-                      </h4>
-                      <p className="text-gold text-sm font-medium mb-4">
-                        {director.role}
-                      </p>
+                      <h4 className="text-lg font-serif font-bold text-foreground">{director.name}</h4>
+                      <p className="text-navy-dark text-sm font-medium mb-4">{director.role}</p>
                       <div className="space-y-3 text-sm">
-                        <a
-                          href={`tel:${director.phone}`}
-                          className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          <Phone className="w-4 h-4 text-gold" />
+                        <a href={`tel:${director.phone}`} className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
+                          <Phone className="w-4 h-4 text-navy-dark" />
                           {director.phone}
                         </a>
-                        <a
-                          href={`mailto:${director.email}`}
-                          className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          <Mail className="w-4 h-4 text-gold" />
+                        <a href={`mailto:${director.email}`} className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
+                          <Mail className="w-4 h-4 text-navy-dark" />
                           {director.email}
                         </a>
-                        <a
-                          href={director.mapLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          <MapPin className="w-4 h-4 text-gold" />
+                        <a href={director.mapLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
+                          <MapPin className="w-4 h-4 text-navy-dark" />
                           {director.location}
                         </a>
                       </div>
@@ -403,7 +293,7 @@ const ContactPage = () => {
                     "Quality workmanship guaranteed",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-3 text-muted-foreground">
-                      <CheckCircle className="w-5 h-5 text-gold shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-navy-dark shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -424,16 +314,14 @@ const ContactPage = () => {
               viewport={{ once: true }}
               className="bg-navy-light/50 rounded-2xl p-8 border border-cream/10"
             >
-              <MapPin className="w-10 h-10 text-gold mb-4" />
+              <MapPin className="w-10 h-10 text-cream mb-4" />
               <h3 className="text-xl font-serif font-bold text-cream mb-2">Meru Office</h3>
-              <p className="text-cream/70 mb-4">
-                Main Office - Meru, Kenya
-              </p>
+              <p className="text-cream/70 mb-4">Main Office - Meru, Kenya</p>
               <a
                 href="https://maps.google.com/?q=Meru,Kenya"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
+                className="inline-flex items-center gap-2 text-cream/90 hover:text-cream transition-colors"
               >
                 View on Google Maps
                 <MapPin className="w-4 h-4" />
@@ -447,16 +335,14 @@ const ContactPage = () => {
               transition={{ delay: 0.1 }}
               className="bg-navy-light/50 rounded-2xl p-8 border border-cream/10"
             >
-              <MapPin className="w-10 h-10 text-gold mb-4" />
+              <MapPin className="w-10 h-10 text-cream mb-4" />
               <h3 className="text-xl font-serif font-bold text-cream mb-2">Nairobi Office</h3>
-              <p className="text-cream/70 mb-4">
-                Branch Office - Nairobi, Kenya
-              </p>
+              <p className="text-cream/70 mb-4">Branch Office - Nairobi, Kenya</p>
               <a
                 href="https://maps.google.com/?q=Nairobi,Kenya"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
+                className="inline-flex items-center gap-2 text-cream/90 hover:text-cream transition-colors"
               >
                 View on Google Maps
                 <MapPin className="w-4 h-4" />

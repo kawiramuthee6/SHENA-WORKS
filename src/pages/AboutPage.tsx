@@ -120,19 +120,19 @@ const AboutPage = () => {
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-navy rounded-2xl p-6 md:p-8 text-center">
-                  <p className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">50+</p>
+                  <p className="text-4xl md:text-5xl font-serif font-bold text-cream mb-2">50+</p>
                   <p className="text-cream/80 text-sm">Projects Completed</p>
                 </div>
                 <div className="bg-navy rounded-2xl p-6 md:p-8 text-center mt-6">
-                  <p className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">100+</p>
+                  <p className="text-4xl md:text-5xl font-serif font-bold text-cream mb-2">100+</p>
                   <p className="text-cream/80 text-sm">Happy Clients</p>
                 </div>
                 <div className="bg-navy rounded-2xl p-6 md:p-8 text-center">
-                  <p className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">10+</p>
+                  <p className="text-4xl md:text-5xl font-serif font-bold text-cream mb-2">10+</p>
                   <p className="text-cream/80 text-sm">Years Experience</p>
                 </div>
                 <div className="bg-navy rounded-2xl p-6 md:p-8 text-center mt-6">
-                  <p className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">2</p>
+                  <p className="text-4xl md:text-5xl font-serif font-bold text-cream mb-2">2</p>
                   <p className="text-cream/80 text-sm">Office Locations</p>
                 </div>
               </div>
@@ -141,8 +141,8 @@ const AboutPage = () => {
             {/* Vision & Mission inside Our Story */}
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-navy rounded-2xl p-6 md:p-8">
-                <div className="w-14 h-14 bg-gold/20 rounded-xl flex items-center justify-center mb-5">
-                  <Eye className="w-7 h-7 text-gold" />
+                <div className="w-14 h-14 bg-cream/10 rounded-xl flex items-center justify-center mb-5">
+                  <Eye className="w-7 h-7 text-cream" />
                 </div>
                 <h4 className="text-xl font-serif font-bold text-cream mb-3">Our Vision</h4>
                 <p className="text-cream/70 leading-relaxed text-sm md:text-base">
@@ -152,8 +152,8 @@ const AboutPage = () => {
                 </p>
               </div>
               <div className="bg-navy rounded-2xl p-6 md:p-8">
-                <div className="w-14 h-14 bg-gold/20 rounded-xl flex items-center justify-center mb-5">
-                  <Target className="w-7 h-7 text-gold" />
+                <div className="w-14 h-14 bg-cream/10 rounded-xl flex items-center justify-center mb-5">
+                  <Target className="w-7 h-7 text-cream" />
                 </div>
                 <h4 className="text-xl font-serif font-bold text-cream mb-3">Our Mission</h4>
                 <p className="text-cream/70 leading-relaxed text-sm md:text-base">
@@ -177,8 +177,8 @@ const AboutPage = () => {
                   transition={{ duration: 0.4, delay: index * 0.08 }}
                   className="bg-muted/50 rounded-xl p-6"
                 >
-                  <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-4">
-                    <value.icon className="w-6 h-6 text-gold" />
+                  <div className="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+                    <value.icon className="w-6 h-6 text-navy-dark" />
                   </div>
                   <h4 className="text-lg font-serif font-bold text-navy-dark mb-2">{value.title}</h4>
                   <p className="text-muted-foreground text-sm">{value.description}</p>
@@ -196,10 +196,10 @@ const AboutPage = () => {
                 {teamMembers.map((member) => (
                   <div key={member.name} className="bg-muted/50 rounded-xl p-6 text-center">
                     <div className="w-20 h-20 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-serif font-bold text-gold">{member.initials}</span>
+                      <span className="text-2xl font-serif font-bold text-cream">{member.initials}</span>
                     </div>
                     <h5 className="text-lg font-serif font-bold text-navy-dark mb-1">{member.name}</h5>
-                    <p className="text-gold font-medium text-sm mb-1">{member.role}</p>
+                    <p className="text-navy-dark font-medium text-sm mb-1">{member.role}</p>
                     <p className="text-muted-foreground text-xs">{member.location}</p>
                   </div>
                 ))}
