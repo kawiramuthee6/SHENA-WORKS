@@ -217,7 +217,7 @@ const Contact = () => {
               </h3>
               <a
                 href="mailto:shenaworksltd@gmail.com"
-                className="text-gold hover:text-gold-light transition-colors"
+                className="text-cream/90 hover:text-cream transition-colors"
               >
                 shenaworksltd@gmail.com
               </a>
