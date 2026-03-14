@@ -280,7 +280,7 @@ const PortfolioPage = () => {
                   <ul className="space-y-2">
                     {project.services.map((service) => (
                       <li key={service} className="flex items-center gap-2 text-muted-foreground">
-                        <span className="w-1.5 h-1.5 bg-gold rounded-full" />
+                        <span className="w-1.5 h-1.5 bg-navy-dark rounded-full" />
                         {service}
                       </li>
                     ))}
