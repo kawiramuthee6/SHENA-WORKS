@@ -31,7 +31,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+          <span className="inline-block text-cream font-semibold text-sm uppercase tracking-wider mb-4">
             About Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-cream mb-6">
@@ -45,7 +45,6 @@ const About = () => {
 
         {/* Vision & Mission */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {/* Vision */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -53,8 +52,8 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="bg-navy-light/50 backdrop-blur-sm border border-cream/10 rounded-2xl p-8"
           >
-            <div className="w-16 h-16 bg-gold/20 rounded-xl flex items-center justify-center mb-6">
-              <Eye className="w-8 h-8 text-gold" />
+            <div className="w-16 h-16 bg-cream/10 rounded-xl flex items-center justify-center mb-6">
+              <Eye className="w-8 h-8 text-cream" />
             </div>
             <h3 className="text-2xl font-serif font-bold text-cream mb-4">Our Vision</h3>
             <p className="text-cream/70 leading-relaxed">
@@ -64,7 +63,6 @@ const About = () => {
             </p>
           </motion.div>
 
-          {/* Mission */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -72,8 +70,8 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="bg-navy-light/50 backdrop-blur-sm border border-cream/10 rounded-2xl p-8"
           >
-            <div className="w-16 h-16 bg-gold/20 rounded-xl flex items-center justify-center mb-6">
-              <Target className="w-8 h-8 text-gold" />
+            <div className="w-16 h-16 bg-cream/10 rounded-xl flex items-center justify-center mb-6">
+              <Target className="w-8 h-8 text-cream" />
             </div>
             <h3 className="text-2xl font-serif font-bold text-cream mb-4">Our Mission</h3>
             <p className="text-cream/70 leading-relaxed">
@@ -93,8 +91,8 @@ const About = () => {
           className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 mb-4">
-            <Heart className="w-5 h-5 text-gold" />
-            <span className="text-gold font-semibold uppercase tracking-wider">Our Core Values</span>
+            <Heart className="w-5 h-5 text-cream" />
+            <span className="text-cream font-semibold uppercase tracking-wider">Our Core Values</span>
           </div>
         </motion.div>
 
@@ -108,8 +106,8 @@ const About = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center group"
             >
-              <div className="w-20 h-20 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/20 transition-colors duration-300">
-                <value.icon className="w-10 h-10 text-gold" />
+              <div className="w-20 h-20 bg-cream/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-cream/20 transition-colors duration-300">
+                <value.icon className="w-10 h-10 text-cream" />
               </div>
               <h3 className="text-xl font-serif font-bold text-cream mb-3">{value.title}</h3>
               <p className="text-cream/60">{value.description}</p>

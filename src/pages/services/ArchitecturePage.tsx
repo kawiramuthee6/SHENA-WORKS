@@ -134,7 +134,7 @@ const ArchitecturePage = () => {
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
                 {features.map((feature) => (
                   <div key={feature} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-gold shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-navy-dark shrink-0" />
                     <span className="text-foreground">{feature}</span>
                   </div>
                 ))}
