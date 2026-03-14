@@ -155,7 +155,7 @@ const ProjectManagementPage = () => {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="flex items-start gap-6 p-6 bg-card rounded-xl shadow-md"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-xl flex items-center justify-center shrink-0">
+                    <div className="w-16 h-16 bg-navy-dark rounded-xl flex items-center justify-center shrink-0">
                       <span className="text-navy-dark font-bold text-xl">{phase.number}</span>
                     </div>
                     <div>
