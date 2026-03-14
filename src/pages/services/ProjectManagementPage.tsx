@@ -123,7 +123,7 @@ const ProjectManagementPage = () => {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">
-              What is <span className="text-gradient-gold">Project Management</span>?
+              What is <span className="text-navy-dark font-bold">Project Management</span>?
             </h2>
             
             <div className="prose prose-lg text-muted-foreground mb-12 space-y-6">
