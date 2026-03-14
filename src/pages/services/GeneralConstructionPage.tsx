@@ -96,7 +96,7 @@ const GeneralConstructionPage = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl font-serif font-bold text-foreground mb-6">
-                Building Structures That <span className="text-gradient-gold">Inspire</span>
+                Building Structures That <span className="text-navy-dark font-bold">Inspire</span>
               </h2>
               
               <div className="prose prose-lg text-muted-foreground mb-8">
