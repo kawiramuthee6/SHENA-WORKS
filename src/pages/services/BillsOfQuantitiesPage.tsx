@@ -138,8 +138,8 @@ const BillsOfQuantitiesPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
-                      <span className="text-gold font-bold">3</span>
+                    <div className="w-8 h-8 bg-navy/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-navy-dark font-bold">3</span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">Measured Works</h4>
