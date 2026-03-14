@@ -256,7 +256,7 @@ const Contact = () => {
                         href={`mailto:${director.email}`}
                         className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                       >
-                        <Mail className="w-4 h-4 text-gold" />
+                        <Mail className="w-4 h-4 text-navy-dark" />
                         {director.email}
                       </a>
                       <a
