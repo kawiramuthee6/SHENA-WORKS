@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
-import Breadcrumb from "@/components/Breadcrumb";
 import { useState } from "react";
 import architectureImg from "@/assets/services/architecture.jpg";
 
@@ -62,14 +61,15 @@ const ArchitecturePage = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-8 flex items-center justify-between"
           >
-            <Breadcrumb
-              items={[
-                { label: "Services", href: "/services" },
-                { label: "Architecture & Consultancy" }
-              ]}
-            />
+            <Link 
+              to="/services"
+              className="inline-flex items-center gap-2 text-cream/70 hover:text-cream hover:bg-cream/10 px-4 py-2 rounded-full transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="font-medium">Back to Services</span>
+            </Link>
           </motion.div>
 
           <motion.div

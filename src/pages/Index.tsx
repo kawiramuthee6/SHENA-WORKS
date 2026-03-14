@@ -18,8 +18,8 @@ import bp4 from "@/assets/projects/black-perch-4.jpeg";
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
 import hero1 from "@/assets/hero/hero-1.jpg";
-import hero2 from "@/assets/hero/hero-2.jpg";
-import hero3 from "@/assets/hero/hero-3.jpg";
+import hero2 from "@/assets/hero/hero-1.jpg";
+import hero3 from "@/assets/hero/hero-1.jpg";
 
 import { 
   Building2, 
@@ -37,24 +37,24 @@ const heroSlides = [
     subtitle: "Shena Works Limited — Roads & Building Construction Contractors.",
   },
   {
-    image: hero2,
+    image: hero1,
     title: "Roads That Connect.\nStructures That Last.",
     subtitle: "Quality road construction, cabro works, and infrastructure development across Kenya.",
   },
   {
-    image: hero3,
+    image: hero1,
     title: "Your Vision.\nOur Expertise.",
     subtitle: "From architectural design to project completion — we deliver excellence.",
   },
 ];
 
 const services = [
-  { icon: Route, title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg, path: "/services/road-construction" },
-  { icon: Building2, title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: bp4, path: "/services/general-construction" },
-  { icon: PenTool, title: "Architecture & Consultancy", description: "Creative designs and professional consultancy services.", image: architectureImg, path: "/services/architecture" },
-  { icon: Palette, title: "Interior Design", description: "Innovative interiors that blend functionality with aesthetics.", image: interiorImg, path: "/services/interior-design" },
-  { icon: Calculator, title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: boqImg, path: "/services/bills-of-quantities" },
-  { icon: ClipboardList, title: "Project Management", description: "End-to-end project management for smooth execution.", image: projectMgmtImg, path: "/services/project-management" },
+  { title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg, path: "/services/road-construction" },
+  { title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: bp4, path: "/services/general-construction" },
+  { title: "Architecture & Consultancy", description: "Creative designs and professional consultancy services.", image: architectureImg, path: "/services/architecture" },
+  { title: "Interior Design", description: "Innovative interiors that blend functionality with aesthetics.", image: interiorImg, path: "/services/interior-design" },
+  { title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: boqImg, path: "/services/bills-of-quantities" },
+  { title: "Project Management", description: "End-to-end project management for smooth execution.", image: projectMgmtImg, path: "/services/project-management" },
 ];
 
 const projects = [
@@ -175,9 +175,6 @@ const Index = () => {
                   <div className="relative h-44 md:h-48 overflow-hidden">
                     <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
-                    <div className="absolute bottom-4 left-4 w-12 h-12 md:w-14 md:h-14 bg-cream rounded-xl flex items-center justify-center shadow-lg">
-                      <service.icon className="w-6 h-6 md:w-7 md:h-7 text-navy-dark" />
-                    </div>
                   </div>
                   <div className="p-5 md:p-6">
                     <h3 className="text-lg md:text-xl font-serif font-bold text-navy-dark mb-2 group-hover:text-navy-light transition-colors">{service.title}</h3>

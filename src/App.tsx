@@ -19,6 +19,11 @@ import InteriorDesignPage from "./pages/services/InteriorDesignPage";
 import BillsOfQuantitiesPage from "./pages/services/BillsOfQuantitiesPage";
 import ProjectManagementPage from "./pages/services/ProjectManagementPage";
 
+// Individual Portfolio Pages
+import CommercialPage from "./pages/portfolio/CommercialPage";
+import RoadCabroPage from "./pages/portfolio/RoadCabroPage";
+import HospitalityPage from "./pages/portfolio/HospitalityPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -39,6 +44,9 @@ const App = () => (
           <Route path="/services/bills-of-quantities" element={<BillsOfQuantitiesPage />} />
           <Route path="/services/project-management" element={<ProjectManagementPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/commercial" element={<CommercialPage />} />
+          <Route path="/portfolio/road-cabro" element={<RoadCabroPage />} />
+          <Route path="/portfolio/hospitality" element={<HospitalityPage />} />
           <Route path="/contact" element={<ContactPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

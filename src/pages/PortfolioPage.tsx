@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink, ArrowLeft } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink, ArrowLeft, ChevronDown } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
-import heroImage from "@/assets/hero/hero-3.jpg";
+import heroImage from "@/assets/hero/hero-1.jpg";
 
 // Black Perch Images
 import bp1 from "@/assets/projects/black-perch-1.jpeg";
@@ -115,10 +115,19 @@ const projects: Project[] = [
   },
 ];
 
+// Portfolio Categories
+const portfolioCategories = [
+  { id: "all", label: "All Projects", path: "/portfolio" },
+  { id: "commercial", label: "Commercial Construction", path: "/portfolio/commercial" },
+  { id: "road-cabro", label: "Road & Cabro Construction", path: "/portfolio/road-cabro" },
+  { id: "hospitality", label: "Hospitality Construction", path: "/portfolio/hospitality" },
+];
+
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [quoteModal, setQuoteModal] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   const openLightbox = (project: Project) => {
@@ -164,23 +173,58 @@ const PortfolioPage = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" />
         </div>
         
-        <div className="container-custom relative z-10 pt-20">
+        <div className="container-custom relative z-10 pt-16 sm:pt-20 px-4 sm:px-6">
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-6 sm:mb-8"
           >
-            <Button 
-              variant="ghost" 
+            <button 
               onClick={() => navigate(-1)}
-              className="text-cream/70 hover:text-cream hover:bg-cream/10"
+              className="inline-flex items-center gap-2 text-cream/70 hover:text-cream hover:bg-cream/10 px-4 py-2 rounded-full transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
-            </Button>
+              <ArrowLeft className="w-4 h-4" />
+              <span className="font-medium">Back</span>
+            </button>
           </motion.div>
+
+          {/* Category Dropdown - Left aligned */}
+          <div className="flex justify-start">
+            <div className="relative">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="bg-navy/50 hover:bg-navy text-cream px-5 py-2.5 rounded-full shadow-lg flex items-center gap-2 transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30 text-sm font-medium"
+              >
+                <span>Categories</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
+              </button>
+              
+              <AnimatePresence>
+                {isDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-border overflow-hidden z-50"
+                  >
+                    {portfolioCategories.map((category) => (
+                      <Link
+                        key={category.id}
+                        to={category.path}
+                        onClick={() => setIsDropdownOpen(false)}
+                        className="block px-5 py-3 text-left hover:bg-muted transition-colors border-b border-border/50 last:border-0"
+                      >
+                        <span className="font-medium text-foreground text-sm">{category.label}</span>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -191,10 +235,10 @@ const PortfolioPage = () => {
             <span className="inline-block text-cream font-semibold text-sm uppercase tracking-wider mb-4">
               Our Portfolio
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-4 sm:mb-6">
               Our Work
             </h1>
-            <p className="text-cream/80 text-lg md:text-xl">
+            <p className="text-cream/80 text-base sm:text-lg md:text-xl">
               Explore our portfolio of completed projects that showcase our commitment 
               to quality, innovation, and client satisfaction.
             </p>
@@ -203,8 +247,8 @@ const PortfolioPage = () => {
       </section>
 
       {/* Projects */}
-      <section className="py-20 bg-background">
-        <div className="container-custom">
+      <section className="py-12 sm:py-20 bg-background">
+        <div className="container-custom px-4 sm:px-6">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}

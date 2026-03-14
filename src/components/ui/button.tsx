@@ -19,6 +19,7 @@ const buttonVariants = cva(
         hero: "bg-navy-dark text-cream font-semibold hover:bg-navy-light shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
         heroOutline: "border-2 border-cream text-cream hover:bg-cream hover:text-navy font-semibold",
         gold: "bg-navy-dark text-cream font-semibold hover:bg-navy-light transition-colors",
+        goldOutline: "border-2 border-navy-dark text-navy-dark hover:bg-navy-dark hover:text-cream font-medium",
         navy: "bg-navy text-cream hover:bg-navy-light font-medium",
         navyOutline: "border-2 border-navy text-navy hover:bg-navy hover:text-cream font-medium",
       },

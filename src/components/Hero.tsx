@@ -1,43 +1,58 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/shena-works-logo.png";
+
+import heroImage from "@/assets/hero/hero-1.jpg";
 
 const Hero = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
     <section
       id="home"
+      ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0">
+      {/* Background Image with Parallax */}
+      <motion.div 
+        style={{ y }}
+        className="absolute inset-0"
+      >
         <img
           src={heroImage}
-          alt="Road Construction"
-          className="w-full h-full object-cover"
+          alt="Construction site with modern building"
+          className="w-full h-[120%] object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy-dark/90" />
-      </div>
+      </motion.div>
 
       {/* Floating Elements */}
       <motion.div
         animate={{ y: [-10, 10, -10] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-[10%] w-20 h-20 bg-cream/20 rounded-full blur-xl"
+        className="absolute top-1/4 left-[10%] w-16 sm:w-20 h-16 sm:h-20 bg-cream/20 rounded-full blur-xl"
       />
       <motion.div
         animate={{ y: [10, -10, 10] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/3 right-[15%] w-32 h-32 bg-cream/15 rounded-full blur-2xl"
+        className="absolute bottom-1/3 right-[15%] w-24 sm:w-32 h-24 sm:h-32 bg-cream/15 rounded-full blur-2xl"
       />
       <motion.div
         animate={{ y: [-15, 15, -15] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 right-[25%] w-16 h-16 bg-cream/10 rounded-full blur-xl"
+        className="absolute top-1/2 right-[25%] w-12 sm:w-16 h-12 sm:h-16 bg-cream/10 rounded-full blur-xl"
       />
 
       {/* Content */}
-      <div className="container-custom relative z-10 text-center">
+      <div className="container-custom relative z-10 text-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,7 +75,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-4 sm:mb-6"
           >
             Connecting Communities.{" "}
             <span className="text-cream/90">Building the Future.</span>
@@ -71,7 +86,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-2xl md:text-3xl font-serif text-cream/80 mb-6"
+            className="text-xl sm:text-2xl md:text-3xl font-serif text-cream/80 mb-4 sm:mb-6"
           >
             Shena Works Limited
           </motion.p>
@@ -81,7 +96,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10"
+            className="text-base sm:text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-8 sm:mb-10"
           >
             Our firm provides a comprehensive and integrated approach to design. From initial 
             feasibility studies to final project supervision, we ensure every detail aligns 

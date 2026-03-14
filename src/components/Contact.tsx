@@ -74,29 +74,29 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background">
-      <div className="container-custom">
+    <section id="contact" className="py-16 sm:py-24 bg-background">
+      <div className="container-custom px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
         >
           <span className="inline-block text-navy-dark font-semibold text-sm uppercase tracking-wider mb-4">
             Contact Us
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4 sm:mb-6">
             Let's Build <span className="text-navy-dark font-bold">Together</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg">
             Ready to start your project? Get in touch with our team and let's 
             bring your vision to life.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -104,7 +104,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-card rounded-2xl p-8 shadow-elegant">
+            <div className="bg-card rounded-2xl p-5 sm:p-8 shadow-elegant">
               <h3 className="text-2xl font-serif font-bold text-foreground mb-6">
                 Send Us a Message
               </h3>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronRight, Home } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface BreadcrumbItem {
@@ -18,36 +18,25 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
       aria-label="Breadcrumb"
-      className="mb-8"
+      className="mb-6"
     >
-      <ol className="flex items-center gap-2 text-sm bg-cream/10 backdrop-blur-sm rounded-full px-5 py-2.5 w-fit border border-cream/15">
-        {/* Home Link */}
-        <li>
-          <Link
-            to="/"
-            className="flex items-center text-cream/80 hover:text-cream transition-colors duration-200"
-            aria-label="Home"
-          >
-            <Home className="w-3.5 h-3.5" />
-          </Link>
-        </li>
-
+      <ol className="flex items-center gap-1.5 text-sm">
         {/* Breadcrumb Items */}
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           
           return (
-            <li key={index} className="flex items-center gap-2">
-              <ChevronRight className="w-3 h-3 text-cream/40" />
+            <li key={index} className="flex items-center gap-1.5">
+              {index > 0 && <ChevronRight className="w-3.5 h-3.5 text-cream/50" />}
               {item.href && !isLast ? (
                 <Link
                   to={item.href}
-                  className="text-cream/80 hover:text-cream transition-colors duration-200"
+                  className="text-cream/70 hover:text-cream transition-all duration-200 hover:underline underline-offset-4"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span className={isLast ? "text-cream font-semibold" : "text-cream/80"}>
+                <span className={isLast ? "text-cream font-medium" : "text-cream/70"}>
                   {item.label}
                 </span>
               )}

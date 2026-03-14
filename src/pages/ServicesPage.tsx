@@ -7,16 +7,17 @@ import {
   Calculator, 
   ClipboardList,
   Route,
-  ArrowRight
+  ArrowRight,
+  ArrowLeft
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import QuoteModal from "@/components/QuoteModal";
-import heroImage from "@/assets/hero/hero-2.jpg";
+import heroImage from "@/assets/hero/hero-1.jpg";
 import roadsImg from "@/assets/services/roads.jpg";
 import constructionVid from "@/assets/services/construction.mp4";
 import architectureImg from "@/assets/services/architecture.jpg";
@@ -25,16 +26,17 @@ import boqImg from "@/assets/services/boq.jpg";
 import projectMgmtImg from "@/assets/services/project-management.jpg";
 
 const services = [
-  { id: "roads", path: "/services/road-construction", icon: Route, title: "Road Construction", shortDesc: "Expert road construction services including tarmac laying, repairs, cabro installation, and drainage systems.", media: roadsImg, isVideo: false },
-  { id: "construction", path: "/services/general-construction", icon: Building2, title: "General Construction", shortDesc: "Comprehensive building services from residential homes to commercial complexes, delivered on time and within budget.", media: constructionVid, isVideo: true },
-  { id: "architecture", path: "/services/architecture", icon: PenTool, title: "Architecture & Consultancy", shortDesc: "Creative architectural design and professional consultancy services that transform your vision into reality.", media: architectureImg, isVideo: false },
-  { id: "interior", path: "/services/interior-design", icon: Palette, title: "Interior Design", shortDesc: "Innovative interior design solutions that blend functionality with aesthetics, creating inspiring spaces.", media: interiorImg, isVideo: false },
-  { id: "boq", path: "/services/bills-of-quantities", icon: Calculator, title: "Bills of Quantities", shortDesc: "Accurate cost estimation and quantity surveying to ensure your project stays on budget.", media: boqImg, isVideo: false },
-  { id: "project-management", path: "/services/project-management", icon: ClipboardList, title: "Project Management", shortDesc: "End-to-end project management ensuring smooth execution, timely delivery, and quality standards.", media: projectMgmtImg, isVideo: false },
+  { id: "roads", path: "/services/road-construction", title: "Road Construction", shortDesc: "Expert road construction services including tarmac laying, repairs, cabro installation, and drainage systems.", media: roadsImg, isVideo: false },
+  { id: "construction", path: "/services/general-construction", title: "General Construction", shortDesc: "Comprehensive building services from residential homes to commercial complexes, delivered on time and within budget.", media: constructionVid, isVideo: true },
+  { id: "architecture", path: "/services/architecture", title: "Architecture & Consultancy", shortDesc: "Creative architectural design and professional consultancy services that transform your vision into reality.", media: architectureImg, isVideo: false },
+  { id: "interior", path: "/services/interior-design", title: "Interior Design", shortDesc: "Innovative interior design solutions that blend functionality with aesthetics, creating inspiring spaces.", media: interiorImg, isVideo: false },
+  { id: "boq", path: "/services/bills-of-quantities", title: "Bills of Quantities", shortDesc: "Accurate cost estimation and quantity surveying to ensure your project stays on budget.", media: boqImg, isVideo: false },
+  { id: "project-management", path: "/services/project-management", title: "Project Management", shortDesc: "End-to-end project management ensuring smooth execution, timely delivery, and quality standards.", media: projectMgmtImg, isVideo: false },
 ];
 
 const ServicesPage = () => {
   const [quoteModal, setQuoteModal] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen">
@@ -43,21 +45,37 @@ const ServicesPage = () => {
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Construction" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Construction services" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" />
         </div>
         
-        <div className="container-custom relative z-10 pt-20">
+        <div className="container-custom relative z-10 pt-16 sm:pt-20">
+          {/* Back Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-6 sm:mb-8"
+          >
+            <button 
+              onClick={() => navigate(-1)}
+              className="inline-flex items-center gap-2 text-cream/70 hover:text-cream hover:bg-cream/10 px-4 py-2 rounded-full transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="font-medium">Back</span>
+            </button>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto px-4"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6 uppercase tracking-wide">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-4 sm:mb-6 uppercase tracking-wide">
               Our Services
             </h1>
-            <p className="text-cream/80 text-lg md:text-xl mb-8">
+            <p className="text-cream/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8">
               From roads that connect communities to buildings that inspire, we offer 
               comprehensive construction and design solutions tailored to your needs.
             </p>
@@ -66,9 +84,9 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Grid */}
-      <section id="services-grid" className="py-20 bg-background">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section id="services-grid" className="py-12 sm:py-20 bg-background">
+        <div className="container-custom px-4 sm:px-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -88,9 +106,6 @@ const ServicesPage = () => {
                       <img src={service.media} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
-                    <div className="absolute bottom-4 left-4 w-14 h-14 bg-cream rounded-xl flex items-center justify-center shadow-lg">
-                      <service.icon className="w-7 h-7 text-navy-dark" />
-                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-navy-light transition-colors">{service.title}</h3>

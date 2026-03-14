@@ -54,17 +54,15 @@ const OptimizedImage = ({
   };
 
   return (
-    <div ref={imgRef} className={`relative ${className}`}>
+    <div ref={imgRef} className={`relative overflow-hidden ${className}`}>
       {!isLoaded && (
-        <div className="absolute inset-0 bg-muted animate-pulse" />
+        <div className="absolute inset-0 skeleton" />
       )}
       {isInView && (
         <img
           src={src}
           alt={alt}
-          className={`${className} transition-opacity duration-300 ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`transition-all duration-500 ${isLoaded ? 'loaded' : 'img-blur-up'}`}
           onLoad={handleLoad}
           loading={loading}
         />
