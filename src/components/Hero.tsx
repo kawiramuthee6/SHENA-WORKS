@@ -63,7 +63,7 @@ const Hero = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-6"
           >
             Connecting Communities.{" "}
-            <span className="text-gradient-gold">Building the Future.</span>
+            <span className="text-cream/90">Building the Future.</span>
           </motion.h1>
 
           {/* Company Name */}
