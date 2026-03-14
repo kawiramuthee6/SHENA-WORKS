@@ -234,8 +234,8 @@ const Contact = () => {
                 className="bg-card rounded-2xl p-6 shadow-md"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center shrink-0">
-                    <User className="w-6 h-6 text-gold" />
+                  <div className="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center shrink-0">
+                    <User className="w-6 h-6 text-navy-dark" />
                   </div>
                   <div className="flex-1">
                     <h4 className="text-lg font-serif font-bold text-foreground">
