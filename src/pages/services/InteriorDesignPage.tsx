@@ -100,7 +100,7 @@ const InteriorDesignPage = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl font-serif font-bold text-foreground mb-6">
-                Creating Interiors That <span className="text-gradient-gold">Tell Stories</span>
+                Creating Interiors That <span className="text-navy-dark font-bold">Tell Stories</span>
               </h2>
               
               <div className="prose prose-lg text-muted-foreground mb-8">
