@@ -42,7 +42,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
               {item.href && !isLast ? (
                 <Link
                   to={item.href}
-                  className="text-cream/80 hover:text-gold transition-colors duration-200"
+                  className="text-cream/80 hover:text-cream transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
