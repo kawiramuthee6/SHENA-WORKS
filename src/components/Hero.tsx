@@ -71,7 +71,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-2xl md:text-3xl font-serif text-gold-light mb-6"
+            className="text-2xl md:text-3xl font-serif text-cream/80 mb-6"
           >
             Shena Works Limited
           </motion.p>
