@@ -156,7 +156,7 @@ const ProjectManagementPage = () => {
                     className="flex items-start gap-6 p-6 bg-card rounded-xl shadow-md"
                   >
                     <div className="w-16 h-16 bg-navy-dark rounded-xl flex items-center justify-center shrink-0">
-                      <span className="text-navy-dark font-bold text-xl">{phase.number}</span>
+                      <span className="text-cream font-bold text-xl">{phase.number}</span>
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-foreground mb-2">{phase.title}</h4>

@@ -199,8 +199,8 @@ const BillsOfQuantitiesPage = () => {
             <div className="grid sm:grid-cols-2 gap-6 mb-12">
               {benefits.map((benefit) => (
                 <div key={benefit.title} className="bg-card rounded-xl p-6 shadow-md">
-                  <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-4">
-                    <benefit.icon className="w-6 h-6 text-gold" />
+                  <div className="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+                    <benefit.icon className="w-6 h-6 text-navy-dark" />
                   </div>
                   <h4 className="font-semibold text-foreground mb-2">{benefit.title}</h4>
                   <p className="text-muted-foreground text-sm">{benefit.description}</p>
