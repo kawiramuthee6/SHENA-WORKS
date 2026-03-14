@@ -47,7 +47,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
                   {item.label}
                 </Link>
               ) : (
-                <span className={isLast ? "text-gold font-semibold" : "text-cream/80"}>
+                <span className={isLast ? "text-cream font-semibold" : "text-cream/80"}>
                   {item.label}
                 </span>
               )}

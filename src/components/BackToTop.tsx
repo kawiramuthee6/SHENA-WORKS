@@ -34,7 +34,7 @@ const BackToTop = () => {
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={scrollToTop}
-          className="fixed bottom-24 right-6 z-40 w-12 h-12 bg-gold text-navy-dark rounded-full shadow-gold-glow flex items-center justify-center hover:scale-110 transition-transform duration-200"
+          className="fixed bottom-24 right-6 z-40 w-12 h-12 bg-navy-dark text-cream rounded-full shadow-md flex items-center justify-center hover:scale-110 transition-transform duration-200"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Back to top"
