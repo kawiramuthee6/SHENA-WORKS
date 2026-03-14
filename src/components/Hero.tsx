@@ -51,8 +51,8 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="inline-flex items-center gap-2 bg-cream/10 backdrop-blur-sm border border-cream/20 rounded-full px-6 py-2 mb-8"
           >
-            <span className="text-gold font-medium">Roads & Building Construction</span>
-            <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
+            <span className="text-cream font-medium">Roads & Building Construction</span>
+            <span className="w-1.5 h-1.5 bg-cream rounded-full animate-pulse" />
           </motion.div>
 
           {/* Main Title */}
