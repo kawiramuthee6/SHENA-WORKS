@@ -241,7 +241,7 @@ const Contact = () => {
                     <h4 className="text-lg font-serif font-bold text-foreground">
                       {director.name}
                     </h4>
-                    <p className="text-gold text-sm font-medium mb-4">
+                    <p className="text-navy-dark text-sm font-medium mb-4">
                       {director.role}
                     </p>
                     <div className="space-y-2 text-sm">
