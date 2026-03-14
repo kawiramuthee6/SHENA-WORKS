@@ -144,7 +144,7 @@ const Portfolio = () => {
                 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <span className="text-gold text-sm font-medium mb-2">
+                  <span className="text-cream/80 text-sm font-medium mb-2">
                     {project.category}
                   </span>
                   <h3 className="text-xl font-serif font-bold text-cream mb-2 group-hover:text-gold transition-colors">
