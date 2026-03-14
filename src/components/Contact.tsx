@@ -84,11 +84,11 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+          <span className="inline-block text-navy-dark font-semibold text-sm uppercase tracking-wider mb-4">
             Contact Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-6">
-            Let's Build <span className="text-gradient-gold">Together</span>
+            Let's Build <span className="text-navy-dark font-bold">Together</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Ready to start your project? Get in touch with our team and let's 
@@ -209,15 +209,15 @@ const Contact = () => {
           >
             {/* Company Email */}
             <div className="bg-navy rounded-2xl p-6 text-center">
-              <div className="w-14 h-14 bg-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Building className="w-7 h-7 text-gold" />
+              <div className="w-14 h-14 bg-cream/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Building className="w-7 h-7 text-cream" />
               </div>
               <h3 className="text-lg font-serif font-bold text-cream mb-2">
                 Shena Works Limited
               </h3>
               <a
                 href="mailto:shenaworksltd@gmail.com"
-                className="text-gold hover:text-gold-light transition-colors"
+                className="text-cream/90 hover:text-cream transition-colors"
               >
                 shenaworksltd@gmail.com
               </a>
@@ -234,14 +234,14 @@ const Contact = () => {
                 className="bg-card rounded-2xl p-6 shadow-md"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center shrink-0">
-                    <User className="w-6 h-6 text-gold" />
+                  <div className="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center shrink-0">
+                    <User className="w-6 h-6 text-navy-dark" />
                   </div>
                   <div className="flex-1">
                     <h4 className="text-lg font-serif font-bold text-foreground">
                       {director.name}
                     </h4>
-                    <p className="text-gold text-sm font-medium mb-4">
+                    <p className="text-navy-dark text-sm font-medium mb-4">
                       {director.role}
                     </p>
                     <div className="space-y-2 text-sm">
@@ -249,14 +249,14 @@ const Contact = () => {
                         href={`tel:${director.phone}`}
                         className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                       >
-                        <Phone className="w-4 h-4 text-gold" />
+                        <Phone className="w-4 h-4 text-navy-dark" />
                         {director.phone}
                       </a>
                       <a
                         href={`mailto:${director.email}`}
                         className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                       >
-                        <Mail className="w-4 h-4 text-gold" />
+                        <Mail className="w-4 h-4 text-navy-dark" />
                         {director.email}
                       </a>
                       <a

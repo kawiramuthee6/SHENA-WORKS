@@ -95,7 +95,7 @@ const BillsOfQuantitiesPage = () => {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">
-              What is a <span className="text-gradient-gold">Bill of Quantities</span>?
+              What is a <span className="text-navy-dark font-bold">Bill of Quantities</span>?
             </h2>
             
             <div className="prose prose-lg text-muted-foreground mb-12 space-y-6">
@@ -120,8 +120,8 @@ const BillsOfQuantitiesPage = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
-                      <span className="text-gold font-bold">1</span>
+                    <div className="w-8 h-8 bg-navy/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-navy-dark font-bold">1</span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">Preliminaries</h4>
@@ -129,8 +129,8 @@ const BillsOfQuantitiesPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
-                      <span className="text-gold font-bold">2</span>
+                    <div className="w-8 h-8 bg-navy/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-navy-dark font-bold">2</span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">Preambles</h4>
@@ -138,8 +138,8 @@ const BillsOfQuantitiesPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
-                      <span className="text-gold font-bold">3</span>
+                    <div className="w-8 h-8 bg-navy/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-navy-dark font-bold">3</span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">Measured Works</h4>
@@ -149,8 +149,8 @@ const BillsOfQuantitiesPage = () => {
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
-                      <span className="text-gold font-bold">4</span>
+                    <div className="w-8 h-8 bg-navy/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-navy-dark font-bold">4</span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">Provisional Sums</h4>
@@ -158,8 +158,8 @@ const BillsOfQuantitiesPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
-                      <span className="text-gold font-bold">5</span>
+                    <div className="w-8 h-8 bg-navy/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-navy-dark font-bold">5</span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">Prime Cost Sums</h4>
@@ -167,8 +167,8 @@ const BillsOfQuantitiesPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
-                      <span className="text-gold font-bold">6</span>
+                    <div className="w-8 h-8 bg-navy/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-navy-dark font-bold">6</span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">Contingencies</h4>
@@ -186,7 +186,7 @@ const BillsOfQuantitiesPage = () => {
             <div className="grid sm:grid-cols-2 gap-4 mb-12">
               {features.map((feature) => (
                 <div key={feature} className="flex items-center gap-3 p-4 bg-card rounded-xl">
-                  <CheckCircle className="w-5 h-5 text-gold shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-navy-dark shrink-0" />
                   <span className="text-foreground font-medium">{feature}</span>
                 </div>
               ))}
@@ -199,8 +199,8 @@ const BillsOfQuantitiesPage = () => {
             <div className="grid sm:grid-cols-2 gap-6 mb-12">
               {benefits.map((benefit) => (
                 <div key={benefit.title} className="bg-card rounded-xl p-6 shadow-md">
-                  <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-4">
-                    <benefit.icon className="w-6 h-6 text-gold" />
+                  <div className="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+                    <benefit.icon className="w-6 h-6 text-navy-dark" />
                   </div>
                   <h4 className="font-semibold text-foreground mb-2">{benefit.title}</h4>
                   <p className="text-muted-foreground text-sm">{benefit.description}</p>

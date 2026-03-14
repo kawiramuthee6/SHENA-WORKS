@@ -23,12 +23,12 @@ const Hero = () => {
       <motion.div
         animate={{ y: [-10, 10, -10] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-[10%] w-20 h-20 bg-gold/20 rounded-full blur-xl"
+        className="absolute top-1/4 left-[10%] w-20 h-20 bg-cream/20 rounded-full blur-xl"
       />
       <motion.div
         animate={{ y: [10, -10, 10] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/3 right-[15%] w-32 h-32 bg-gold/15 rounded-full blur-2xl"
+        className="absolute bottom-1/3 right-[15%] w-32 h-32 bg-cream/15 rounded-full blur-2xl"
       />
       <motion.div
         animate={{ y: [-15, 15, -15] }}
@@ -51,8 +51,8 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="inline-flex items-center gap-2 bg-cream/10 backdrop-blur-sm border border-cream/20 rounded-full px-6 py-2 mb-8"
           >
-            <span className="text-gold font-medium">Roads & Building Construction</span>
-            <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
+            <span className="text-cream font-medium">Roads & Building Construction</span>
+            <span className="w-1.5 h-1.5 bg-cream rounded-full animate-pulse" />
           </motion.div>
 
           {/* Main Title */}
@@ -63,7 +63,7 @@ const Hero = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-6"
           >
             Connecting Communities.{" "}
-            <span className="text-gradient-gold">Building the Future.</span>
+            <span className="text-cream/90">Building the Future.</span>
           </motion.h1>
 
           {/* Company Name */}
@@ -71,7 +71,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-2xl md:text-3xl font-serif text-gold-light mb-6"
+            className="text-2xl md:text-3xl font-serif text-cream/80 mb-6"
           >
             Shena Works Limited
           </motion.p>
@@ -125,7 +125,7 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-3 bg-gold rounded-full mt-2"
+              className="w-1.5 h-3 bg-cream rounded-full mt-2"
             />
           </motion.div>
         </motion.div>

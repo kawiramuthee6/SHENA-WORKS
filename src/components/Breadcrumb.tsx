@@ -25,7 +25,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
         <li>
           <Link
             to="/"
-            className="flex items-center text-cream/80 hover:text-gold transition-colors duration-200"
+            className="flex items-center text-cream/80 hover:text-cream transition-colors duration-200"
             aria-label="Home"
           >
             <Home className="w-3.5 h-3.5" />
@@ -42,12 +42,12 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
               {item.href && !isLast ? (
                 <Link
                   to={item.href}
-                  className="text-cream/80 hover:text-gold transition-colors duration-200"
+                  className="text-cream/80 hover:text-cream transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span className={isLast ? "text-gold font-semibold" : "text-cream/80"}>
+                <span className={isLast ? "text-cream font-semibold" : "text-cream/80"}>
                   {item.label}
                 </span>
               )}

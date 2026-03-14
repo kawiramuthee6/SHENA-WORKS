@@ -188,7 +188,7 @@ const PortfolioPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+            <span className="inline-block text-cream font-semibold text-sm uppercase tracking-wider mb-4">
               Our Portfolio
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6">
@@ -217,7 +217,7 @@ const PortfolioPage = () => {
               {/* Project Header */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
                 <div>
-                  <span className="text-gold text-sm font-semibold uppercase tracking-wider">
+                  <span className="text-navy-dark text-sm font-semibold uppercase tracking-wider">
                     {project.category}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mt-2">
@@ -280,7 +280,7 @@ const PortfolioPage = () => {
                   <ul className="space-y-2">
                     {project.services.map((service) => (
                       <li key={service} className="flex items-center gap-2 text-muted-foreground">
-                        <span className="w-1.5 h-1.5 bg-gold rounded-full" />
+                        <span className="w-1.5 h-1.5 bg-navy-dark rounded-full" />
                         {service}
                       </li>
                     ))}
@@ -334,7 +334,7 @@ const PortfolioPage = () => {
               {/* Close Button */}
               <button
                 onClick={closeLightbox}
-                className="absolute -top-12 right-0 text-cream hover:text-gold transition-colors"
+                className="absolute -top-12 right-0 text-cream hover:text-cream/70 transition-colors"
               >
                 <X className="w-8 h-8" />
               </button>
@@ -352,13 +352,13 @@ const PortfolioPage = () => {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-colors"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors"
                     >
                       <ChevronLeft className="w-6 h-6" />
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors"
                     >
                       <ChevronRight className="w-6 h-6" />
                     </button>
@@ -391,7 +391,7 @@ const PortfolioPage = () => {
                       key={idx}
                       onClick={() => setCurrentImageIndex(idx)}
                       className={`shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
-                        idx === currentImageIndex ? "border-gold" : "border-transparent"
+                        idx === currentImageIndex ? "border-cream" : "border-transparent"
                       }`}
                     >
                       <img src={img} alt="" className="w-full h-full object-cover" />

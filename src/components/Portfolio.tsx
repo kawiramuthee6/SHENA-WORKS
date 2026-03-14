@@ -110,7 +110,7 @@ const Portfolio = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+          <span className="inline-block text-navy-dark font-semibold text-sm uppercase tracking-wider mb-4">
             Our Portfolio
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-6">
@@ -144,10 +144,10 @@ const Portfolio = () => {
                 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <span className="text-gold text-sm font-medium mb-2">
+                  <span className="text-cream/80 text-sm font-medium mb-2">
                     {project.category}
                   </span>
-                  <h3 className="text-xl font-serif font-bold text-cream mb-2 group-hover:text-gold transition-colors">
+                  <h3 className="text-xl font-serif font-bold text-cream mb-2 group-hover:text-cream/80 transition-colors">
                     {project.title}
                   </h3>
                   <div className="flex items-center gap-1 text-cream/70 text-sm">
@@ -187,7 +187,7 @@ const Portfolio = () => {
                 {/* Close Button */}
                 <button
                   onClick={closeLightbox}
-                  className="absolute -top-12 right-0 text-cream hover:text-gold transition-colors"
+                  className="absolute -top-12 right-0 text-cream hover:text-cream/70 transition-colors"
                 >
                   <X className="w-8 h-8" />
                 </button>
@@ -205,13 +205,13 @@ const Portfolio = () => {
                     <>
                       <button
                         onClick={prevImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-colors"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors"
                       >
                         <ChevronLeft className="w-6 h-6" />
                       </button>
                       <button
                         onClick={nextImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-gold hover:text-navy-dark transition-colors"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors"
                       >
                         <ChevronRight className="w-6 h-6" />
                       </button>

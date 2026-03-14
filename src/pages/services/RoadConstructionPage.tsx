@@ -93,7 +93,7 @@ const RoadConstructionPage = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl font-serif font-bold text-foreground mb-6">
-                Building Roads That <span className="text-gradient-gold">Connect Communities</span>
+                Building Roads That <span className="text-navy-dark font-bold">Connect Communities</span>
               </h2>
               
               <div className="prose prose-lg text-muted-foreground mb-8">
@@ -112,7 +112,7 @@ const RoadConstructionPage = () => {
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
                 {features.map((feature) => (
                   <div key={feature} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-gold shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-navy-dark shrink-0" />
                     <span className="text-foreground">{feature}</span>
                   </div>
                 ))}

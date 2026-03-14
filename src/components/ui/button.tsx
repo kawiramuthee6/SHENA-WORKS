@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Custom Shena Works variants
-        hero: "bg-gold text-navy-dark font-semibold hover:bg-gold-light shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
+        hero: "bg-navy-dark text-cream font-semibold hover:bg-navy-light shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
         heroOutline: "border-2 border-cream text-cream hover:bg-cream hover:text-navy font-semibold",
         gold: "bg-navy-dark text-cream font-semibold hover:bg-navy-light transition-colors",
         navy: "bg-navy text-cream hover:bg-navy-light font-medium",

@@ -123,7 +123,7 @@ const ProjectManagementPage = () => {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">
-              What is <span className="text-gradient-gold">Project Management</span>?
+              What is <span className="text-navy-dark font-bold">Project Management</span>?
             </h2>
             
             <div className="prose prose-lg text-muted-foreground mb-12 space-y-6">
@@ -155,8 +155,8 @@ const ProjectManagementPage = () => {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="flex items-start gap-6 p-6 bg-card rounded-xl shadow-md"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-xl flex items-center justify-center shrink-0">
-                      <span className="text-navy-dark font-bold text-xl">{phase.number}</span>
+                    <div className="w-16 h-16 bg-navy-dark rounded-xl flex items-center justify-center shrink-0">
+                      <span className="text-cream font-bold text-xl">{phase.number}</span>
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold text-foreground mb-2">{phase.title}</h4>
@@ -174,7 +174,7 @@ const ProjectManagementPage = () => {
             <div className="grid sm:grid-cols-2 gap-4 mb-12">
               {features.map((feature) => (
                 <div key={feature} className="flex items-center gap-3 p-4 bg-card rounded-xl">
-                  <CheckCircle className="w-5 h-5 text-gold shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-navy-dark shrink-0" />
                   <span className="text-foreground font-medium">{feature}</span>
                 </div>
               ))}
@@ -187,8 +187,8 @@ const ProjectManagementPage = () => {
             <div className="grid sm:grid-cols-2 gap-6 mb-12">
               {benefits.map((benefit) => (
                 <div key={benefit.title} className="bg-card rounded-xl p-6 shadow-md">
-                  <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-4">
-                    <benefit.icon className="w-6 h-6 text-gold" />
+                  <div className="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+                    <benefit.icon className="w-6 h-6 text-navy-dark" />
                   </div>
                   <h4 className="font-semibold text-foreground mb-2">{benefit.title}</h4>
                   <p className="text-muted-foreground text-sm">{benefit.description}</p>

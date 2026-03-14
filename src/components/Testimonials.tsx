@@ -61,13 +61,13 @@ const Testimonials = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative bg-card rounded-2xl p-6 md:p-8 shadow-md hover:shadow-elegant transition-shadow duration-500"
             >
-              <div className="absolute top-5 right-5 w-10 h-10 md:w-12 md:h-12 bg-gold/10 rounded-full flex items-center justify-center">
-                <Quote className="w-5 h-5 md:w-6 md:h-6 text-gold" />
+              <div className="absolute top-5 right-5 w-10 h-10 md:w-12 md:h-12 bg-navy/10 rounded-full flex items-center justify-center">
+                <Quote className="w-5 h-5 md:w-6 md:h-6 text-navy-dark" />
               </div>
 
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 md:w-5 md:h-5 text-gold fill-gold" />
+                  <Star key={i} className="w-4 h-4 md:w-5 md:h-5 text-navy-dark fill-navy-dark" />
                 ))}
               </div>
 
@@ -76,13 +76,13 @@ const Testimonials = () => {
               </p>
 
               <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-gold to-gold-light rounded-full flex items-center justify-center text-navy-dark font-bold text-base md:text-lg">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-navy-dark rounded-full flex items-center justify-center text-cream font-bold text-base md:text-lg">
                   {testimonial.name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground text-sm md:text-base">{testimonial.name}</h4>
                   <p className="text-xs md:text-sm text-muted-foreground">{testimonial.role}</p>
-                  <p className="text-xs md:text-sm text-gold">{testimonial.company}</p>
+                  <p className="text-xs md:text-sm text-navy-dark font-medium">{testimonial.company}</p>
                 </div>
               </div>
             </motion.div>
