@@ -188,7 +188,7 @@ const PortfolioPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+            <span className="inline-block text-cream font-semibold text-sm uppercase tracking-wider mb-4">
               Our Portfolio
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6">
