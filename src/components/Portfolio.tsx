@@ -147,7 +147,7 @@ const Portfolio = () => {
                   <span className="text-cream/80 text-sm font-medium mb-2">
                     {project.category}
                   </span>
-                  <h3 className="text-xl font-serif font-bold text-cream mb-2 group-hover:text-gold transition-colors">
+                  <h3 className="text-xl font-serif font-bold text-cream mb-2 group-hover:text-cream/80 transition-colors">
                     {project.title}
                   </h3>
                   <div className="flex items-center gap-1 text-cream/70 text-sm">
