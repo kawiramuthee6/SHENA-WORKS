@@ -25,7 +25,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
         <li>
           <Link
             to="/"
-            className="flex items-center text-cream/80 hover:text-gold transition-colors duration-200"
+            className="flex items-center text-cream/80 hover:text-cream transition-colors duration-200"
             aria-label="Home"
           >
             <Home className="w-3.5 h-3.5" />
