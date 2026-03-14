@@ -120,8 +120,8 @@ const BillsOfQuantitiesPage = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center shrink-0 mt-1">
-                      <span className="text-gold font-bold">1</span>
+                    <div className="w-8 h-8 bg-navy/10 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      <span className="text-navy-dark font-bold">1</span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">Preliminaries</h4>
