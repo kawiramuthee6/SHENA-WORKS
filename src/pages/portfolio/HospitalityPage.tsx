@@ -384,7 +384,7 @@ const HospitalityPage = () => {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      <QuoteModal isOpen={quoteModal} onClose={() => setQuoteModal(false)} />
+      
     </div>
   );
 };
