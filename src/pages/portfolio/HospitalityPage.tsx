@@ -345,15 +345,14 @@ const HospitalityPage = () => {
                         </div>
                       </div>
                       <Button 
-                        variant="gold" 
+                        variant="navy" 
                         size="lg"
-                        onClick={() => {
-                          closeProject();
-                          setQuoteModal(true);
-                        }}
+                        asChild
                       >
-                        Get a Quote
-                        <ExternalLink className="ml-2 h-4 w-4" />
+                        <Link to="/contact">
+                          Contact Us
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </Link>
                       </Button>
                     </div>
 
