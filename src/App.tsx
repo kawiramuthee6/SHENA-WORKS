@@ -1,38 +1,44 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import Index from "./pages/Index";
-import AboutPage from "./pages/AboutPage";
-import ServicesPage from "./pages/ServicesPage";
-import PortfolioPage from "./pages/PortfolioPage";
-import ContactPage from "./pages/ContactPage";
-import NotFound from "./pages/NotFound";
+
+// Lazy load all pages for better performance
+const Index = lazy(() => import("./pages/Index"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Individual Service Pages
-import RoadConstructionPage from "./pages/services/RoadConstructionPage";
-import GeneralConstructionPage from "./pages/services/GeneralConstructionPage";
-import ArchitecturePage from "./pages/services/ArchitecturePage";
-import InteriorDesignPage from "./pages/services/InteriorDesignPage";
-import BillsOfQuantitiesPage from "./pages/services/BillsOfQuantitiesPage";
-import ProjectManagementPage from "./pages/services/ProjectManagementPage";
+const RoadConstructionPage = lazy(() => import("./pages/services/RoadConstructionPage"));
+const GeneralConstructionPage = lazy(() => import("./pages/services/GeneralConstructionPage"));
+const ArchitecturePage = lazy(() => import("./pages/services/ArchitecturePage"));
+const InteriorDesignPage = lazy(() => import("./pages/services/InteriorDesignPage"));
+const BillsOfQuantitiesPage = lazy(() => import("./pages/services/BillsOfQuantitiesPage"));
+const ProjectManagementPage = lazy(() => import("./pages/services/ProjectManagementPage"));
 
 // Individual Portfolio Pages
-import CommercialPage from "./pages/portfolio/CommercialPage";
-import RoadCabroPage from "./pages/portfolio/RoadCabroPage";
-import HospitalityPage from "./pages/portfolio/HospitalityPage";
+const CommercialPage = lazy(() => import("./pages/portfolio/CommercialPage"));
+const RoadCabroPage = lazy(() => import("./pages/portfolio/RoadCabroPage"));
+const HospitalityPage = lazy(() => import("./pages/portfolio/HospitalityPage"));
 
-const queryClient = new QueryClient();
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-navy-dark">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cream"></div>
+  </div>
+);
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
+  <TooltipProvider>
+    <Toaster />
+    <Sonner />
+    <BrowserRouter>
+      <ScrollToTop />
+      <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutPage />} />
@@ -51,9 +57,9 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </BrowserRouter>
+  </TooltipProvider>
 );
 
 export default App;

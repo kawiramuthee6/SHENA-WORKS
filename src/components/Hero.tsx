@@ -30,6 +30,9 @@ const Hero = () => {
           src={heroImage}
           alt="Construction site with modern building"
           className="w-full h-[120%] object-cover"
+          width={1920}
+          height={1080}
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy-dark/90" />
       </motion.div>

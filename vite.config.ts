@@ -16,14 +16,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['framer-motion', 'lucide-react'],
-        },
-      },
-    },
     chunkSizeWarningLimit: 1000,
     minify: 'esbuild',
   },

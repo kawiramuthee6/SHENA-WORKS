@@ -5,6 +5,9 @@ interface OptimizedImageProps {
   alt: string;
   className?: string;
   loading?: "lazy" | "eager";
+  width?: number;
+  height?: number;
+  fetchPriority?: "high" | "low" | "auto";
   onLoad?: () => void;
 }
 
@@ -13,6 +16,9 @@ const OptimizedImage = ({
   alt, 
   className = "", 
   loading = "lazy",
+  width,
+  height,
+  fetchPriority = "auto",
   onLoad 
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -65,6 +71,9 @@ const OptimizedImage = ({
           className={`transition-all duration-500 ${isLoaded ? 'loaded' : 'img-blur-up'}`}
           onLoad={handleLoad}
           loading={loading}
+          width={width}
+          height={height}
+          fetchPriority={fetchPriority}
         />
       )}
     </div>
