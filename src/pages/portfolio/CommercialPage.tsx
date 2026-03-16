@@ -51,7 +51,7 @@ const projects: Project[] = [
 const CommercialPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [quoteModal, setQuoteModal] = useState(false);
+  
   const navigate = useNavigate();
 
   const openProject = (project: Project) => {
