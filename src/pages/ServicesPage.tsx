@@ -34,12 +34,11 @@ const services = [
 ];
 
 const ServicesPage = () => {
-  const [quoteModal, setQuoteModal] = useState(false);
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen">
-      <Navbar onQuoteClick={() => setQuoteModal(true)} />
+      <Navbar />
       
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
