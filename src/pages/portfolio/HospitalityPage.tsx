@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import QuoteModal from "@/components/QuoteModal";
+
 import Breadcrumb from "@/components/Breadcrumb";
 import heroImage from "@/assets/projects/dukes-cottages-4.jpg";
 
@@ -74,7 +74,7 @@ const projects: Project[] = [
 const HospitalityPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [quoteModal, setQuoteModal] = useState(false);
+  
 
   const openProject = (project: Project) => {
     setSelectedProject(project);
@@ -101,7 +101,7 @@ const HospitalityPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar onQuoteClick={() => setQuoteModal(true)} />
+      <Navbar />
       
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
@@ -250,8 +250,8 @@ const HospitalityPage = () => {
               Contact us today for a free consultation. Let's build your vision together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="xl" onClick={() => setQuoteModal(true)}>
-                Get a Free Quote
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/contact">Contact Us</Link>
               </Button>
               <Button variant="heroOutline" size="xl" asChild>
                 <Link to="/portfolio">View All Projects</Link>
@@ -345,15 +345,14 @@ const HospitalityPage = () => {
                         </div>
                       </div>
                       <Button 
-                        variant="gold" 
+                        variant="navy" 
                         size="lg"
-                        onClick={() => {
-                          closeProject();
-                          setQuoteModal(true);
-                        }}
+                        asChild
                       >
-                        Get a Quote
-                        <ExternalLink className="ml-2 h-4 w-4" />
+                        <Link to="/contact">
+                          Contact Us
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </Link>
                       </Button>
                     </div>
 
@@ -385,7 +384,7 @@ const HospitalityPage = () => {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      <QuoteModal isOpen={quoteModal} onClose={() => setQuoteModal(false)} />
+      
     </div>
   );
 };

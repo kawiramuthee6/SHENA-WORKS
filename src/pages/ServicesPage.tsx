@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   Building2, 
@@ -16,7 +15,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import QuoteModal from "@/components/QuoteModal";
+
 import heroImage from "@/assets/hero/hero-1.jpg";
 import roadsImg from "@/assets/services/roads.jpg";
 import constructionVid from "@/assets/services/construction.mp4";
@@ -35,12 +34,11 @@ const services = [
 ];
 
 const ServicesPage = () => {
-  const [quoteModal, setQuoteModal] = useState(false);
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen">
-      <Navbar onQuoteClick={() => setQuoteModal(true)} />
+      <Navbar />
       
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
@@ -139,8 +137,8 @@ const ServicesPage = () => {
               Contact us today for a free consultation and quote. Let's build something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="xl" onClick={() => setQuoteModal(true)}>
-                Get a Free Quote
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/contact">Contact Us</Link>
               </Button>
               <Button variant="heroOutline" size="xl" asChild>
                 <Link to="/portfolio">View Our Work</Link>
@@ -153,7 +151,7 @@ const ServicesPage = () => {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      <QuoteModal isOpen={quoteModal} onClose={() => setQuoteModal(false)} />
+      
     </div>
   );
 };

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, ChevronRight, Mail, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Mail, Phone, Instagram } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import logo from "@/assets/shena-works-logo.png";
 
 const navItems = [
@@ -24,11 +23,7 @@ const navItems = [
   { name: "CONTACT US", href: "/contact" },
 ];
 
-interface NavbarProps {
-  onQuoteClick?: () => void;
-}
-
-const Navbar = ({ onQuoteClick }: NavbarProps) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -56,17 +51,20 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
       <div className={`hidden lg:block bg-navy-dark text-cream/80 text-xs transition-all duration-300 ${scrolled ? "h-0 overflow-hidden opacity-0" : "h-9 opacity-100"}`}>
         <div className="container-custom h-full flex items-center justify-between">
           <div className="flex items-center gap-5">
-            <a href="mailto:info@shenaworks.co.ke" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+            <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1.5 hover:text-cream transition-colors">
               <Mail className="h-3 w-3" />
-              info@shenaworks.co.ke
+              shenaworksltd@gmail.com
             </a>
             <a href="tel:+254707243053" className="flex items-center gap-1.5 hover:text-cream transition-colors">
               <Phone className="h-3 w-3" />
               (+254) 707-243053
             </a>
           </div>
-          <div className="text-cream/50 text-[10px] tracking-wider uppercase">
-            Building Excellence Since Day One
+          <div className="flex items-center gap-4">
+            <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+              <Instagram className="h-3 w-3" />
+              Follow Us
+            </a>
           </div>
         </div>
       </div>
@@ -79,7 +77,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
-            {/* Logo - larger */}
+            {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 flex-shrink-0" onClick={() => setIsOpen(false)}>
               <img src={logo} alt="Shena Works Limited" className="h-16 w-auto" />
             </Link>
@@ -98,7 +96,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                       to={item.href}
                       className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
                         isActive(item.href)
-                          ? "text-navy-dark border-b-2 border-accent"
+                          ? "text-navy-dark border-b-2 border-navy-dark"
                           : "text-foreground hover:text-navy-light"
                       }`}
                     >
@@ -108,7 +106,6 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                       )}
                     </Link>
 
-                    {/* Dropdown */}
                     <AnimatePresence>
                       {item.dropdown && activeDropdown === item.name && (
                         <motion.div
@@ -124,8 +121,8 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                               to={subItem.href}
                               className={`block px-4 py-3 text-sm transition-colors border-l-2 ${
                                 isActive(subItem.href)
-                                  ? "bg-muted text-navy-dark border-accent font-medium"
-                                  : "text-muted-foreground hover:bg-muted/50 hover:text-navy-dark border-transparent hover:border-accent/50"
+                                  ? "bg-muted text-navy-dark border-navy-dark font-medium"
+                                  : "text-muted-foreground hover:bg-muted/50 hover:text-navy-dark border-transparent hover:border-navy-dark/50"
                               }`}
                             >
                               {subItem.name}
@@ -139,18 +136,8 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
               </div>
             </div>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:block flex-shrink-0">
-              {onQuoteClick ? (
-                <Button variant="gold" size="default" onClick={onQuoteClick}>
-                  GET QUOTE
-                </Button>
-              ) : (
-                <Button variant="gold" size="default" asChild>
-                  <Link to="/contact">GET QUOTE</Link>
-                </Button>
-              )}
-            </div>
+            {/* Spacer for alignment */}
+            <div className="hidden lg:block w-16 flex-shrink-0" />
 
             {/* Mobile menu button */}
             <button
@@ -224,7 +211,7 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
                                   onClick={() => { setIsOpen(false); setActiveDropdown(null); }}
                                   className={`block pl-10 pr-6 py-3 text-sm transition-colors ${
                                     isActive(subItem.href)
-                                      ? "text-navy-dark font-medium border-l-2 border-accent ml-6 pl-4"
+                                      ? "text-navy-dark font-medium"
                                       : "text-muted-foreground hover:text-navy-dark"
                                   }`}
                                 >
@@ -254,24 +241,20 @@ const Navbar = ({ onQuoteClick }: NavbarProps) => {
               </div>
 
               <div className="p-5 border-t border-border/50 space-y-3">
-                {onQuoteClick ? (
-                  <Button variant="gold" className="w-full" onClick={() => { onQuoteClick(); setIsOpen(false); }}>
-                    GET QUOTE
-                  </Button>
-                ) : (
-                  <Button variant="gold" className="w-full" asChild>
-                    <Link to="/contact" onClick={() => setIsOpen(false)}>GET QUOTE</Link>
-                  </Button>
-                )}
-                <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground pt-1">
+                <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
                   <a href="tel:+254707243053" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
                     <Phone className="h-3 w-3" />
                     Call Us
                   </a>
                   <span className="text-border">|</span>
-                  <a href="mailto:info@shenaworks.co.ke" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
+                  <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
                     <Mail className="h-3 w-3" />
                     Email
+                  </a>
+                  <span className="text-border">|</span>
+                  <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
+                    <Instagram className="h-3 w-3" />
+                    Instagram
                   </a>
                 </div>
               </div>

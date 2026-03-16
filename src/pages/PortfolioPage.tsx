@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import QuoteModal from "@/components/QuoteModal";
+
 import heroImage from "@/assets/hero/hero-1.jpg";
 
 // Black Perch Images
@@ -126,7 +126,7 @@ const portfolioCategories = [
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [quoteModal, setQuoteModal] = useState(false);
+  
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -160,7 +160,7 @@ const PortfolioPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar onQuoteClick={() => setQuoteModal(true)} />
+      <Navbar />
       
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
@@ -451,7 +451,7 @@ const PortfolioPage = () => {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      <QuoteModal isOpen={quoteModal} onClose={() => setQuoteModal(false)} />
+      
     </div>
   );
 };
