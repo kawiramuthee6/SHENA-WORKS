@@ -79,7 +79,7 @@ const CommercialPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar onQuoteClick={() => setQuoteModal(true)} />
+      <Navbar />
       
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
