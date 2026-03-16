@@ -3,31 +3,31 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "John Mwangi",
-    role: "Property Developer",
-    company: "Mwangi Properties Ltd",
-    content: "Shena Works Limited exceeded our expectations. Their attention to detail and commitment to quality is unmatched. The Black Perch Lounge project was delivered on time and within budget.",
+    name: "Eng. Silas M. Kinoti EBS",
+    role: "Director General",
+    company: "Kenya Urban Roads Authority",
+    content: "Shena Works has proven to be a highly professional and reliable engineering firm, consistently delivering quality work with strong technical expertise and efficiency. Their commitment to high standards, proper project management, and timely execution makes them a dependable partner in infrastructure development.",
     rating: 5,
   },
   {
-    name: "Sarah Wanjiru",
-    role: "Business Owner",
+    name: "Charles Imunde",
+    role: "Director",
+    company: "The Pin Hideout",
+    content: "From the initial consultation to the final handover, Shena Works demonstrated exceptional professionalism. The team delivered our project with remarkable attention to detail, and the quality of construction exceeded our expectations. A truly reliable partner.",
+    rating: 5,
+  },
+  {
+    name: "Rashid Juma",
+    role: "Director",
+    company: "Stone Lodge & Villas",
+    content: "The craftsmanship and dedication Shena Works brought to our lodge project was outstanding. They understood our vision perfectly and translated it into a stunning reality. Their team's expertise in both construction and interior finishing is second to none.",
+    rating: 5,
+  },
+  {
+    name: "Dominic Bundi",
+    role: "Owner",
     company: "Dukes Cottages",
-    content: "Working with Shena Works was a pleasure from start to finish. Their team is professional, responsive, and truly cares about bringing your vision to life. Highly recommended!",
-    rating: 5,
-  },
-  {
-    name: "Michael Ochieng",
-    role: "County Roads Engineer",
-    company: "Meru County",
-    content: "Their road construction expertise is top-notch. The drainage systems and tarmac work they did for our county roads have significantly improved our infrastructure.",
-    rating: 5,
-  },
-  {
-    name: "Grace Njeri",
-    role: "Hotel Manager",
-    company: "Stone Lounge & Villas",
-    content: "The interior design team transformed our space beautifully. They understood our brand and created an atmosphere that our guests absolutely love. True professionals!",
+    content: "Shena Works built our cottages with incredible skill and precision. The project was completed on schedule, and the quality of work speaks for itself. They are our go-to construction partner for any future developments.",
     rating: 5,
   },
 ];
@@ -47,7 +47,7 @@ const Testimonials = () => {
             WHAT OUR CLIENTS SAY
           </h2>
           <p className="text-muted-foreground text-base md:text-lg">
-            Don't just take our word for it. Here's what our valued clients have to say about working with us.
+            Trusted by industry leaders and private developers across Kenya.
           </p>
         </motion.div>
 
@@ -71,13 +71,13 @@ const Testimonials = () => {
                 ))}
               </div>
 
-              <p className="text-foreground/80 text-base md:text-lg leading-relaxed mb-5">
+              <p className="text-foreground/80 text-sm md:text-base leading-relaxed mb-5">
                 "{testimonial.content}"
               </p>
 
               <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-navy-dark rounded-full flex items-center justify-center text-cream font-bold text-base md:text-lg">
-                  {testimonial.name.split(' ').map(n => n[0]).join('')}
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-navy-dark rounded-full flex items-center justify-center text-cream font-bold text-sm md:text-base">
+                  {testimonial.name.split(' ').filter(n => !['EBS', 'Eng.'].includes(n)).map(n => n[0]).join('')}
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground text-sm md:text-base">{testimonial.name}</h4>

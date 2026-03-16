@@ -1,60 +1,60 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, Truck, Package, HardHat, Instagram } from "lucide-react";
+import { ArrowRight, Truck, Package, HardHat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import Testimonials from "@/components/Testimonials";
-import QuoteModal from "@/components/QuoteModal";
 import roadsImg from "@/assets/services/roads.jpg";
-import architectureImg from "@/assets/services/architecture.jpg";
-import interiorImg from "@/assets/services/interior.jpg";
-import boqImg from "@/assets/services/boq.jpg";
-import projectMgmtImg from "@/assets/services/project-management.jpg";
 import bp4 from "@/assets/projects/black-perch-4.jpeg";
+import interiorImg from "@/assets/services/interior.jpg";
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
 import hero1 from "@/assets/hero/hero-1.jpg";
-import hero2 from "@/assets/hero/hero-1.jpg";
-import hero3 from "@/assets/hero/hero-1.jpg";
-
-import { 
-  Building2, 
-  PenTool, 
-  Palette, 
-  Calculator, 
-  ClipboardList,
-  Route
-} from "lucide-react";
+import hero2 from "@/assets/hero/hero-2.jpg";
+import hero3 from "@/assets/hero/hero-3.jpg";
+import aboutImg from "@/assets/hero/hero-4.jpg";
 
 const heroSlides = [
   {
     image: hero1,
-    title: "Connecting Communities.\nBuilding the Future.",
-    subtitle: "Shena Works Limited — Roads & Building Construction Contractors.",
+    title: "Shena Works Limited",
+    subtitle: "Roads & Building Construction Contractors",
   },
   {
-    image: hero1,
-    title: "Roads That Connect.\nStructures That Last.",
-    subtitle: "Quality road construction, cabro works, and infrastructure development across Kenya.",
+    image: hero2,
+    title: "Shena Works Limited",
+    subtitle: "Connecting Communities. Building the Future.",
   },
   {
-    image: hero1,
-    title: "Your Vision.\nOur Expertise.",
-    subtitle: "From architectural design to project completion — we deliver excellence.",
+    image: hero3,
+    title: "Shena Works Limited",
+    subtitle: "Quality Construction & Design Excellence Across Kenya",
   },
 ];
 
 const services = [
-  { title: "Road Construction", description: "Tarmac, repairs, cabro installation, and drainage systems.", image: roadsImg, path: "/services/road-construction" },
-  { title: "General Construction", description: "Residential and commercial buildings delivered with quality.", image: bp4, path: "/services/general-construction" },
-  { title: "Architecture & Consultancy", description: "Creative designs and professional consultancy services.", image: architectureImg, path: "/services/architecture" },
-  { title: "Interior Design", description: "Innovative interiors that blend functionality with aesthetics.", image: interiorImg, path: "/services/interior-design" },
-  { title: "Bills of Quantities", description: "Accurate cost estimation and quantity surveying.", image: boqImg, path: "/services/bills-of-quantities" },
-  { title: "Project Management", description: "End-to-end project management for smooth execution.", image: projectMgmtImg, path: "/services/project-management" },
+  {
+    title: "Road Construction",
+    description: "We build and maintain roads, drainage systems, cabro installations, and tarmac works that connect communities and support economic growth across Kenya.",
+    image: roadsImg,
+    path: "/services/road-construction",
+  },
+  {
+    title: "General Construction",
+    description: "From residential homes to commercial buildings, we deliver quality structures built to last — on time, on budget, and to the highest standards.",
+    image: bp4,
+    path: "/services/general-construction",
+  },
+  {
+    title: "Interior Design",
+    description: "Our design team creates innovative interiors that blend functionality with modern aesthetics, transforming spaces into experiences.",
+    image: interiorImg,
+    path: "/services/interior-design",
+  },
 ];
 
 const projects = [
@@ -70,7 +70,6 @@ const materials = [
 ];
 
 const Index = () => {
-  const [quoteModal, setQuoteModal] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = useCallback(() => {
@@ -82,119 +81,138 @@ const Index = () => {
     return () => clearInterval(timer);
   }, [nextSlide]);
 
-  useEffect(() => {
-    heroSlides.forEach((slide) => {
-      const img = new Image();
-      img.src = slide.image;
-    });
-  }, []);
-
   return (
     <div className="min-h-screen">
-      <Navbar onQuoteClick={() => setQuoteModal(true)} />
+      <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
+      {/* Hero Section - Clean like Keihin */}
+      <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
             className="absolute inset-0"
           >
             <img
               src={heroSlides[currentSlide].image}
-              alt={heroSlides[currentSlide].title}
+              alt="Shena Works"
               className="w-full h-full object-cover"
               loading="eager"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/85 via-navy/60 to-navy-dark/40" />
+            <div className="absolute inset-0 bg-navy-dark/60" />
           </motion.div>
         </AnimatePresence>
 
-        <div className="container-custom relative z-10 py-12">
-          <div className="max-w-3xl">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-cream leading-tight mb-4 whitespace-pre-line">
-                  {heroSlides[currentSlide].title}
-                </motion.h1>
-                <div className="w-16 h-1 bg-cream mb-6 md:mb-8" />
-                <p className="text-sm sm:text-base md:text-xl text-cream/90 max-w-2xl mb-6 md:mb-10 leading-relaxed">
-                  {heroSlides[currentSlide].subtitle}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-
+        <div className="relative z-10 text-center px-4">
+          <AnimatePresence mode="wait">
             <motion.div
+              key={currentSlide}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4"
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <Button variant="hero" size="lg" className="text-sm md:text-base" asChild>
-                <Link to="/services">Get Started <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" /></Link>
-              </Button>
-              <Button variant="heroOutline" size="lg" className="text-sm md:text-base" asChild>
-                <Link to="/portfolio"><Play className="mr-2 h-4 w-4 md:h-5 md:w-5" /> View Our Work</Link>
+              <p className="text-cream/70 text-sm md:text-base tracking-[0.3em] uppercase mb-3">
+                Welcome to
+              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-4">
+                {heroSlides[currentSlide].title}
+              </h1>
+              <p className="text-cream/80 text-base md:text-xl max-w-2xl mx-auto">
+                {heroSlides[currentSlide].subtitle}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* About Us Mini Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl overflow-hidden"
+            >
+              <img src={aboutImg} alt="About Shena Works" className="w-full h-[300px] md:h-[400px] object-cover" loading="lazy" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-6">
+                ABOUT COMPANY
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Shena Works Limited is a registered construction and design firm based in Kenya. We specialize in road construction, general building, architectural consultancy, interior design, and project management.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                With a team of experienced civil engineers, architects, and skilled tradespeople, we deliver projects that meet the highest standards of quality, safety, and innovation. We are certified by NEMA, NCA, KERRA, and KeNHA.
+              </p>
+              <Button variant="navy" size="lg" asChild>
+                <Link to="/about">Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-16 md:py-24 bg-background">
+      {/* What We Do - Minimal, alternating layout */}
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-4">
               WHAT WE DO
             </h2>
             <p className="text-muted-foreground text-base md:text-lg">From roads that connect communities to buildings that stand the test of time.</p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="space-y-12 md:space-y-20">
             {services.map((service, index) => (
-              <motion.div 
-                key={service.title} 
-                initial={{ opacity: 0, y: 30 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true }} 
-                transition={{ duration: 0.5, delay: index * 0.1 }} 
-                className="group relative overflow-hidden rounded-2xl bg-card shadow-md hover:shadow-elegant transition-all duration-500"
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center ${index % 2 === 1 ? "md:direction-rtl" : ""}`}
               >
-                <Link to={service.path}>
-                  <div className="relative h-44 md:h-48 overflow-hidden">
-                    <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
+                <div className={index % 2 === 1 ? "md:order-2" : ""}>
+                  <div className="rounded-2xl overflow-hidden">
+                    <img src={service.image} alt={service.title} className="w-full h-[250px] md:h-[320px] object-cover" loading="lazy" />
                   </div>
-                  <div className="p-5 md:p-6">
-                    <h3 className="text-lg md:text-xl font-serif font-bold text-navy-dark mb-2 group-hover:text-navy-light transition-colors">{service.title}</h3>
-                    <p className="text-muted-foreground text-sm md:text-base">{service.description}</p>
-                    <div className="flex items-center text-navy-dark font-semibold text-sm mt-3 uppercase tracking-wide">
-                      Read More
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </div>
-                  </div>
-                </Link>
+                </div>
+                <div className={index % 2 === 1 ? "md:order-1" : ""}>
+                  <h3 className="text-xl md:text-2xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-4">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-5">{service.description}</p>
+                  <Link to={service.path} className="inline-flex items-center text-navy-dark font-semibold text-sm uppercase tracking-wide hover:text-navy-light transition-colors">
+                    Read More <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </div>
               </motion.div>
             ))}
           </div>
+
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-12">
+            <Button variant="navy" size="lg" asChild>
+              <Link to="/services">See All Services <ArrowRight className="ml-2 h-5 w-5" /></Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
       {/* Materials & Equipment Delivery */}
       <section className="py-16 md:py-20 bg-navy">
         <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto mb-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-cream uppercase tracking-wide mb-4">
               MATERIALS & EQUIPMENT
             </h2>
@@ -223,34 +241,10 @@ const Index = () => {
           </div>
 
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-10">
-            <Button variant="heroOutline" size="lg" onClick={() => setQuoteModal(true)}>
-              Request Materials <ArrowRight className="ml-2 h-5 w-5" />
+            <Button variant="heroOutline" size="lg" asChild>
+              <Link to="/contact">Enquire Now <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Our Clients Bar */}
-      <section className="py-6 md:py-8 bg-muted/50 border-y border-border/50">
-        <div className="container-custom flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-navy-dark rounded-lg flex items-center justify-center">
-              <Instagram className="w-5 h-5 text-cream" />
-            </div>
-            <div>
-              <h3 className="text-lg font-serif font-bold text-navy-dark uppercase tracking-wide">OUR CLIENTS</h3>
-              <p className="text-muted-foreground text-sm">See what our clients say about working with us</p>
-            </div>
-          </div>
-          <a
-            href="https://www.instagram.com/shenaworksltd"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="gold" size="default" className="uppercase tracking-wide text-xs font-semibold">
-              <Instagram className="w-4 h-4 mr-2" /> Follow on Instagram
-            </Button>
-          </a>
         </div>
       </section>
 
@@ -273,7 +267,7 @@ const Index = () => {
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
-                    <h3 className="text-lg md:text-xl font-serif font-bold text-cream group-hover:text-cream/90 transition-colors">{project.title}</h3>
+                    <h3 className="text-lg md:text-xl font-serif font-bold text-cream">{project.title}</h3>
                     <p className="text-cream/70 text-sm">{project.location}</p>
                   </div>
                 </Link>
@@ -294,15 +288,10 @@ const Index = () => {
         <div className="container-custom text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-6">Ready to Start Your Project?</h2>
-            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-8">Contact us today for a free consultation and quote. Let's build something amazing together.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="gold" size="lg" onClick={() => setQuoteModal(true)}>
-                Get a Free Quote
-              </Button>
-              <Button variant="navy" size="lg" asChild>
-                <Link to="/contact">Contact Us</Link>
-              </Button>
-            </div>
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-8">Contact us today for a free consultation. Let's build something amazing together.</p>
+            <Button variant="navy" size="lg" asChild>
+              <Link to="/contact">Contact Us <ArrowRight className="ml-2 h-5 w-5" /></Link>
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -310,7 +299,6 @@ const Index = () => {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      <QuoteModal isOpen={quoteModal} onClose={() => setQuoteModal(false)} />
     </div>
   );
 };
