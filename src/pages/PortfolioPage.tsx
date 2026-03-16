@@ -451,7 +451,7 @@ const PortfolioPage = () => {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      <QuoteModal isOpen={quoteModal} onClose={() => setQuoteModal(false)} />
+      
     </div>
   );
 };
