@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import QuoteModal from "@/components/QuoteModal";
+
 import heroImage from "@/assets/hero/hero-1.jpg";
 
 // Black Perch Images
