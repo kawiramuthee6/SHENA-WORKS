@@ -73,7 +73,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 bg-white border-b border-border/50 ${scrolled ? "shadow-md" : "shadow-sm"}`}
+        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-sm border-b border-border/50 ${scrolled ? "shadow-md" : "shadow-sm"}`}
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
@@ -82,7 +82,7 @@ const Navbar = () => {
               <img src={logo} alt="Shena Works Limited" className="h-16 w-auto" />
             </Link>
 
-            {/* Desktop Navigation - Centered */}
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center justify-center flex-1 px-8">
               <div className="flex items-center space-x-1">
                 {navItems.map((item) => (
@@ -136,7 +136,6 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Spacer for alignment */}
             <div className="hidden lg:block w-16 flex-shrink-0" />
 
             {/* Mobile menu button */}
@@ -151,7 +150,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation - Side Drawer */}
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -188,9 +187,7 @@ const Navbar = () => {
                         <button
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                           className={`flex items-center justify-between w-full px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                            isActive(item.href)
-                              ? "text-navy-dark"
-                              : "text-foreground hover:text-navy-light"
+                            isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-navy-light"
                           }`}
                         >
                           {item.name}
@@ -210,9 +207,7 @@ const Navbar = () => {
                                   to={subItem.href}
                                   onClick={() => { setIsOpen(false); setActiveDropdown(null); }}
                                   className={`block pl-10 pr-6 py-3 text-sm transition-colors ${
-                                    isActive(subItem.href)
-                                      ? "text-navy-dark font-medium"
-                                      : "text-muted-foreground hover:text-navy-dark"
+                                    isActive(subItem.href) ? "text-navy-dark font-medium" : "text-muted-foreground hover:text-navy-dark"
                                   }`}
                                 >
                                   {subItem.name}
@@ -227,9 +222,7 @@ const Navbar = () => {
                         to={item.href}
                         onClick={() => setIsOpen(false)}
                         className={`block px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                          isActive(item.href)
-                            ? "text-navy-dark"
-                            : "text-foreground hover:text-navy-light"
+                          isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-navy-light"
                         }`}
                       >
                         {item.name}
@@ -243,18 +236,15 @@ const Navbar = () => {
               <div className="p-5 border-t border-border/50 space-y-3">
                 <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
                   <a href="tel:+254707243053" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
-                    <Phone className="h-3 w-3" />
-                    Call Us
+                    <Phone className="h-3 w-3" /> Call Us
                   </a>
                   <span className="text-border">|</span>
                   <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
-                    <Mail className="h-3 w-3" />
-                    Email
+                    <Mail className="h-3 w-3" /> Email
                   </a>
                   <span className="text-border">|</span>
                   <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
-                    <Instagram className="h-3 w-3" />
-                    Instagram
+                    <Instagram className="h-3 w-3" /> Instagram
                   </a>
                 </div>
               </div>
