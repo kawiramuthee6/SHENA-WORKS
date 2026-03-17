@@ -1,14 +1,5 @@
 import { motion } from "framer-motion";
-import { 
-  Building2, 
-  PenTool, 
-  Palette, 
-  Calculator, 
-  ClipboardList,
-  Route,
-  ArrowRight,
-  ArrowLeft
-} from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -40,27 +31,26 @@ const ServicesPage = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative pb-32 overflow-hidden">
+      {/* Hero Section - flush with navbar */}
+      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden flex items-center justify-center -mt-20">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Construction services" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" />
+          <img src={heroImage} alt="Construction services" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-navy-dark/60" />
         </div>
         
-        <div className="container-custom relative z-10 pt-16 sm:pt-20">
-          {/* Back Button */}
+        <div className="container-custom relative z-10 text-center px-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-6 sm:mb-8"
+            className="absolute top-4 left-4 md:left-0"
           >
             <button 
               onClick={() => navigate(-1)}
               className="inline-flex items-center gap-2 text-cream/70 hover:text-cream hover:bg-cream/10 px-4 py-2 rounded-full transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span className="font-medium">Back</span>
+              <span className="font-medium text-sm">Back</span>
             </button>
           </motion.div>
 
@@ -68,23 +58,22 @@ const ServicesPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto px-4"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-4 sm:mb-6 uppercase tracking-wide">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-cream mb-3 uppercase tracking-wide">
               Our Services
             </h1>
-            <p className="text-cream/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8">
+            <p className="text-cream/75 text-sm md:text-base max-w-2xl mx-auto">
               From roads that connect communities to buildings that inspire, we offer 
-              comprehensive construction and design solutions tailored to your needs.
+              comprehensive construction and design solutions.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section id="services-grid" className="py-12 sm:py-20 bg-background">
+      <section className="py-10 md:py-16 bg-background">
         <div className="container-custom px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -97,7 +86,7 @@ const ServicesPage = () => {
                   to={service.path}
                   className="group block relative overflow-hidden rounded-2xl bg-card shadow-md hover:shadow-elegant transition-all duration-500"
                 >
-                  <div className="relative h-56 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
                     {service.isVideo ? (
                       <video src={service.media} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" autoPlay loop muted playsInline />
                     ) : (
@@ -105,15 +94,14 @@ const ServicesPage = () => {
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-navy-light transition-colors">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">{service.shortDesc}</p>
-                    <div className="flex items-center text-navy-dark font-medium">
+                  <div className="p-5">
+                    <h3 className="text-lg font-serif font-bold text-foreground mb-2 group-hover:text-navy-light transition-colors">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm mb-3">{service.shortDesc}</p>
+                    <div className="flex items-center text-navy-dark font-medium text-sm">
                       Learn More
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-navy/20 rounded-2xl transition-all duration-500 pointer-events-none" />
                 </Link>
               </motion.div>
             ))}
@@ -121,20 +109,15 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-navy">
+      {/* CTA */}
+      <section className="py-16 bg-navy">
         <div className="container-custom text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-cream mb-6 uppercase tracking-wide">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-cream mb-4 uppercase tracking-wide">
               Ready to Start Your Project?
             </h2>
-            <p className="text-cream/70 text-lg max-w-2xl mx-auto mb-8">
-              Contact us today for a free consultation and quote. Let's build something amazing together.
+            <p className="text-cream/70 text-sm md:text-base max-w-2xl mx-auto mb-6">
+              Contact us today for a free consultation. Let's build something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="xl" asChild>
@@ -151,7 +134,6 @@ const ServicesPage = () => {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-      
     </div>
   );
 };
