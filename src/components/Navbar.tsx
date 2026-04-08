@@ -76,7 +76,7 @@ const Navbar = () => {
         className={`sticky top-0 left-0 right-0 z-50 bg-white transition-all duration-500 ${scrolled ? "shadow-md border-b border-border/30" : ""}`}
       >
         <div className="container-custom">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 flex-shrink-0" onClick={() => setIsOpen(false)}>
               <img src={logo} alt="Shena Works Limited" className="h-16 w-auto" />
