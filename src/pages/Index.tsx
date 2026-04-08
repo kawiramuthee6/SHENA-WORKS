@@ -54,7 +54,7 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section - Full screen, image behind navbar */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden -mt-[5rem]">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden -mt-[7.25rem] lg:-mt-[7.25rem]">
         <div className="absolute inset-0">
           <img
             src={hero1}
@@ -87,7 +87,7 @@ const Index = () => {
       </section>
 
       {/* About Us Mini Section */}
-      <section className="py-14 md:py-20 bg-background">
+      <section className="py-10 md:py-14 bg-background">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
             <motion.div

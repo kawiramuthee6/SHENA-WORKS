@@ -73,7 +73,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 bg-white backdrop-blur-sm ${scrolled ? "shadow-md border-b border-border/30" : ""}`}
+        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-white shadow-md border-b border-border/30" : "bg-transparent"}`}
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
@@ -96,8 +96,8 @@ const Navbar = () => {
                       to={item.href}
                       className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
                         isActive(item.href)
-                          ? "text-navy-dark border-b-2 border-navy-dark"
-                          : "text-foreground hover:text-navy-light"
+                          ? scrolled ? "text-navy-dark border-b-2 border-navy-dark" : "text-cream border-b-2 border-cream"
+                          : scrolled ? "text-foreground hover:text-navy-light" : "text-cream/80 hover:text-cream"
                       }`}
                     >
                       {item.name}
@@ -141,7 +141,7 @@ const Navbar = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+              className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? "text-foreground hover:bg-muted" : "text-cream hover:bg-white/10"}`}
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
