@@ -9,8 +9,8 @@ interface PageHeroProps {
 
 const PageHero = ({ title, subtitle, children }: PageHeroProps) => {
   return (
-    <section className="relative h-[50vh] min-h-[320px] max-h-[480px] overflow-hidden flex items-center justify-center">
-      {/* Background image with fade overlay */}
+    <section className="relative h-[60vh] min-h-[400px] max-h-[600px] overflow-hidden flex items-end">
+      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
@@ -18,35 +18,34 @@ const PageHero = ({ title, subtitle, children }: PageHeroProps) => {
           className="w-full h-full object-cover object-center"
           loading="eager"
         />
-        {/* Multi-layer fade for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/70 via-navy-dark/60 to-navy-dark/80" />
-        <div className="absolute inset-0 bg-navy/20 backdrop-blur-[1px]" />
+        {/* Gradient overlay — darker at bottom for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
       </div>
 
-      {/* Optional extra elements (back button, dropdown, etc.) */}
+      {/* Optional extra elements */}
       {children && (
         <div className="absolute inset-0 z-10 container-custom px-4">
           {children}
         </div>
       )}
 
-      {/* Text content */}
-      <div className="container-custom relative z-10 text-center px-4">
+      {/* Text content — left-aligned at bottom */}
+      <div className="container-custom relative z-10 px-4 sm:px-6 pb-10 md:pb-14">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-cream uppercase tracking-wide mb-3">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-4">
             {title}
           </h1>
+          {/* Accent line */}
+          <div className="w-16 h-1 bg-red-500 mb-5" />
           {subtitle && (
-            <>
-              <div className="w-12 h-[1px] bg-cream/30 mx-auto mb-3" />
-              <p className="text-cream/70 text-sm md:text-base max-w-2xl mx-auto">
-                {subtitle}
-              </p>
-            </>
+            <p className="text-white/80 text-base md:text-lg max-w-2xl leading-relaxed">
+              {subtitle}
+            </p>
           )}
         </motion.div>
       </div>
