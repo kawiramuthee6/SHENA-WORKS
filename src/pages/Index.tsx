@@ -59,10 +59,11 @@ const Index = () => {
           <img
             src={hero1}
             alt="Shena Works"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: '50% 20%' }}
             loading="eager"
           />
-          <div className="absolute inset-0 bg-navy-dark/50" />
+          <div className="absolute inset-0 bg-navy-dark/55" />
         </div>
 
         <div className="relative z-10 text-center px-4 pt-20">
