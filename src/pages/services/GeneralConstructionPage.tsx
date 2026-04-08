@@ -11,15 +11,30 @@ import bp1 from "@/assets/services/general const/gc1.jpeg";
 import bp2 from "@/assets/services/general const/gc2.jpeg";
 import bp3 from "@/assets/services/general const/gc3.jpeg";
 import bp4 from "@/assets/services/general const/gc4.jpeg";
-import bp6 from "@/assets/services/general const/gc5.jpeg";
-import bp7 from "@/assets/projects/black-perch-7.jpeg";
+import bp5 from "@/assets/services/general const/gc5.jpeg";
+import bp6 from "@/assets/services/general const/gc6.jpeg";
+import bp7 from "@/assets/services/general const/gc7.jpeg";
+import bp8 from "@/assets/services/general const/gc8.jpeg";
+import bp9 from "@/assets/services/general const/gc9.jpeg";
+import bp10 from "@/assets/services/general const/gc10.jpeg";
 import constructionVid from "@/assets/services/construction.mp4";
+import gcVid1 from "@/assets/services/general const/gc-video1.mp4";
+import gcVid2 from "@/assets/services/general const/gc-video2.mp4";
+import gcVid3 from "@/assets/services/general const/gc-video3.mp4";
 
 const features = ["Residential Buildings","Commercial Complexes","Industrial Structures","Renovations & Extensions","Structural Steel Works","Concrete & Masonry Works","Foundation Works","Roofing Solutions"];
 
 const galleryImages = [
   { src: bp1, alt: "Construction 1" },{ src: bp2, alt: "Construction 2" },{ src: bp3, alt: "Construction 3" },
-  { src: bp4, alt: "Construction 4" },{ src: bp6, alt: "Construction 5" },{ src: bp7, alt: "Construction 6" },
+  { src: bp4, alt: "Construction 4" },{ src: bp5, alt: "Construction 5" },{ src: bp6, alt: "Reinforcement Works" },
+  { src: bp7, alt: "Site Works" },{ src: bp8, alt: "Concrete Pouring" },{ src: bp9, alt: "Formwork" },
+  { src: bp10, alt: "Structural Framework" },
+];
+
+const galleryVideos = [
+  { src: gcVid1, alt: "Construction Video 1" },
+  { src: gcVid2, alt: "Construction Video 2" },
+  { src: gcVid3, alt: "Construction Video 3" },
 ];
 
 const GeneralConstructionPage = () => {
