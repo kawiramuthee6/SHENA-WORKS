@@ -222,7 +222,7 @@ const Navbar = () => {
                         to={item.href}
                         onClick={() => setIsOpen(false)}
                         className={`block px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                          isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-navy-light"
+                          isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-teal-600"
                         }`}
                       >
                         {item.name}
