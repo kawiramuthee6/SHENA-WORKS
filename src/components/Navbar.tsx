@@ -19,7 +19,16 @@ const navItems = [
       { name: "Project Management", href: "/services/project-management" },
     ]
   },
-  { name: "OUR WORK", href: "/portfolio" },
+  {
+    name: "OUR WORK",
+    href: "/portfolio",
+    dropdown: [
+      { name: "All Projects", href: "/portfolio" },
+      { name: "Commercial Construction", href: "/portfolio/commercial" },
+      { name: "Road & Cabro Construction", href: "/portfolio/road-cabro" },
+      { name: "Hospitality Construction", href: "/portfolio/hospitality" },
+    ]
+  },
   { name: "CONTACT US", href: "/contact" },
 ];
 
