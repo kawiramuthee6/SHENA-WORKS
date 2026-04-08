@@ -7,21 +7,41 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import PageHero from "@/components/PageHero";
+import EquipmentCarousel from "@/components/EquipmentCarousel";
+
+// Service media
 import roadsImg from "@/assets/services/roads.jpg";
 import constructionVid from "@/assets/services/construction.mp4";
 import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
 import boqImg from "@/assets/services/boq.jpg";
 import projectMgmtImg from "@/assets/services/project-management.jpg";
+
+// Equipment - Excavator
 import excavatorImg from "@/assets/equipment/excavator.jpeg";
+import excavatorImg2 from "@/assets/equipment/excavator-2.jpeg";
+import excavatorImg3 from "@/assets/equipment/excavator-3.jpeg";
+
+// Equipment - Grader
 import graderImg from "@/assets/equipment/grader.jpeg";
+import graderImg2 from "@/assets/equipment/grader-2.jpeg";
+import graderImg3 from "@/assets/equipment/grader-3.jpeg";
+import graderImg4 from "@/assets/equipment/grader-4.jpeg";
+
+// Equipment - Roller
 import rollerImg1 from "@/assets/equipment/roller-onsite-1.jpeg";
 import rollerImg2 from "@/assets/equipment/roller-onsite-2.jpeg";
+
+// Equipment - Dozer
 import dozerImg1 from "@/assets/equipment/dozer-1.jpeg";
 import dozerImg2 from "@/assets/equipment/dozer-2.jpeg";
 import dozerImg3 from "@/assets/equipment/dozer-3.jpeg";
 import dozerImg4 from "@/assets/equipment/dozer-4.jpeg";
+
+// Equipment - Fleet
 import rollerGraderFleet from "@/assets/equipment/roller-grader-1.jpeg";
+import teamMachinery1 from "@/assets/equipment/team-machinery-1.jpeg";
+import teamMachinery2 from "@/assets/equipment/team-machinery-2.jpeg";
 
 const services = [
   { id: "roads", path: "/services/road-construction", title: "Road Construction", shortDesc: "Expert road construction services including tarmac laying, repairs, cabro installation, and drainage systems.", media: roadsImg, isVideo: false },
@@ -33,11 +53,48 @@ const services = [
 ];
 
 const equipment = [
-  { name: "Excavator", image: excavatorImg },
-  { name: "Grader", image: graderImg },
-  { name: "Roller", image: rollerImg1 },
-  { name: "Dozer", image: dozerImg2 },
-  { name: "Our Fleet", image: rollerGraderFleet },
+  {
+    name: "Excavator",
+    media: [
+      { src: excavatorImg, type: "image" as const },
+      { src: excavatorImg2, type: "image" as const },
+      { src: excavatorImg3, type: "image" as const },
+      { src: "/videos/excavator.mp4", type: "video" as const },
+    ],
+  },
+  {
+    name: "Grader",
+    media: [
+      { src: graderImg, type: "image" as const },
+      { src: graderImg2, type: "image" as const },
+      { src: graderImg3, type: "image" as const },
+      { src: graderImg4, type: "image" as const },
+    ],
+  },
+  {
+    name: "Roller",
+    media: [
+      { src: rollerImg1, type: "image" as const },
+      { src: rollerImg2, type: "image" as const },
+    ],
+  },
+  {
+    name: "Dozer",
+    media: [
+      { src: dozerImg1, type: "image" as const },
+      { src: dozerImg2, type: "image" as const },
+      { src: dozerImg3, type: "image" as const },
+      { src: dozerImg4, type: "image" as const },
+    ],
+  },
+  {
+    name: "Our Fleet",
+    media: [
+      { src: rollerGraderFleet, type: "image" as const },
+      { src: teamMachinery1, type: "image" as const },
+      { src: teamMachinery2, type: "image" as const },
+    ],
+  },
 ];
 
 const ServicesPage = () => {
@@ -101,50 +158,16 @@ const ServicesPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {equipment.map((item, index) => (
-              <motion.div
+              <EquipmentCarousel
                 key={item.name}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-elegant transition-all duration-300"
-              >
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-transparent opacity-70" />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h4 className="text-cream font-serif font-bold text-base md:text-lg">{item.name}</h4>
-                </div>
-              </motion.div>
+                name={item.name}
+                media={item.media}
+                index={index}
+              />
             ))}
           </div>
-
-          {/* Excavator Video */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-2xl overflow-hidden shadow-md"
-          >
-            <div className="aspect-video max-h-[400px] overflow-hidden">
-              <video
-                src="/videos/excavator.mp4"
-                muted
-                loop
-                playsInline
-                autoPlay
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
         </div>
       </section>
 
