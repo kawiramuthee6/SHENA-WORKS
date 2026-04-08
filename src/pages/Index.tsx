@@ -15,7 +15,9 @@ import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
 import aboutImg from "@/assets/hero/hero-4.jpg";
 import excavatorImg from "@/assets/equipment/excavator.jpeg";
-import { useState, useRef } from "react";
+import rollerGrader1 from "@/assets/equipment/roller-grader-1.jpeg";
+import rollerGrader2 from "@/assets/equipment/roller-grader-2.jpeg";
+import graderImg from "@/assets/equipment/grader.jpeg";
 
 const services = [
   {
