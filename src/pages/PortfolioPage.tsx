@@ -114,13 +114,6 @@ const projects: Project[] = [
   },
 ];
 
-const portfolioCategories = [
-  { id: "all", label: "All Projects", path: "/portfolio" },
-  { id: "commercial", label: "Commercial Construction", path: "/portfolio/commercial" },
-  { id: "road-cabro", label: "Road & Cabro Construction", path: "/portfolio/road-cabro" },
-  { id: "hospitality", label: "Hospitality Construction", path: "/portfolio/hospitality" },
-];
-
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
