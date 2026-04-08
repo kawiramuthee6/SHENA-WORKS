@@ -7,12 +7,12 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import Testimonials from "@/components/Testimonials";
+import PageHero from "@/components/PageHero";
 import roadsImg from "@/assets/services/roads.jpg";
 import bp4 from "@/assets/projects/black-perch-4.jpeg";
 import interiorImg from "@/assets/services/interior.jpg";
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
-import hero1 from "@/assets/hero/hero-1.jpg";
 import aboutImg from "@/assets/hero/hero-4.jpg";
 
 const services = [
