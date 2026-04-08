@@ -100,9 +100,9 @@ const Navbar = () => {
                     <Link
                       to={item.href}
                       className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
-                        isActive(item.href)
-                          ? "text-navy-dark border-b-2 border-navy-dark"
-                          : "text-foreground hover:text-navy-light"
+                        isHome && !scrolled
+                          ? isActive(item.href) ? "text-cream border-b-2 border-cream" : "text-cream/70 hover:text-cream"
+                          : isActive(item.href) ? "text-navy-dark border-b-2 border-navy-dark" : "text-foreground hover:text-navy-light"
                       }`}
                     >
                       {item.name}
