@@ -22,6 +22,9 @@ import pin7 from "@/assets/projects/pin-hideout-7.jpeg";
 import pin8 from "@/assets/projects/pin-hideout-8.jpeg";
 import pin9 from "@/assets/projects/pin-hideout-9.jpeg";
 import pin10 from "@/assets/projects/pin-hideout-10.jpeg";
+import pin11 from "@/assets/projects/pin-hideout-11.jpeg";
+import pin12 from "@/assets/projects/pin-hideout-12.jpeg";
+import pin13 from "@/assets/projects/pin-hideout-13.jpeg";
 
 interface Project {
   id: string;
