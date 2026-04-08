@@ -48,7 +48,7 @@ const RoadConstructionPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="space-y-6">
               <div className="relative overflow-hidden rounded-2xl aspect-[4/3] shadow-elegant">
-                <img src={roadsImg} alt="Road Construction Work" className="w-full h-full object-cover" />
+                <img src={roadsImg} alt="Road Construction Work" className="w-full h-full object-cover" decoding="async" />
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
