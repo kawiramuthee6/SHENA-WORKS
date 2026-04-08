@@ -169,10 +169,7 @@ const PortfolioPage = () => {
               {/* Project Header */}
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
                 <div>
-                  <span className="text-navy-dark text-xs font-semibold uppercase tracking-wider">
-                    {project.category}
-                  </span>
-                  <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mt-1">
+                  <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground">
                     {project.title}
                   </h2>
                   <div className="flex items-center gap-2 text-muted-foreground text-sm mt-1">
