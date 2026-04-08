@@ -54,15 +54,16 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section - Full screen, image behind navbar */}
-      <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden -mt-[5rem]">
+      <section className="relative h-[92vh] flex items-center justify-center overflow-hidden -mt-20 lg:-mt-[7.25rem]">
         <div className="absolute inset-0">
           <img
             src={hero1}
             alt="Shena Works"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: '50% 20%' }}
             loading="eager"
           />
-          <div className="absolute inset-0 bg-navy-dark/50" />
+          <div className="absolute inset-0 bg-navy-dark/55" />
         </div>
 
         <div className="relative z-10 text-center px-4 pt-20">
@@ -86,7 +87,7 @@ const Index = () => {
       </section>
 
       {/* About Us Mini Section */}
-      <section className="py-14 md:py-20 bg-background">
+      <section className="py-14 md:py-20 bg-background -mt-px">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
             <motion.div
