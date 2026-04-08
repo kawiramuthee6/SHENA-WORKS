@@ -175,32 +175,32 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-white z-[70] lg:hidden flex flex-col shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-gradient-to-b from-navy-dark to-navy z-[70] lg:hidden flex flex-col shadow-2xl"
             >
-              <div className="flex items-center justify-between px-5 h-20 border-b border-border/50">
-                <img src={logo} alt="Shena Works" className="h-12 w-auto" />
+              <div className="flex items-center justify-between px-5 h-20 border-b border-cream/10">
+                <img src={logo} alt="Shena Works" className="h-12 w-auto brightness-0 invert" />
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg hover:bg-muted transition-colors"
+                  className="p-2 rounded-full bg-cream/10 hover:bg-cream/20 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X className="h-5 w-5 text-muted-foreground" />
+                  <X className="h-5 w-5 text-cream" />
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto py-4">
+              <div className="flex-1 overflow-y-auto py-6">
                 {navItems.map((item) => (
                   <div key={item.name}>
                     {item.dropdown ? (
                       <div>
                         <button
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                          className={`flex items-center justify-between w-full px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                            isActive(item.href) ? "text-navy-dark" : "text-navy-dark hover:text-red-500"
+                          className={`flex items-center justify-between w-full px-6 py-4 text-[13px] font-semibold tracking-widest uppercase transition-colors ${
+                            isActive(item.href) ? "text-cream" : "text-cream/80 hover:text-cream"
                           }`}
                         >
                           {item.name}
-                          <ChevronRight className={`h-4 w-4 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-90" : ""}`} />
+                          <ChevronRight className={`h-4 w-4 text-cream/50 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-90" : ""}`} />
                         </button>
                         <AnimatePresence>
                           {activeDropdown === item.name && (
@@ -208,7 +208,7 @@ const Navbar = () => {
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
-                              className="overflow-hidden bg-muted/30"
+                              className="overflow-hidden bg-cream/5"
                             >
                               {item.dropdown.map((subItem) => (
                                 <Link
@@ -216,7 +216,7 @@ const Navbar = () => {
                                   to={subItem.href}
                                   onClick={() => { setIsOpen(false); setActiveDropdown(null); }}
                                   className={`block pl-10 pr-6 py-3 text-sm transition-colors ${
-                                    isActive(subItem.href) ? "text-navy-dark font-medium" : "text-muted-foreground hover:text-navy-dark"
+                                    isActive(subItem.href) ? "text-cream font-medium" : "text-cream/60 hover:text-cream"
                                   }`}
                                 >
                                   {subItem.name}
@@ -230,30 +230,30 @@ const Navbar = () => {
                       <Link
                         to={item.href}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                          isActive(item.href) ? "text-navy-dark" : "text-navy-dark hover:text-red-500"
+                        className={`block px-6 py-4 text-[13px] font-semibold tracking-widest uppercase transition-colors ${
+                          isActive(item.href) ? "text-cream" : "text-cream/80 hover:text-cream"
                         }`}
                       >
                         {item.name}
                       </Link>
                     )}
-                    <div className="mx-6 border-b border-border/30" />
+                    <div className="mx-6 border-b border-cream/10" />
                   </div>
                 ))}
               </div>
 
-              <div className="p-5 border-t border-border/50 space-y-3">
-                <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-                  <a href="tel:+254707243053" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
-                    <Phone className="h-3 w-3" /> Call Us
+              <div className="p-5 border-t border-cream/10">
+                <div className="flex items-center justify-center gap-4 text-xs text-cream/50">
+                  <a href="tel:+254707243053" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+                    <Phone className="h-3.5 w-3.5" /> Call Us
                   </a>
-                  <span className="text-border">|</span>
-                  <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
-                    <Mail className="h-3 w-3" /> Email
+                  <span className="text-cream/20">|</span>
+                  <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+                    <Mail className="h-3.5 w-3.5" /> Email
                   </a>
-                  <span className="text-border">|</span>
-                  <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
-                    <Instagram className="h-3 w-3" /> Instagram
+                  <span className="text-cream/20">|</span>
+                  <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+                    <Instagram className="h-3.5 w-3.5" /> Instagram
                   </a>
                 </div>
               </div>

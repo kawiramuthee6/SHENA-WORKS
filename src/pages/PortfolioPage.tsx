@@ -246,26 +246,26 @@ const PortfolioPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-navy-dark/98 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[100] bg-navy-dark flex items-center justify-center p-6 sm:p-10"
             onClick={closeLightbox}
           >
+            {/* Close Button - fixed top-right of screen */}
+            <button 
+              onClick={closeLightbox} 
+              className="absolute top-4 right-4 z-[110] w-10 h-10 rounded-full bg-cream/10 border border-cream/30 flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-200"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-3xl w-full"
+              className="relative max-w-2xl w-full flex flex-col items-center max-h-[85vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
-              <button 
-                onClick={closeLightbox} 
-                className="absolute -top-10 right-0 z-10 w-9 h-9 rounded-full bg-cream/10 border border-cream/30 flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-200"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="relative aspect-[4/3] bg-navy rounded-2xl overflow-hidden">
-                <img src={selectedProject.images[currentImageIndex]} alt={selectedProject.title} className="w-full h-full object-contain" />
+              <div className="relative w-full max-h-[55vh] bg-navy rounded-2xl overflow-hidden flex-shrink-0">
+                <img src={selectedProject.images[currentImageIndex]} alt={selectedProject.title} className="w-full h-full object-contain max-h-[55vh]" />
                 {selectedProject.images.length > 1 && (
                   <>
                     <button onClick={prevImage} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors">
@@ -281,18 +281,18 @@ const PortfolioPage = () => {
                 )}
               </div>
 
-              <div className="mt-3 text-center">
+              <div className="mt-3 text-center flex-shrink-0">
                 <h3 className="text-lg font-serif font-bold text-cream">{selectedProject.title}</h3>
                 <p className="text-cream/70 text-xs">{selectedProject.location}</p>
               </div>
 
               {selectedProject.images.length > 1 && (
-                <div className="flex gap-1.5 mt-3 overflow-x-auto pb-2 justify-center">
+                <div className="flex gap-1.5 mt-3 overflow-x-auto pb-2 justify-center flex-shrink-0">
                   {selectedProject.images.map((img, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentImageIndex(idx)}
-                      className={`shrink-0 w-12 h-12 rounded-lg overflow-hidden border-2 transition-colors ${idx === currentImageIndex ? "border-cream" : "border-transparent"}`}
+                      className={`shrink-0 w-11 h-11 rounded-lg overflow-hidden border-2 transition-colors ${idx === currentImageIndex ? "border-cream" : "border-transparent"}`}
                     >
                       <img src={img} alt="" className="w-full h-full object-cover" />
                     </button>
