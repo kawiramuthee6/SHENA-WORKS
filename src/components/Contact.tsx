@@ -26,7 +26,7 @@ const directors = [
   {
     name: "Sharon K Muthee",
     role: "Co-Director",
-    phone: "+254707243053",
+    phone: "+254719871986",
     email: "kawiramutheesk@gmail.com",
     location: "Nairobi, Kenya",
     mapLink: "https://maps.google.com/?q=Nairobi,Kenya",

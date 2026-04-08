@@ -49,7 +49,7 @@ const QuoteModal = ({ isOpen, onClose, preSelectedService }: QuoteModalProps) =>
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const companyWhatsApp = "254707243053";
+    const companyWhatsApp = "254719871986";
     const message = `*New Quote Request from Website*
 
 *Name:* ${formData.name}

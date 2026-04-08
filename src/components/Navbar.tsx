@@ -55,9 +55,9 @@ const Navbar = () => {
               <Mail className="h-3 w-3" />
               shenaworksltd@gmail.com
             </a>
-            <a href="tel:+254707243053" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+            <a href="tel:+254719871986" className="flex items-center gap-1.5 hover:text-cream transition-colors">
               <Phone className="h-3 w-3" />
-              (+254) 707-243053
+              (+254) 719-871986
             </a>
           </div>
           <div className="flex items-center gap-4">
@@ -235,7 +235,7 @@ const Navbar = () => {
 
               <div className="p-5 border-t border-border/50 space-y-3">
                 <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-                  <a href="tel:+254707243053" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
+                  <a href="tel:+254719871986" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
                     <Phone className="h-3 w-3" /> Call Us
                   </a>
                   <span className="text-border">|</span>
