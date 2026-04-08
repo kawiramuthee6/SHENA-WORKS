@@ -106,7 +106,7 @@ const Navbar = () => {
                       className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
                         isActive(item.href)
                           ? "text-navy-dark border-b-2 border-navy-dark"
-                          : "text-foreground hover:text-teal-600"
+                          : "text-navy-dark hover:text-gold-dark"
                       }`}
                     >
                       {item.name}
