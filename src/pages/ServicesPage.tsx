@@ -83,6 +83,65 @@ const ServicesPage = () => {
         </div>
       </section>
 
+      {/* Machinery & Equipment */}
+      <section className="py-14 md:py-20 bg-muted/30">
+        <div className="container-custom px-4 sm:px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-10">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-3">
+              Machinery & Equipment
+            </h2>
+            <p className="text-muted-foreground text-sm md:text-base">
+              We own and operate heavy machinery for road and site works — available for hire and delivered to your project site, anywhere in Kenya.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-8">
+            {equipment.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-elegant transition-all duration-300"
+              >
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-transparent opacity-70" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h4 className="text-cream font-serif font-bold text-base md:text-lg">{item.name}</h4>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Excavator Video */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl overflow-hidden shadow-md"
+          >
+            <div className="aspect-video max-h-[400px] overflow-hidden">
+              <video
+                src="/videos/excavator.mp4"
+                muted
+                loop
+                playsInline
+                autoPlay
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-navy">
         <div className="container-custom text-center">
