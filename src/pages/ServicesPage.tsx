@@ -95,6 +95,8 @@ const equipment = [
       { src: rollerGraderFleet, type: "image" as const },
       { src: teamMachinery1, type: "image" as const },
       { src: teamMachinery2, type: "image" as const },
+      { src: fleet3, type: "image" as const },
+      { src: fleet4, type: "image" as const },
     ],
   },
 ];
