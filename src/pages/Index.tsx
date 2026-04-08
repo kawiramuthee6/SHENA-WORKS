@@ -35,6 +35,12 @@ const services = [
     image: interiorImg,
     path: "/services/interior-design",
   },
+  {
+    title: "Machinery & Equipment",
+    description: "We own and operate heavy machinery including excavators, graders, rollers, and more — available for hire and delivered to your project site across Kenya.",
+    image: excavatorImg,
+    path: "/services",
+  },
 ];
 
 const projects = [
