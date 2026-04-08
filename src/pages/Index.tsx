@@ -53,18 +53,16 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section - Full screen, image behind navbar */}
-      <section className="relative h-[92vh] flex items-center justify-center overflow-hidden -mt-20 lg:-mt-[7.25rem]">
-        <div className="absolute inset-0">
-          <img
-            src={hero1}
-            alt="Shena Works"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: '50% 20%' }}
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-navy-dark/55" />
-        </div>
+      {/* Hero Section */}
+      <section 
+        className="relative h-[92vh] flex items-center justify-center overflow-hidden -mt-20 lg:-mt-[7.25rem]"
+        style={{ 
+          backgroundImage: `url(${hero1})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 30%',
+        }}
+      >
+        <div className="absolute inset-0 bg-navy-dark/60" />
 
         <div className="relative z-10 text-center px-4 pt-20">
           <motion.div
