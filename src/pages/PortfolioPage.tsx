@@ -32,6 +32,15 @@ import pin8 from "@/assets/projects/pin-hideout-8.jpeg";
 import pin9 from "@/assets/projects/pin-hideout-9.jpeg";
 import pin10 from "@/assets/projects/pin-hideout-10.jpeg";
 import pin11 from "@/assets/projects/pin-hideout-11.jpeg";
+
+// Road Construction Images
+import road1 from "@/assets/services/roads/road1.jpeg";
+import road2 from "@/assets/services/roads/road2.jpeg";
+import road3 from "@/assets/services/roads/road3.jpeg";
+import road4 from "@/assets/services/roads/road4.jpeg";
+import road5 from "@/assets/services/roads/road5.jpeg";
+import road6 from "@/assets/services/roads/road6.jpeg";
+import road7 from "@/assets/services/roads/road7.jpeg";
 import pin12 from "@/assets/projects/pin-hideout-12.jpeg";
 import pin13 from "@/assets/projects/pin-hideout-13.jpeg";
 
