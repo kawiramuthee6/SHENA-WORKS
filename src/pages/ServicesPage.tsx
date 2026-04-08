@@ -14,12 +14,14 @@ import interiorImg from "@/assets/services/interior.jpg";
 import boqImg from "@/assets/services/boq.jpg";
 import projectMgmtImg from "@/assets/services/project-management.jpg";
 import excavatorImg from "@/assets/equipment/excavator.jpeg";
-import rollerGrader1 from "@/assets/equipment/roller-grader-1.jpeg";
 import graderImg from "@/assets/equipment/grader.jpeg";
-import rollerOnsite1 from "@/assets/equipment/roller-onsite-1.jpeg";
-import rollerOnsite2 from "@/assets/equipment/roller-onsite-2.jpeg";
-import teamMachinery1 from "@/assets/equipment/team-machinery-1.jpeg";
-import teamMachinery2 from "@/assets/equipment/team-machinery-2.jpeg";
+import rollerImg1 from "@/assets/equipment/roller-onsite-1.jpeg";
+import rollerImg2 from "@/assets/equipment/roller-onsite-2.jpeg";
+import dozerImg1 from "@/assets/equipment/dozer-1.jpeg";
+import dozerImg2 from "@/assets/equipment/dozer-2.jpeg";
+import dozerImg3 from "@/assets/equipment/dozer-3.jpeg";
+import dozerImg4 from "@/assets/equipment/dozer-4.jpeg";
+import rollerGraderFleet from "@/assets/equipment/roller-grader-1.jpeg";
 
 const services = [
   { id: "roads", path: "/services/road-construction", title: "Road Construction", shortDesc: "Expert road construction services including tarmac laying, repairs, cabro installation, and drainage systems.", media: roadsImg, isVideo: false },
@@ -33,10 +35,9 @@ const services = [
 const equipment = [
   { name: "Excavator", image: excavatorImg },
   { name: "Grader", image: graderImg },
-  { name: "Roller", image: rollerOnsite1 },
-  { name: "Roller on Site", image: rollerOnsite2 },
-  { name: "Our Fleet", image: rollerGrader1 },
-  { name: "Our Team", image: teamMachinery1 },
+  { name: "Roller", image: rollerImg1 },
+  { name: "Dozer", image: dozerImg2 },
+  { name: "Our Fleet", image: rollerGraderFleet },
 ];
 
 const ServicesPage = () => {
