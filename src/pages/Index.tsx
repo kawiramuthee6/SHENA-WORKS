@@ -54,7 +54,7 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section - Full screen, image behind navbar */}
-      <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden -mt-[5rem]">
+      <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden -mt-[7.25rem]">
         <div className="absolute inset-0">
           <img
             src={hero1}
