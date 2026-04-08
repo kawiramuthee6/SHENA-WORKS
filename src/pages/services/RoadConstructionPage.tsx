@@ -27,7 +27,7 @@ const RoadConstructionPage = () => {
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={roadsImg} alt="Road Construction" className="w-full h-full object-cover" />
+          <img src={roadsImg} alt="Road Construction" className="w-full h-full object-cover" decoding="async" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" />
         </div>
         <div className="container-custom relative z-10 pt-20">
@@ -48,7 +48,7 @@ const RoadConstructionPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="space-y-6">
               <div className="relative overflow-hidden rounded-2xl aspect-[4/3] shadow-elegant">
-                <img src={roadsImg} alt="Road Construction Work" className="w-full h-full object-cover" />
+                <img src={roadsImg} alt="Road Construction Work" className="w-full h-full object-cover" decoding="async" />
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>

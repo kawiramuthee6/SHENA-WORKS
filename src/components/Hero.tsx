@@ -33,6 +33,8 @@ const Hero = () => {
           width={1920}
           height={1080}
           fetchPriority="high"
+          decoding="async"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy-dark/90" />
       </motion.div>

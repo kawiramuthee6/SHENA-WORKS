@@ -17,6 +17,8 @@ const PageHero = ({ title, subtitle, children }: PageHeroProps) => {
           alt={title}
           className="w-full h-full object-cover object-center"
           loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
         {/* Gradient overlay — darker at bottom for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />

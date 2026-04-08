@@ -28,7 +28,7 @@ const GeneralConstructionPage = () => {
       <Navbar />
       <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
-          <video src={constructionVid} className="w-full h-full object-cover" autoPlay loop muted playsInline />
+          <video src={constructionVid} className="w-full h-full object-cover" decoding="async" autoPlay loop muted playsInline />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" />
         </div>
         <div className="container-custom relative z-10 pt-20">

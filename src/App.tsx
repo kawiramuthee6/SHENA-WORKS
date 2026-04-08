@@ -27,8 +27,25 @@ const RoadCabroPage = lazy(() => import("./pages/portfolio/RoadCabroPage"));
 const HospitalityPage = lazy(() => import("./pages/portfolio/HospitalityPage"));
 
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-navy-dark">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cream"></div>
+  <div className="min-h-screen flex flex-col items-center justify-center bg-navy-dark gap-6">
+    {/* Animated brand mark */}
+    <div className="relative">
+      <div className="w-16 h-16 rounded-full border-[3px] border-cream/20" />
+      <div className="absolute inset-0 w-16 h-16 rounded-full border-[3px] border-transparent border-t-cream animate-spin" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="text-cream font-serif font-bold text-lg tracking-wider">S</span>
+      </div>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <span className="text-cream/90 text-sm font-serif font-semibold tracking-[0.2em] uppercase">
+        Shena Works
+      </span>
+      <div className="flex gap-1 mt-2">
+        <span className="w-1.5 h-1.5 bg-cream/60 rounded-full animate-bounce [animation-delay:0ms]" />
+        <span className="w-1.5 h-1.5 bg-cream/60 rounded-full animate-bounce [animation-delay:150ms]" />
+        <span className="w-1.5 h-1.5 bg-cream/60 rounded-full animate-bounce [animation-delay:300ms]" />
+      </div>
+    </div>
   </div>
 );
 

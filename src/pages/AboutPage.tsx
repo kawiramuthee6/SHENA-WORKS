@@ -80,7 +80,7 @@ const AboutPage = () => {
           <AccordionSection title="Our Story" defaultOpen id="our-story">
             <div className="grid lg:grid-cols-2 gap-6 md:gap-10 items-start mb-8">
               <div className="rounded-2xl overflow-hidden">
-                <img src={aboutImg} alt="About Shena Works" className="w-full h-[260px] md:h-[350px] object-cover" />
+                <img src={aboutImg} alt="About Shena Works" className="w-full h-[260px] md:h-[350px] object-cover" decoding="async" />
               </div>
               <div className="space-y-3 text-muted-foreground text-sm md:text-base leading-relaxed">
                 <p>

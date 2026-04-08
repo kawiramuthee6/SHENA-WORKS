@@ -199,6 +199,7 @@ const PortfolioPage = () => {
                       src={image}
                       alt={`${project.title} - Image ${imgIndex + 1}`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/40 transition-colors duration-300 flex items-center justify-center">
                       <span className="text-cream opacity-0 group-hover:opacity-100 transition-opacity font-medium text-sm">
