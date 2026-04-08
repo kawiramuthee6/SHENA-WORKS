@@ -28,7 +28,6 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
-  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -56,9 +55,9 @@ const Navbar = () => {
               <Mail className="h-3 w-3" />
               shenaworksltd@gmail.com
             </a>
-            <a href="tel:+254719871986" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+            <a href="tel:+254707243053" className="flex items-center gap-1.5 hover:text-cream transition-colors">
               <Phone className="h-3 w-3" />
-              (+254) 719-871986
+              (+254) 707-243053
             </a>
           </div>
           <div className="flex items-center gap-4">
@@ -74,11 +73,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-sm ${
-          isHome && !scrolled
-            ? "bg-navy-dark/80 text-cream"
-            : `bg-white ${scrolled ? "shadow-md border-b border-border/30" : ""}`
-        }`}
+        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 bg-white backdrop-blur-sm ${scrolled ? "shadow-md border-b border-border/30" : ""}`}
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
@@ -100,9 +95,9 @@ const Navbar = () => {
                     <Link
                       to={item.href}
                       className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
-                        isHome && !scrolled
-                          ? isActive(item.href) ? "text-cream border-b-2 border-cream" : "text-cream/70 hover:text-cream"
-                          : isActive(item.href) ? "text-navy-dark border-b-2 border-navy-dark" : "text-foreground hover:text-navy-light"
+                        isActive(item.href)
+                          ? "text-navy-dark border-b-2 border-navy-dark"
+                          : "text-foreground hover:text-navy-light"
                       }`}
                     >
                       {item.name}
@@ -240,7 +235,7 @@ const Navbar = () => {
 
               <div className="p-5 border-t border-border/50 space-y-3">
                 <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-                  <a href="tel:+254719871986" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
+                  <a href="tel:+254707243053" className="flex items-center gap-1 hover:text-navy-dark transition-colors">
                     <Phone className="h-3 w-3" /> Call Us
                   </a>
                   <span className="text-border">|</span>
