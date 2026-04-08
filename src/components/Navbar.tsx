@@ -196,7 +196,7 @@ const Navbar = () => {
                         <button
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                           className={`flex items-center justify-between w-full px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                            isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-teal-600"
+                            isActive(item.href) ? "text-navy-dark" : "text-navy-dark hover:text-gold-dark"
                           }`}
                         >
                           {item.name}
