@@ -13,6 +13,10 @@ import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
 import boqImg from "@/assets/services/boq.jpg";
 import projectMgmtImg from "@/assets/services/project-management.jpg";
+import excavatorImg from "@/assets/equipment/excavator.jpeg";
+import rollerGrader1 from "@/assets/equipment/roller-grader-1.jpeg";
+import rollerGrader2 from "@/assets/equipment/roller-grader-2.jpeg";
+import graderImg from "@/assets/equipment/grader.jpeg";
 
 const services = [
   { id: "roads", path: "/services/road-construction", title: "Road Construction", shortDesc: "Expert road construction services including tarmac laying, repairs, cabro installation, and drainage systems.", media: roadsImg, isVideo: false },
@@ -21,6 +25,13 @@ const services = [
   { id: "interior", path: "/services/interior-design", title: "Interior Design", shortDesc: "Innovative interior design solutions that blend functionality with aesthetics, creating inspiring spaces.", media: interiorImg, isVideo: false },
   { id: "boq", path: "/services/bills-of-quantities", title: "Bills of Quantities", shortDesc: "Accurate cost estimation and quantity surveying to ensure your project stays on budget.", media: boqImg, isVideo: false },
   { id: "project-management", path: "/services/project-management", title: "Project Management", shortDesc: "End-to-end project management ensuring smooth execution, timely delivery, and quality standards.", media: projectMgmtImg, isVideo: false },
+];
+
+const equipment = [
+  { name: "Excavator", image: excavatorImg },
+  { name: "Grader", image: graderImg },
+  { name: "Roller", image: rollerGrader2 },
+  { name: "Roller & Grader", image: rollerGrader1 },
 ];
 
 const ServicesPage = () => {
