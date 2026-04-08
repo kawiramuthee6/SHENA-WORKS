@@ -193,7 +193,7 @@ const Index = () => {
             {projects.map((project, index) => (
               <motion.div key={project.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group relative overflow-hidden rounded-2xl aspect-[4/3]">
                 <Link to="/portfolio">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" decoding="async" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
                     <h3 className="text-base md:text-lg font-serif font-bold text-cream">{project.title}</h3>
