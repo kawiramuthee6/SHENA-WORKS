@@ -116,7 +116,7 @@ const Index = () => {
               >
                 <div className={index % 2 === 1 ? "md:order-2" : ""}>
                   <div className="rounded-2xl overflow-hidden">
-                    <img src={service.image} alt={service.title} className="w-full h-[220px] md:h-[300px] object-cover" loading="lazy" />
+                    <img src={service.image} alt={service.title} className="w-full h-[220px] md:h-[300px] object-cover" decoding="async" />
                   </div>
                 </div>
                 <div className={index % 2 === 1 ? "md:order-1" : ""}>
