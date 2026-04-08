@@ -139,6 +139,7 @@ const Portfolio = () => {
                   src={project.coverImage}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
                 
