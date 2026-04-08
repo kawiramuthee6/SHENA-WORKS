@@ -106,7 +106,7 @@ const HospitalityPage = () => {
       {/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Hospitality Construction" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Hospitality Construction" className="w-full h-full object-cover" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" />
         </div>
         
@@ -302,7 +302,7 @@ const HospitalityPage = () => {
                     <img 
                       src={selectedProject.images[currentImageIndex]} 
                       alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover" decoding="async"
                     />
                     
                     {/* Navigation Arrows */}
