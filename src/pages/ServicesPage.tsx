@@ -4,8 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 
 import heroImage from "@/assets/hero/hero-1.jpg";
 import roadsImg from "@/assets/services/roads.jpg";
@@ -132,8 +130,8 @@ const ServicesPage = () => {
       </section>
 
       <Footer />
-      <WhatsAppButton />
-      <BackToTop />
+      
+      
     </div>
   );
 };

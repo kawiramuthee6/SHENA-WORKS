@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Target, Eye, Award, Users, Clock, Shield, Lightbulb, Handshake, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import heroImage from "@/assets/hero/hero-1.jpg";
 import aboutImg from "@/assets/hero/hero-4.jpg";
 
@@ -269,8 +267,8 @@ const AboutPage = () => {
       </section>
 
       <Footer />
-      <WhatsAppButton />
-      <BackToTop />
+      
+      
     </div>
   );
 };
