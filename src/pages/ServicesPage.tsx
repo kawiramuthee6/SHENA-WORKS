@@ -24,50 +24,14 @@ const services = [
 ];
 
 const ServicesPage = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section - flush with navbar */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="Construction services" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-navy-dark/60" />
-        </div>
-        
-        <div className="container-custom relative z-10 text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute top-4 left-4 md:left-0"
-          >
-            <button 
-              onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-2 text-cream/70 hover:text-cream hover:bg-cream/10 px-4 py-2 rounded-full transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="font-medium text-sm">Back</span>
-            </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-cream mb-3 uppercase tracking-wide">
-              Our Services
-            </h1>
-            <p className="text-cream/75 text-sm md:text-base max-w-2xl mx-auto">
-              From roads that connect communities to buildings that inspire, we offer 
-              comprehensive construction and design solutions.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Our Services"
+        subtitle="From roads that connect communities to buildings that inspire, we offer comprehensive construction and design solutions."
+      />
 
       {/* Services Grid */}
       <section className="py-10 md:py-16 bg-background">
