@@ -32,7 +32,7 @@ const ServicesPage = () => {
       <Navbar />
       
       {/* Hero Section - flush with navbar */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden flex items-center justify-center -mt-20">
+      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center -mt-[5rem]">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Construction services" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-navy-dark/60" />
