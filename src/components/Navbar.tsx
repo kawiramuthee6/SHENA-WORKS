@@ -79,7 +79,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 flex-shrink-0" onClick={() => setIsOpen(false)}>
-              <img src={logo} alt="Shena Works Limited" className="h-16 w-auto" />
+              <img src={logo} alt="Shena Works Limited" className="h-20 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
