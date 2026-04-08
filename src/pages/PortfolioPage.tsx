@@ -124,7 +124,6 @@ const portfolioCategories = [
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const openLightbox = (project: Project, imgIndex = 0) => {
     setSelectedProject(project);
