@@ -22,7 +22,7 @@ const InteriorDesignPage = () => {
     <div className="min-h-screen">
       <Navbar />
       <section className="relative pb-32 overflow-hidden">
-        <div className="absolute inset-0"><img src={interiorImg} alt="Interior Design" className="w-full h-full object-cover" /><div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" /></div>
+        <div className="absolute inset-0"><img src={interiorImg} alt="Interior Design" className="w-full h-full object-cover" decoding="async" /><div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" /></div>
         <div className="container-custom relative z-10 pt-20">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-8">
             <Link to="/services" className="inline-flex items-center gap-2 text-cream/70 hover:text-cream hover:bg-cream/10 px-4 py-2 rounded-full transition-all backdrop-blur-sm border border-cream/10 hover:border-cream/30"><ArrowLeft className="w-4 h-4" /><span className="font-medium">Back to Services</span></Link>
@@ -50,7 +50,7 @@ const InteriorDesignPage = () => {
               <Button variant="navy" size="lg" asChild><Link to="/contact">Contact Us <ArrowRight className="ml-2 h-5 w-5" /></Link></Button>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative overflow-hidden rounded-2xl aspect-[4/3] shadow-elegant">
-              <img src={interiorImg} alt="Interior Design Services" className="w-full h-full object-cover" />
+              <img src={interiorImg} alt="Interior Design Services" className="w-full h-full object-cover" decoding="async" />
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
