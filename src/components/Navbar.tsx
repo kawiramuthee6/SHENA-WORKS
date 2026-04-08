@@ -178,7 +178,7 @@ const Navbar = () => {
               className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-gradient-to-b from-navy-dark to-navy z-[70] lg:hidden flex flex-col shadow-2xl"
             >
               <div className="flex items-center justify-between px-5 h-20 border-b border-cream/10">
-                <img src={logo} alt="Shena Works" className="h-12 w-auto brightness-0 invert" />
+                <img src={logo} alt="Shena Works" className="h-12 w-auto rounded-md" />
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 rounded-full bg-cream/10 hover:bg-cream/20 transition-colors"
