@@ -57,24 +57,10 @@ const ContactPage = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero - flush with navbar */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="Contact" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-navy-dark/60" />
-        </div>
-        
-        <div className="container-custom relative z-10 text-center px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-cream uppercase tracking-wide mb-3">
-              Contact Us
-            </h1>
-            <p className="text-cream/75 text-sm md:text-base max-w-2xl mx-auto">
-              Ready to start your project? Reach out and let's build something amazing together.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Contact Us"
+        subtitle="Ready to start your project? Reach out and let's build something amazing together."
+      />
 
       {/* Contact Info Cards */}
       <section className="py-10 bg-background">
