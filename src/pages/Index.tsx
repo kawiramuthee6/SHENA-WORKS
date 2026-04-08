@@ -87,7 +87,7 @@ const Index = () => {
       </section>
 
       {/* About Us Mini Section */}
-      <section className="py-14 md:py-20 bg-background">
+      <section className="py-10 md:py-14 bg-background">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
             <motion.div
