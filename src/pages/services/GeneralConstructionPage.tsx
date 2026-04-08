@@ -11,15 +11,30 @@ import bp1 from "@/assets/services/general const/gc1.jpeg";
 import bp2 from "@/assets/services/general const/gc2.jpeg";
 import bp3 from "@/assets/services/general const/gc3.jpeg";
 import bp4 from "@/assets/services/general const/gc4.jpeg";
-import bp6 from "@/assets/services/general const/gc5.jpeg";
-import bp7 from "@/assets/projects/black-perch-7.jpeg";
+import bp5 from "@/assets/services/general const/gc5.jpeg";
+import bp6 from "@/assets/services/general const/gc6.jpeg";
+import bp7 from "@/assets/services/general const/gc7.jpeg";
+import bp8 from "@/assets/services/general const/gc8.jpeg";
+import bp9 from "@/assets/services/general const/gc9.jpeg";
+import bp10 from "@/assets/services/general const/gc10.jpeg";
 import constructionVid from "@/assets/services/construction.mp4";
+import gcVid1 from "@/assets/services/general const/gc-video1.mp4";
+import gcVid2 from "@/assets/services/general const/gc-video2.mp4";
+import gcVid3 from "@/assets/services/general const/gc-video3.mp4";
 
 const features = ["Residential Buildings","Commercial Complexes","Industrial Structures","Renovations & Extensions","Structural Steel Works","Concrete & Masonry Works","Foundation Works","Roofing Solutions"];
 
 const galleryImages = [
   { src: bp1, alt: "Construction 1" },{ src: bp2, alt: "Construction 2" },{ src: bp3, alt: "Construction 3" },
-  { src: bp4, alt: "Construction 4" },{ src: bp6, alt: "Construction 5" },{ src: bp7, alt: "Construction 6" },
+  { src: bp4, alt: "Construction 4" },{ src: bp5, alt: "Construction 5" },{ src: bp6, alt: "Reinforcement Works" },
+  { src: bp7, alt: "Site Works" },{ src: bp8, alt: "Concrete Pouring" },{ src: bp9, alt: "Formwork" },
+  { src: bp10, alt: "Structural Framework" },
+];
+
+const galleryVideos = [
+  { src: gcVid1, alt: "Construction Video 1" },
+  { src: gcVid2, alt: "Construction Video 2" },
+  { src: gcVid3, alt: "Construction Video 3" },
 ];
 
 const GeneralConstructionPage = () => {
@@ -60,7 +75,7 @@ const GeneralConstructionPage = () => {
               <Button variant="navy" size="lg" asChild><Link to="/contact">Contact Us <ArrowRight className="ml-2 h-5 w-5" /></Link></Button>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative overflow-hidden rounded-2xl aspect-[4/3] shadow-elegant">
-              <img src={bp6} alt="General Construction Work" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={bp5} alt="General Construction Work" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -69,6 +84,18 @@ const GeneralConstructionPage = () => {
               {galleryImages.map((image, index) => (
                 <motion.div key={index} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.1 }} className="relative overflow-hidden rounded-xl aspect-[4/3] shadow-md hover:shadow-elegant transition-shadow">
                   <img src={image.src} alt={image.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Video Gallery */}
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-12">
+            <h3 className="text-2xl font-serif font-bold text-foreground mb-8 text-center">Construction in Action</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {galleryVideos.map((video, index) => (
+                <motion.div key={index} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.1 }} className="relative overflow-hidden rounded-xl aspect-[4/3] shadow-md hover:shadow-elegant transition-shadow">
+                  <video src={video.src} className="w-full h-full object-cover" autoPlay loop muted playsInline />
                 </motion.div>
               ))}
             </div>
