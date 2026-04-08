@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink, ArrowLeft, ChevronDown } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-
-import heroImage from "@/assets/hero/hero-1.jpg";
+import PageHero from "@/components/PageHero";
 
 // Black Perch Images
 import bp1 from "@/assets/projects/black-perch-1.jpeg";
