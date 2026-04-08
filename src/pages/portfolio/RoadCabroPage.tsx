@@ -22,6 +22,9 @@ import pin7 from "@/assets/projects/pin-hideout-7.jpeg";
 import pin8 from "@/assets/projects/pin-hideout-8.jpeg";
 import pin9 from "@/assets/projects/pin-hideout-9.jpeg";
 import pin10 from "@/assets/projects/pin-hideout-10.jpeg";
+import pin11 from "@/assets/projects/pin-hideout-11.jpeg";
+import pin12 from "@/assets/projects/pin-hideout-12.jpeg";
+import pin13 from "@/assets/projects/pin-hideout-13.jpeg";
 
 interface Project {
   id: string;
@@ -44,7 +47,7 @@ const projects: Project[] = [
     description: "Complete cabro paving and road construction project for a commercial complex, including earthworks, drainage, and professional finishing.",
     fullDescription: "The Pin Hideout Limited project showcases our expertise in road and cabro construction. This comprehensive project involved extensive earthworks and site preparation, stone base laying, professional cabro paving installation in multiple colors and patterns, and complete drainage systems. Our team utilized modern equipment including backhoe loaders for grading and leveling, ensuring precise surveying and quality workmanship throughout. The finished surface provides a durable, attractive parking and access area for this commercial establishment.",
     coverImage: pin7,
-    images: [pin1, pin2, pin3, pin4, pin5, pin6, pin7, pin8, pin9, pin10],
+    images: [pin1, pin2, pin3, pin4, pin5, pin6, pin7, pin8, pin9, pin10, pin11, pin12, pin13],
     services: ["Road Construction", "Cabro Installation", "Earthworks & Grading", "Drainage Systems"],
   },
 ];
