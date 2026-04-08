@@ -246,14 +246,14 @@ const PortfolioPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-navy-dark/98 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-navy-dark/98 flex items-center justify-center p-4 overflow-y-auto"
             onClick={closeLightbox}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-3xl w-full"
+              className="relative max-w-2xl w-full my-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -264,7 +264,7 @@ const PortfolioPage = () => {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="relative aspect-[4/3] bg-navy rounded-2xl overflow-hidden">
+              <div className="relative aspect-[4/3] max-h-[60vh] bg-navy rounded-2xl overflow-hidden">
                 <img src={selectedProject.images[currentImageIndex]} alt={selectedProject.title} className="w-full h-full object-contain" />
                 {selectedProject.images.length > 1 && (
                   <>
