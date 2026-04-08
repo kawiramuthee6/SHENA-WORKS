@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 
 const features = ["Project Planning & Scheduling","Resource Management","Quality Assurance","Risk Management","Stakeholder Coordination","Progress Reporting","Budget Monitoring","Handover & Close-out"];
 const phases = [
@@ -94,7 +92,7 @@ const ProjectManagementPage = () => {
           </motion.div>
         </div>
       </section>
-      <Footer /><WhatsAppButton /><BackToTop />
+      <Footer />
     </div>
   );
 };
