@@ -74,7 +74,7 @@ const projects: Project[] = [
 const HospitalityPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+  const navigate = useNavigate();
 
   const openProject = (project: Project) => {
     setSelectedProject(project);
