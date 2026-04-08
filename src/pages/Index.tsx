@@ -59,7 +59,7 @@ const Index = () => {
           <img
             src={hero1}
             alt="Shena Works"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top"
             loading="eager"
           />
           <div className="absolute inset-0 bg-navy-dark/50" />
