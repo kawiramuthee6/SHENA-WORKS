@@ -47,17 +47,17 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Info Bar */}
-      <div className={`hidden lg:block bg-navy-dark text-cream/80 text-xs transition-all duration-300 ${scrolled ? "h-0 overflow-hidden opacity-0" : "h-9 opacity-100"}`}>
-        <div className="container-custom h-full flex items-center justify-between">
+      {/* Top Info Bar - always visible */}
+      <div className="hidden lg:block bg-navy-dark text-cream/80 text-xs">
+        <div className="container-custom h-9 flex items-center justify-between">
           <div className="flex items-center gap-5">
             <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1.5 hover:text-cream transition-colors">
               <Mail className="h-3 w-3" />
               shenaworksltd@gmail.com
             </a>
-            <a href="tel:+254707243053" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+            <a href="tel:+254718971896" className="flex items-center gap-1.5 hover:text-cream transition-colors">
               <Phone className="h-3 w-3" />
-              (+254) 707-243053
+              (+254) 718-971896
             </a>
           </div>
           <div className="flex items-center gap-4">
@@ -69,11 +69,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* Main Navbar - always white bg */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-white shadow-md border-b border-border/30" : "bg-transparent"}`}
+        className={`sticky top-0 left-0 right-0 z-50 bg-white transition-all duration-500 ${scrolled ? "shadow-md border-b border-border/30" : ""}`}
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
@@ -96,8 +96,8 @@ const Navbar = () => {
                       to={item.href}
                       className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
                         isActive(item.href)
-                          ? scrolled ? "text-navy-dark border-b-2 border-navy-dark" : "text-cream border-b-2 border-cream"
-                          : scrolled ? "text-foreground hover:text-navy-light" : "text-cream/80 hover:text-cream"
+                          ? "text-navy-dark border-b-2 border-navy-dark"
+                          : "text-foreground hover:text-navy-light"
                       }`}
                     >
                       {item.name}
@@ -141,7 +141,7 @@ const Navbar = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? "text-foreground hover:bg-muted" : "text-cream hover:bg-white/10"}`}
+              className="lg:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

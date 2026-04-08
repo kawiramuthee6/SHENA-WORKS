@@ -68,7 +68,7 @@ const AboutPage = () => {
       <Navbar />
       
       {/* Hero Section - flush with navbar */}
-      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center -mt-[5rem]">
+      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0">
           <img src={heroImage} alt="About Shena Works" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-navy-dark/60" />
