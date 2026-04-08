@@ -60,17 +60,17 @@ const Navbar = () => {
       <div className="hidden lg:block bg-white text-navy-dark text-xs border-b border-border/30">
         <div className="container-custom h-7 flex items-center justify-between">
           <div className="flex items-center gap-5">
-            <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1.5 hover:text-gold-dark transition-colors">
+            <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1.5 hover:text-red-500 transition-colors">
               <Mail className="h-3 w-3" />
               shenaworksltd@gmail.com
             </a>
-            <a href="tel:+254718971896" className="flex items-center gap-1.5 hover:text-gold-dark transition-colors">
+            <a href="tel:+254718971896" className="flex items-center gap-1.5 hover:text-red-500 transition-colors">
               <Phone className="h-3 w-3" />
               (+254) 718-971896
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-gold-dark transition-colors">
+            <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-red-500 transition-colors">
               <Instagram className="h-3 w-3" />
               Follow Us
             </a>
@@ -106,7 +106,7 @@ const Navbar = () => {
                       className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
                         isActive(item.href)
                           ? "text-navy-dark border-b-2 border-navy-dark"
-                          : "text-navy-dark hover:text-gold-dark"
+                          : "text-navy-dark hover:text-red-500"
                       }`}
                     >
                       {item.name}
@@ -196,7 +196,7 @@ const Navbar = () => {
                         <button
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                           className={`flex items-center justify-between w-full px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                            isActive(item.href) ? "text-navy-dark" : "text-navy-dark hover:text-gold-dark"
+                            isActive(item.href) ? "text-navy-dark" : "text-navy-dark hover:text-red-500"
                           }`}
                         >
                           {item.name}
@@ -231,7 +231,7 @@ const Navbar = () => {
                         to={item.href}
                         onClick={() => setIsOpen(false)}
                         className={`block px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                          isActive(item.href) ? "text-navy-dark" : "text-navy-dark hover:text-gold-dark"
+                          isActive(item.href) ? "text-navy-dark" : "text-navy-dark hover:text-red-500"
                         }`}
                       >
                         {item.name}
