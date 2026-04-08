@@ -7,12 +7,12 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import Testimonials from "@/components/Testimonials";
+import PageHero from "@/components/PageHero";
 import roadsImg from "@/assets/services/roads.jpg";
 import bp4 from "@/assets/projects/black-perch-4.jpeg";
 import interiorImg from "@/assets/services/interior.jpg";
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
-import hero1 from "@/assets/hero/hero-1.jpg";
 import aboutImg from "@/assets/hero/hero-4.jpg";
 
 const services = [
@@ -53,38 +53,10 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section - Full screen, image behind navbar */}
-      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={hero1}
-            alt="Shena Works"
-            className="w-full h-full object-cover object-center"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-navy-dark/50" />
-        </div>
-
-        <div className="relative z-10 text-center px-4 pt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-cream/50 text-[10px] md:text-xs tracking-[0.35em] uppercase mb-5">
-              Welcome to
-            </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream mb-4 leading-[1.1]">
-              Shena Works Limited
-            </h1>
-            <div className="w-16 h-[1px] bg-cream/30 mx-auto mb-4" />
-            <p className="text-cream/60 text-xs md:text-sm tracking-[0.15em] uppercase">
-              Roads & Building Construction Contractors
-            </p>
-          </motion.div>
-        </div>
-
-      </section>
+      <PageHero
+        title="Shena Works Limited"
+        subtitle="Roads & Building Construction Contractors"
+      />
 
       {/* About Us Mini Section */}
       <section className="py-10 md:py-14 bg-background">

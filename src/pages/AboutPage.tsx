@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import heroImage from "@/assets/hero/hero-1.jpg";
+import PageHero from "@/components/PageHero";
 import aboutImg from "@/assets/hero/hero-4.jpg";
 
 const values = [
@@ -67,28 +67,10 @@ const AboutPage = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section - flush with navbar */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="About Shena Works" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-navy-dark/60" />
-        </div>
-        
-        <div className="container-custom relative z-10 text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-cream uppercase tracking-wide mb-3">
-              ABOUT US
-            </h1>
-            <p className="text-cream/75 text-sm md:text-base max-w-2xl mx-auto">
-              Shena Works Limited — a leading construction and design firm dedicated to transforming visions into reality.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="About Us"
+        subtitle="Shena Works Limited — a leading construction and design firm dedicated to transforming visions into reality."
+      />
 
       {/* Content */}
       <section className="py-10 md:py-16 bg-background">

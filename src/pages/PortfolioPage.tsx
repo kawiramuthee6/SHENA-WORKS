@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink, ArrowLeft, ChevronDown } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-
-import heroImage from "@/assets/hero/hero-1.jpg";
+import PageHero from "@/components/PageHero";
 
 // Black Perch Images
 import bp1 from "@/assets/projects/black-perch-1.jpeg";
@@ -126,7 +125,6 @@ const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate();
 
   const openLightbox = (project: Project, imgIndex = 0) => {
     setSelectedProject(project);
@@ -156,83 +154,50 @@ const PortfolioPage = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero - flush with navbar */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="Construction" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-navy-dark/60" />
-        </div>
-        
-        <div className="container-custom relative z-10 text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute top-4 left-4 md:left-0"
-          >
-            <button 
-              onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-2 text-cream/70 hover:text-cream hover:bg-cream/10 px-4 py-2 rounded-full transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30"
+      <PageHero
+        title="Our Work"
+        subtitle="Explore our portfolio of completed projects showcasing quality and innovation."
+      >
+        {/* Category Dropdown */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="absolute top-4 right-4 md:right-0 z-20"
+        >
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="bg-navy/50 hover:bg-navy text-cream px-4 py-2 rounded-full shadow-lg flex items-center gap-2 transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30 text-sm font-medium"
             >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="font-medium text-sm">Back</span>
+              <span>Categories</span>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
             </button>
-          </motion.div>
-
-          {/* Category Dropdown */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="absolute top-4 right-4 md:right-0"
-          >
-            <div className="relative">
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="bg-navy/50 hover:bg-navy text-cream px-4 py-2 rounded-full shadow-lg flex items-center gap-2 transition-all duration-300 backdrop-blur-sm border border-cream/10 hover:border-cream/30 text-sm font-medium"
-              >
-                <span>Categories</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
-              </button>
-              
-              <AnimatePresence>
-                {isDropdownOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-border overflow-hidden z-50"
-                  >
-                    {portfolioCategories.map((category) => (
-                      <Link
-                        key={category.id}
-                        to={category.path}
-                        onClick={() => setIsDropdownOpen(false)}
-                        className="block px-5 py-3 text-left hover:bg-muted transition-colors border-b border-border/50 last:border-0"
-                      >
-                        <span className="font-medium text-foreground text-sm">{category.label}</span>
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-cream mb-3 uppercase tracking-wide">
-              Our Work
-            </h1>
-            <p className="text-cream/75 text-sm md:text-base max-w-2xl mx-auto">
-              Explore our portfolio of completed projects showcasing quality and innovation.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+            
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-border overflow-hidden z-50"
+                >
+                  {portfolioCategories.map((category) => (
+                    <Link
+                      key={category.id}
+                      to={category.path}
+                      onClick={() => setIsDropdownOpen(false)}
+                      className="block px-5 py-3 text-left hover:bg-muted transition-colors border-b border-border/50 last:border-0"
+                    >
+                      <span className="font-medium text-foreground text-sm">{category.label}</span>
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </PageHero>
 
       {/* Projects - Show only 4 images per project + View Gallery */}
       <section className="py-10 md:py-16 bg-background">

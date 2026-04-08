@@ -79,7 +79,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 flex-shrink-0" onClick={() => setIsOpen(false)}>
-              <img src={logo} alt="Shena Works Limited" className="h-16 w-auto" />
+              <img src={logo} alt="Shena Works Limited" className="h-20 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -97,7 +97,7 @@ const Navbar = () => {
                       className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
                         isActive(item.href)
                           ? "text-navy-dark border-b-2 border-navy-dark"
-                          : "text-foreground hover:text-navy-light"
+                          : "text-foreground hover:text-teal-600"
                       }`}
                     >
                       {item.name}
@@ -187,7 +187,7 @@ const Navbar = () => {
                         <button
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                           className={`flex items-center justify-between w-full px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                            isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-navy-light"
+                            isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-teal-600"
                           }`}
                         >
                           {item.name}
@@ -222,7 +222,7 @@ const Navbar = () => {
                         to={item.href}
                         onClick={() => setIsOpen(false)}
                         className={`block px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-colors ${
-                          isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-navy-light"
+                          isActive(item.href) ? "text-navy-dark" : "text-foreground hover:text-teal-600"
                         }`}
                       >
                         {item.name}
