@@ -1,14 +1,12 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-
-import heroImage from "@/assets/hero/hero-1.jpg";
-import roadsImg from "@/assets/services/roads.jpg";
+import PageHero from "@/components/PageHero";
 import constructionVid from "@/assets/services/construction.mp4";
 import architectureImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
