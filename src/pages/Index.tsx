@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Truck, Package, HardHat } from "lucide-react";
+import { ArrowRight, Truck, Package, HardHat, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -14,6 +14,8 @@ import interiorImg from "@/assets/services/interior.jpg";
 import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
 import aboutImg from "@/assets/hero/hero-4.jpg";
+import excavatorImg from "@/assets/equipment/excavator.jpeg";
+import { useState, useRef } from "react";
 
 const services = [
   {
@@ -46,6 +48,10 @@ const materials = [
   { icon: Package, name: "Building Materials", description: "Cement, sand, ballast, stones, bricks, and all masonry supplies." },
   { icon: Truck, name: "Transport & Logistics", description: "Lorries, trucks, and heavy-duty transport for material delivery across Kenya." },
   { icon: HardHat, name: "Heavy Machinery", description: "Caterpillars, excavators, rollers, and equipment for road and site works." },
+];
+
+const equipment = [
+  { name: "Excavator", image: excavatorImg, video: "/videos/excavator.mp4" },
 ];
 
 const Index = () => {
@@ -168,6 +174,43 @@ const Index = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Equipment Showcase */}
+          {equipment.length > 0 && (
+            <div className="mt-10">
+              <h3 className="text-lg font-serif font-bold text-cream text-center mb-6 uppercase tracking-wide">Our Equipment</h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {equipment.map((item) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="rounded-2xl overflow-hidden border border-cream/10 bg-navy-light/50"
+                  >
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    </div>
+                    {item.video && (
+                      <div className="aspect-video overflow-hidden">
+                        <video
+                          src={item.video}
+                          muted
+                          loop
+                          playsInline
+                          autoPlay
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="p-4 text-center">
+                      <h4 className="text-cream font-serif font-bold">{item.name}</h4>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-8">
             <Button variant="heroOutline" size="lg" asChild>
