@@ -69,7 +69,7 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="rounded-2xl overflow-hidden"
             >
-              <img src={aboutImg} alt="About Shena Works" className="w-full h-[280px] md:h-[380px] object-cover" loading="lazy" />
+              <img src={aboutImg} alt="About Shena Works" className="w-full h-[280px] md:h-[380px] object-cover" decoding="async" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
