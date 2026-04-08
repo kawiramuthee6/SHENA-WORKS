@@ -15,8 +15,11 @@ import boqImg from "@/assets/services/boq.jpg";
 import projectMgmtImg from "@/assets/services/project-management.jpg";
 import excavatorImg from "@/assets/equipment/excavator.jpeg";
 import rollerGrader1 from "@/assets/equipment/roller-grader-1.jpeg";
-import rollerGrader2 from "@/assets/equipment/roller-grader-2.jpeg";
 import graderImg from "@/assets/equipment/grader.jpeg";
+import rollerOnsite1 from "@/assets/equipment/roller-onsite-1.jpeg";
+import rollerOnsite2 from "@/assets/equipment/roller-onsite-2.jpeg";
+import teamMachinery1 from "@/assets/equipment/team-machinery-1.jpeg";
+import teamMachinery2 from "@/assets/equipment/team-machinery-2.jpeg";
 
 const services = [
   { id: "roads", path: "/services/road-construction", title: "Road Construction", shortDesc: "Expert road construction services including tarmac laying, repairs, cabro installation, and drainage systems.", media: roadsImg, isVideo: false },
@@ -30,8 +33,10 @@ const services = [
 const equipment = [
   { name: "Excavator", image: excavatorImg },
   { name: "Grader", image: graderImg },
-  { name: "Roller", image: rollerGrader2 },
-  { name: "Roller & Grader", image: rollerGrader1 },
+  { name: "Roller", image: rollerOnsite1 },
+  { name: "Roller on Site", image: rollerOnsite2 },
+  { name: "Our Fleet", image: rollerGrader1 },
+  { name: "Our Team", image: teamMachinery1 },
 ];
 
 const ServicesPage = () => {
