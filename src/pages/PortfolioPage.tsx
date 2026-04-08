@@ -124,6 +124,17 @@ const projects: Project[] = [
     images: [stone1, stone2, stone3, stone4, stone5, stone6, stone7, stone8, stone9],
     services: ["Architecture & Design", "General Construction", "Cabro Installation", "Drainage Systems", "Interior Design"],
   },
+  {
+    id: "road-construction",
+    title: "Road & Infrastructure Works",
+    location: "Kenya",
+    category: "",
+    description: "Professional road construction and infrastructure development featuring precision grading, durable surfaces, and expert drainage solutions.",
+    fullDescription: "Our road construction projects demonstrate mastery in earthworks, grading, and surface finishing. Each project is delivered with attention to durability, proper drainage, and long-lasting quality.",
+    coverImage: road1,
+    images: [road1, road2, road3, road4, road5, road6, road7],
+    services: ["Road Construction", "Earthworks & Grading", "Drainage Systems"],
+  },
 ];
 
 const PortfolioPage = () => {
