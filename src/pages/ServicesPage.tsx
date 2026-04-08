@@ -42,6 +42,8 @@ import dozerImg4 from "@/assets/equipment/dozer-4.jpeg";
 import rollerGraderFleet from "@/assets/equipment/roller-grader-1.jpeg";
 import teamMachinery1 from "@/assets/equipment/team-machinery-1.jpeg";
 import teamMachinery2 from "@/assets/equipment/team-machinery-2.jpeg";
+import fleet3 from "@/assets/equipment/fleet-3.jpeg";
+import fleet4 from "@/assets/equipment/fleet-4.jpeg";
 
 const services = [
   { id: "roads", path: "/services/road-construction", title: "Road Construction", shortDesc: "Expert road construction services including tarmac laying, repairs, cabro installation, and drainage systems.", media: roadsImg, isVideo: false },
