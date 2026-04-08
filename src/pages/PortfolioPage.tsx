@@ -253,42 +253,46 @@ const PortfolioPage = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-5xl w-full"
+              className="relative max-w-3xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <button onClick={closeLightbox} className="absolute -top-12 right-0 text-cream hover:text-cream/70 transition-colors">
-                <X className="w-8 h-8" />
+              {/* Close Button */}
+              <button 
+                onClick={closeLightbox} 
+                className="absolute -top-10 right-0 z-10 w-9 h-9 rounded-full bg-cream/10 border border-cream/30 flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-200"
+              >
+                <X className="w-5 h-5" />
               </button>
 
-              <div className="relative aspect-video bg-navy rounded-2xl overflow-hidden">
+              <div className="relative aspect-[4/3] bg-navy rounded-2xl overflow-hidden">
                 <img src={selectedProject.images[currentImageIndex]} alt={selectedProject.title} className="w-full h-full object-contain" />
                 {selectedProject.images.length > 1 && (
                   <>
-                    <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors">
-                      <ChevronLeft className="w-6 h-6" />
+                    <button onClick={prevImage} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors">
+                      <ChevronLeft className="w-5 h-5" />
                     </button>
-                    <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors">
-                      <ChevronRight className="w-6 h-6" />
+                    <button onClick={nextImage} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors">
+                      <ChevronRight className="w-5 h-5" />
                     </button>
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-navy/80 px-4 py-2 rounded-full text-cream text-sm">
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-navy/80 px-3 py-1.5 rounded-full text-cream text-xs">
                       {currentImageIndex + 1} / {selectedProject.images.length}
                     </div>
                   </>
                 )}
               </div>
 
-              <div className="mt-4 text-center">
-                <h3 className="text-xl font-serif font-bold text-cream">{selectedProject.title}</h3>
-                <p className="text-cream/70 text-sm">{selectedProject.location}</p>
+              <div className="mt-3 text-center">
+                <h3 className="text-lg font-serif font-bold text-cream">{selectedProject.title}</h3>
+                <p className="text-cream/70 text-xs">{selectedProject.location}</p>
               </div>
 
               {selectedProject.images.length > 1 && (
-                <div className="flex gap-2 mt-4 overflow-x-auto pb-2 justify-center">
+                <div className="flex gap-1.5 mt-3 overflow-x-auto pb-2 justify-center">
                   {selectedProject.images.map((img, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentImageIndex(idx)}
-                      className={`shrink-0 w-14 h-14 rounded-lg overflow-hidden border-2 transition-colors ${idx === currentImageIndex ? "border-cream" : "border-transparent"}`}
+                      className={`shrink-0 w-12 h-12 rounded-lg overflow-hidden border-2 transition-colors ${idx === currentImageIndex ? "border-cream" : "border-transparent"}`}
                     >
                       <img src={img} alt="" className="w-full h-full object-cover" />
                     </button>
