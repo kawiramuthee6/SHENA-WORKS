@@ -70,7 +70,7 @@ const Navbar = () => {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cream transition-colors">
+            <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-gold-dark transition-colors">
               <Instagram className="h-3 w-3" />
               Follow Us
             </a>
