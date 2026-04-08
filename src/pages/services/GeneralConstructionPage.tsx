@@ -88,6 +88,18 @@ const GeneralConstructionPage = () => {
               ))}
             </div>
           </motion.div>
+
+          {/* Video Gallery */}
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-12">
+            <h3 className="text-2xl font-serif font-bold text-foreground mb-8 text-center">Construction in Action</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {galleryVideos.map((video, index) => (
+                <motion.div key={index} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.1 }} className="relative overflow-hidden rounded-xl aspect-[4/3] shadow-md hover:shadow-elegant transition-shadow">
+                  <video src={video.src} className="w-full h-full object-cover" autoPlay loop muted playsInline />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
