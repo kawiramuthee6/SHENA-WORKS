@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Truck, Package, HardHat, Play } from "lucide-react";
+import { ArrowRight, Truck, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -15,7 +15,9 @@ import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
 import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
 import aboutImg from "@/assets/hero/hero-4.jpg";
 import excavatorImg from "@/assets/equipment/excavator.jpeg";
-import { useState, useRef } from "react";
+import rollerGrader1 from "@/assets/equipment/roller-grader-1.jpeg";
+import rollerGrader2 from "@/assets/equipment/roller-grader-2.jpeg";
+import graderImg from "@/assets/equipment/grader.jpeg";
 
 const services = [
   {
@@ -44,14 +46,16 @@ const projects = [
   { title: "Stone Lounge & Villas", location: "Kenya", image: stoneImg },
 ];
 
-const materials = [
+const supplies = [
   { icon: Package, name: "Building Materials", description: "Cement, sand, ballast, stones, bricks, and all masonry supplies." },
   { icon: Truck, name: "Transport & Logistics", description: "Lorries, trucks, and heavy-duty transport for material delivery across Kenya." },
-  { icon: HardHat, name: "Heavy Machinery", description: "Caterpillars, excavators, rollers, and equipment for road and site works." },
 ];
 
 const equipment = [
   { name: "Excavator", image: excavatorImg, video: "/videos/excavator.mp4" },
+  { name: "Grader", image: graderImg },
+  { name: "Roller", image: rollerGrader2 },
+  { name: "Roller & Grader", image: rollerGrader1 },
 ];
 
 const Index = () => {
@@ -144,75 +148,87 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Materials & Equipment */}
+      {/* Machinery & Equipment */}
       <section className="py-14 md:py-20 bg-navy">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-10">
             <h2 className="text-2xl md:text-3xl font-serif font-bold text-cream uppercase tracking-wide mb-3">
-              MATERIALS & EQUIPMENT
+              MACHINERY & EQUIPMENT
             </h2>
             <p className="text-cream/70 text-sm md:text-base">
-              We supply and deliver all construction materials and heavy machinery to your project site, anywhere in Kenya.
+              We own and operate heavy machinery for road and site works — delivered to your project site, anywhere in Kenya.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-            {materials.map((item, index) => (
+          {/* Equipment Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-10">
+            {equipment.map((item, index) => (
               <motion.div
                 key={item.name}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="bg-navy-light/50 backdrop-blur-sm border border-cream/10 rounded-2xl p-6 text-center hover:border-cream/30 transition-all duration-300"
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="group relative rounded-2xl overflow-hidden border border-cream/10 bg-navy-light/30 hover:border-cream/30 transition-all duration-300"
               >
-                <div className="w-14 h-14 bg-cream/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-7 h-7 text-cream" />
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-70" />
                 </div>
-                <h3 className="text-lg font-serif font-bold text-cream mb-2">{item.name}</h3>
-                <p className="text-cream/70 leading-relaxed text-sm">{item.description}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h4 className="text-cream font-serif font-bold text-base md:text-lg">{item.name}</h4>
+                </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Equipment Showcase */}
-          {equipment.length > 0 && (
-            <div className="mt-10">
-              <h3 className="text-lg font-serif font-bold text-cream text-center mb-6 uppercase tracking-wide">Our Equipment</h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {equipment.map((item) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="rounded-2xl overflow-hidden border border-cream/10 bg-navy-light/50"
-                  >
-                    <div className="aspect-[4/3] overflow-hidden">
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                    </div>
-                    {item.video && (
-                      <div className="aspect-video overflow-hidden">
-                        <video
-                          src={item.video}
-                          muted
-                          loop
-                          playsInline
-                          autoPlay
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
-                    <div className="p-4 text-center">
-                      <h4 className="text-cream font-serif font-bold">{item.name}</h4>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+          {/* Excavator Video */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl overflow-hidden border border-cream/10 mb-10"
+          >
+            <div className="aspect-video max-h-[400px] overflow-hidden">
+              <video
+                src="/videos/excavator.mp4"
+                muted
+                loop
+                playsInline
+                autoPlay
+                className="w-full h-full object-cover"
+              />
             </div>
-          )}
+          </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-8">
+          {/* Supplies Cards */}
+          <div className="grid md:grid-cols-2 gap-5 mb-8">
+            {supplies.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="bg-navy-light/50 backdrop-blur-sm border border-cream/10 rounded-2xl p-6 flex items-start gap-4 hover:border-cream/30 transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-cream/10 rounded-xl flex items-center justify-center shrink-0">
+                  <item.icon className="w-6 h-6 text-cream" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-serif font-bold text-cream mb-1">{item.name}</h3>
+                  <p className="text-cream/70 leading-relaxed text-sm">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
             <Button variant="heroOutline" size="lg" asChild>
               <Link to="/contact">Enquire Now <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
