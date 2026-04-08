@@ -53,35 +53,56 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section - Single static image, no slideshow */}
-      <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center overflow-hidden -mt-20">
+      {/* Hero Section - Full screen, image behind navbar */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden -mt-[5rem]">
         <div className="absolute inset-0">
           <img
             src={hero1}
             alt="Shena Works"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-navy-dark/55" />
+          <div className="absolute inset-0 bg-navy-dark/50" />
         </div>
 
-        <div className="relative z-10 text-center px-4">
+        <div className="relative z-10 text-center px-4 pt-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-cream/60 text-xs md:text-sm tracking-[0.3em] uppercase mb-4">
+            <p className="text-cream/50 text-[10px] md:text-xs tracking-[0.35em] uppercase mb-5">
               Welcome to
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-3">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-cream mb-4 leading-[1.1]">
               Shena Works Limited
             </h1>
-            <p className="text-cream/75 text-sm md:text-lg max-w-xl mx-auto">
+            <div className="w-16 h-[1px] bg-cream/30 mx-auto mb-4" />
+            <p className="text-cream/60 text-xs md:text-sm tracking-[0.15em] uppercase">
               Roads & Building Construction Contractors
             </p>
           </motion.div>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-5 h-8 border border-cream/30 rounded-full flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1 h-2 bg-cream/50 rounded-full mt-1.5"
+            />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* About Us Mini Section */}

@@ -73,7 +73,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-sm border-b border-border/50 ${scrolled ? "shadow-md" : "shadow-sm"}`}
+        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 bg-white backdrop-blur-sm ${scrolled ? "shadow-md border-b border-border/30" : ""}`}
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
