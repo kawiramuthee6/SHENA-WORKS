@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 import heroImage from "@/assets/hero/hero-1.jpg";
 
 const directors = [
@@ -218,8 +220,8 @@ const ContactPage = () => {
       </section>
 
       <Footer />
-      
-      
+      <WhatsAppButton />
+      <BackToTop />
     </div>
   );
 };

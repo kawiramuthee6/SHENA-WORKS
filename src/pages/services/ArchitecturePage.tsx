@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 import architectureImg from "@/assets/services/architecture.jpg";
 import sl1 from "@/assets/services/arch/arch1.jpeg";
 import sl2 from "@/assets/services/arch/arch2.jpeg";
@@ -76,7 +78,7 @@ const ArchitecturePage = () => {
           </motion.div>
         </div>
       </section>
-      <Footer />
+      <Footer /><WhatsAppButton /><BackToTop />
     </div>
   );
 };

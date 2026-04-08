@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 import roadsImg from "@/assets/services/roads.jpg";
 
 const features = [
@@ -86,8 +88,8 @@ const RoadConstructionPage = () => {
       </section>
 
       <Footer />
-      
-      
+      <WhatsAppButton />
+      <BackToTop />
     </div>
   );
 };

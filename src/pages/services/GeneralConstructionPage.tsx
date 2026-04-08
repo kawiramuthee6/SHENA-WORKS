@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 
 import bp1 from "@/assets/services/general const/gc1.jpeg";
 import bp2 from "@/assets/services/general const/gc2.jpeg";
@@ -88,8 +90,8 @@ const GeneralConstructionPage = () => {
       </section>
 
       <Footer />
-      
-      
+      <WhatsAppButton />
+      <BackToTop />
     </div>
   );
 };

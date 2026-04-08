@@ -4,6 +4,8 @@ import { ArrowRight, Truck, Package, HardHat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 import Testimonials from "@/components/Testimonials";
 import roadsImg from "@/assets/services/roads.jpg";
 import bp4 from "@/assets/projects/black-perch-4.jpeg";
@@ -271,8 +273,8 @@ const Index = () => {
       </section>
 
       <Footer />
-      
-      
+      <WhatsAppButton />
+      <BackToTop />
     </div>
   );
 };

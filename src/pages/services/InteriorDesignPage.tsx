@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 import interiorImg from "@/assets/services/interior.jpg";
 import dc1 from "@/assets/services/interior/int1.jpeg";
 import dc2 from "@/assets/services/interior/int2.jpeg";
@@ -76,7 +78,7 @@ const InteriorDesignPage = () => {
           </motion.div>
         </div>
       </section>
-      <Footer />
+      <Footer /><WhatsAppButton /><BackToTop />
     </div>
   );
 };
