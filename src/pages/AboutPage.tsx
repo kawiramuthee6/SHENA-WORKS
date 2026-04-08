@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import heroImage from "@/assets/hero/hero-1.jpg";
+import PageHero from "@/components/PageHero";
 import aboutImg from "@/assets/hero/hero-4.jpg";
 
 const values = [
