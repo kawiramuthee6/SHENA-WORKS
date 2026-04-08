@@ -46,14 +46,16 @@ const projects = [
   { title: "Stone Lounge & Villas", location: "Kenya", image: stoneImg },
 ];
 
-const materials = [
+const supplies = [
   { icon: Package, name: "Building Materials", description: "Cement, sand, ballast, stones, bricks, and all masonry supplies." },
   { icon: Truck, name: "Transport & Logistics", description: "Lorries, trucks, and heavy-duty transport for material delivery across Kenya." },
-  { icon: HardHat, name: "Heavy Machinery", description: "Caterpillars, excavators, rollers, and equipment for road and site works." },
 ];
 
 const equipment = [
   { name: "Excavator", image: excavatorImg, video: "/videos/excavator.mp4" },
+  { name: "Grader", image: graderImg },
+  { name: "Roller", image: rollerGrader2 },
+  { name: "Roller & Grader", image: rollerGrader1 },
 ];
 
 const Index = () => {
