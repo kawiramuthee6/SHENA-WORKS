@@ -54,7 +54,7 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section - Full screen, image behind navbar */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden -mt-[5rem]">
+      <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden -mt-[5rem]">
         <div className="absolute inset-0">
           <img
             src={hero1}
@@ -83,26 +83,6 @@ const Index = () => {
             </p>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-5 h-8 border border-cream/30 rounded-full flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-2 bg-cream/50 rounded-full mt-1.5"
-            />
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* About Us Mini Section */}
