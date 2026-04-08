@@ -75,7 +75,7 @@ const GeneralConstructionPage = () => {
               <Button variant="navy" size="lg" asChild><Link to="/contact">Contact Us <ArrowRight className="ml-2 h-5 w-5" /></Link></Button>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative overflow-hidden rounded-2xl aspect-[4/3] shadow-elegant">
-              <img src={bp6} alt="General Construction Work" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={bp5} alt="General Construction Work" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
