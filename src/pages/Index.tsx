@@ -50,6 +50,10 @@ const materials = [
   { icon: HardHat, name: "Heavy Machinery", description: "Caterpillars, excavators, rollers, and equipment for road and site works." },
 ];
 
+const equipment = [
+  { name: "Excavator", image: excavatorImg, video: "/videos/excavator.mp4" },
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen">
