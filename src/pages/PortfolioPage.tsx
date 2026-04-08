@@ -246,7 +246,7 @@ const PortfolioPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-navy-dark/98 flex items-center justify-center p-4 overflow-y-auto"
+            className="fixed inset-0 z-[100] bg-navy-dark/98 flex items-center justify-center p-6 sm:p-8 overflow-y-auto"
             onClick={closeLightbox}
           >
             <motion.div
@@ -256,10 +256,10 @@ const PortfolioPage = () => {
               className="relative max-w-2xl w-full my-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
+              {/* Close Button - inside the box, top-right */}
               <button 
                 onClick={closeLightbox} 
-                className="absolute -top-10 right-0 z-10 w-9 h-9 rounded-full bg-cream/10 border border-cream/30 flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-200"
+                className="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-navy/80 border border-cream/20 flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-200 shadow-lg"
               >
                 <X className="w-5 h-5" />
               </button>
