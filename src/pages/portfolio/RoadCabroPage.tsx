@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 
-import Breadcrumb from "@/components/Breadcrumb";
+
 import heroImage from "@/assets/projects/pin-hideout-7.jpeg";
 
 // Pin Hideout Images

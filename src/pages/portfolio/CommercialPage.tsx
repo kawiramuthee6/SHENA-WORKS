@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 
-import Breadcrumb from "@/components/Breadcrumb";
+
 import heroImage from "@/assets/projects/black-perch-4.jpeg";
 
 // Black Perch Images
