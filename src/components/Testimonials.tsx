@@ -1,126 +1,85 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Quote, ArrowRight } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Eng. Silas M. Kinoti EBS",
-    role: "Director General",
-    company: "Kenya Urban Roads Authority",
-    content: "Shena Works has proven to be a highly professional and reliable engineering firm, consistently delivering quality work with strong technical expertise and efficiency. Their commitment to high standards, proper project management, and timely execution makes them a dependable partner in infrastructure development.",
-    rating: 5,
+    name: "Eng. Silas M. Kinoti, EBS",
+    role: "Director General, Kenya Urban Roads Authority",
+    content: "A highly professional and reliable engineering firm, consistently delivering quality work with strong technical expertise and timely execution.",
   },
   {
     name: "Charles Imunde",
-    role: "Director",
-    company: "The Pin Hideout",
-    content: "From the initial consultation to the final handover, Shena Works demonstrated exceptional professionalism. The team delivered our project with remarkable attention to detail, and the quality of construction exceeded our expectations.",
-    rating: 5,
+    role: "Director, The Pin Hideout",
+    content: "From initial consultation to final handover, the team delivered with remarkable attention to detail. The quality of construction exceeded our expectations.",
   },
   {
     name: "Directors, Black Perch Lounge",
-    role: "Directors",
-    company: "Black Perch Lounge",
-    content: "Shena Works transformed our vision for Black Perch Lounge into reality. Their innovative approach to the unique grass-tile flooring, ambient lighting, and overall construction quality made the venue a landmark in Meru. A team that truly delivers excellence.",
-    rating: 5,
+    role: "Black Perch Lounge",
+    content: "Shena Works turned our vision into a landmark in Meru — innovative grass-tile flooring, ambient lighting, and construction quality that holds up.",
   },
   {
     name: "Rashid Juma",
-    role: "Director",
-    company: "Stone Lodge & Villas",
-    content: "The craftsmanship and dedication Shena Works brought to our lodge project was outstanding. They understood our vision perfectly and translated it into a stunning reality. Their expertise in both construction and interior finishing is second to none.",
-    rating: 5,
+    role: "Director, Stone Lodge & Villas",
+    content: "Outstanding craftsmanship. They understood the vision and translated it into a stunning reality — equally strong in construction and finishing.",
   },
   {
     name: "Dominic Bundi",
-    role: "Owner",
-    company: "Dukes Cottages",
-    content: "Shena Works built our cottages with incredible skill and precision. The project was completed on schedule, and the quality of work speaks for itself. They are our go-to construction partner for any future developments.",
-    rating: 5,
+    role: "Owner, Dukes Cottages",
+    content: "Built our cottages with skill and precision, on schedule. They are our go-to construction partner for any future developments.",
   },
 ];
 
 const Testimonials = () => {
   const [showAll, setShowAll] = useState(false);
-  const displayedTestimonials = showAll ? testimonials : testimonials.slice(0, 2);
+  const list = showAll ? testimonials : testimonials.slice(0, 2);
 
   return (
-    <section className="py-14 md:py-20 bg-muted/50">
-      <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-10"
-        >
-          <h2 className="text-2xl md:text-3xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-3">
-            WHAT OUR CLIENTS SAY
-          </h2>
-          <p className="text-muted-foreground text-sm md:text-base">
-            Trusted by industry leaders and private developers across Kenya.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-          <AnimatePresence mode="popLayout">
-            {displayedTestimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="relative bg-card rounded-2xl p-5 md:p-6 shadow-md hover:shadow-elegant transition-shadow duration-500"
-              >
-                <div className="absolute top-4 right-4 w-9 h-9 bg-navy/10 rounded-full flex items-center justify-center">
-                  <Quote className="w-4 h-4 text-navy-dark" />
-                </div>
-
-                <div className="flex gap-1 mb-3">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 text-navy-dark fill-navy-dark" />
-                  ))}
-                </div>
-
-                <p className="text-foreground/80 text-sm leading-relaxed mb-4">
-                  "{testimonial.content}"
-                </p>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-navy-dark rounded-full flex items-center justify-center text-cream font-bold text-xs">
-                    {testimonial.name.split(' ').filter(n => !['EBS', 'Eng.', 'Directors,'].includes(n)).map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground text-sm">{testimonial.name}</h4>
-                    <p className="text-xs text-muted-foreground">{testimonial.role} · {testimonial.company}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+    <section className="border-b border-[hsl(var(--rule))]">
+      <div className="container-custom py-20 md:py-28">
+        <div className="flex items-baseline justify-between mb-14 md:mb-20">
+          <p className="eyebrow">№05 — In their words</p>
+          <p className="hidden sm:block eyebrow">{testimonials.length} entries</p>
         </div>
 
-        {!showAll && testimonials.length > 2 && (
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-8">
-            <button
-              onClick={() => setShowAll(true)}
-              className="inline-flex items-center text-navy-dark font-semibold text-sm uppercase tracking-wide hover:text-navy-light transition-colors"
-            >
-              See More Reviews <ArrowRight className="ml-2 h-4 w-4" />
-            </button>
-          </motion.div>
-        )}
+        <div>
+          <AnimatePresence mode="popLayout">
+            {list.map((t, i) => (
+              <motion.figure
+                key={t.name}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                className="grid grid-cols-12 gap-6 py-12 md:py-16 border-t border-[hsl(var(--rule))]"
+              >
+                <div className="col-span-12 md:col-span-2">
+                  <p className="font-mono text-[11px] text-muted-foreground">{String(i + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}</p>
+                </div>
+                <blockquote className="col-span-12 md:col-span-7">
+                  <p className="font-serif text-2xl md:text-3xl leading-[1.25] text-foreground tracking-tight text-balance">
+                    “{t.content}”
+                  </p>
+                </blockquote>
+                <figcaption className="col-span-12 md:col-span-3 flex flex-col justify-end">
+                  <p className="text-foreground text-sm">{t.name}</p>
+                  <p className="text-muted-foreground text-sm">{t.role}</p>
+                </figcaption>
+              </motion.figure>
+            ))}
+          </AnimatePresence>
 
-        {showAll && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mt-8">
+          <div className="border-t border-[hsl(var(--rule))]" />
+        </div>
+
+        {testimonials.length > 2 && (
+          <div className="mt-10">
             <button
-              onClick={() => setShowAll(false)}
-              className="inline-flex items-center text-navy-dark font-semibold text-sm uppercase tracking-wide hover:text-navy-light transition-colors"
+              onClick={() => setShowAll(!showAll)}
+              className="font-mono text-[11px] tracking-[0.2em] uppercase text-foreground border-b border-foreground pb-1 hover:opacity-60"
             >
-              Show Less
+              {showAll ? "Show less" : `Show ${testimonials.length - 2} more →`}
             </button>
-          </motion.div>
+          </div>
         )}
       </div>
     </section>
