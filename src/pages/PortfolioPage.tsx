@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import PageHero from "@/components/PageHero";
 
-// Black Perch Images
 import bp1 from "@/assets/projects/black-perch-1.jpeg";
 import bp2 from "@/assets/projects/black-perch-2.jpeg";
 import bp3 from "@/assets/projects/black-perch-3.jpeg";
@@ -20,7 +17,6 @@ import bp8 from "@/assets/projects/black-perch-8.jpeg";
 import bp9 from "@/assets/projects/black-perch-9.jpeg";
 import bp10 from "@/assets/projects/black-perch-10.jpeg";
 
-// Pin Hideout Images
 import pin1 from "@/assets/projects/pin-hideout-1.jpeg";
 import pin2 from "@/assets/projects/pin-hideout-2.jpeg";
 import pin3 from "@/assets/projects/pin-hideout-3.jpeg";
@@ -32,8 +28,9 @@ import pin8 from "@/assets/projects/pin-hideout-8.jpeg";
 import pin9 from "@/assets/projects/pin-hideout-9.jpeg";
 import pin10 from "@/assets/projects/pin-hideout-10.jpeg";
 import pin11 from "@/assets/projects/pin-hideout-11.jpeg";
+import pin12 from "@/assets/projects/pin-hideout-12.jpeg";
+import pin13 from "@/assets/projects/pin-hideout-13.jpeg";
 
-// Road Construction Images
 import road1 from "@/assets/services/roads/road1.jpeg";
 import road2 from "@/assets/services/roads/road2.jpeg";
 import road3 from "@/assets/services/roads/road3.jpeg";
@@ -41,10 +38,7 @@ import road4 from "@/assets/services/roads/road4.jpeg";
 import road5 from "@/assets/services/roads/road5.jpeg";
 import road6 from "@/assets/services/roads/road6.jpeg";
 import road7 from "@/assets/services/roads/road7.jpeg";
-import pin12 from "@/assets/projects/pin-hideout-12.jpeg";
-import pin13 from "@/assets/projects/pin-hideout-13.jpeg";
 
-// Dukes Cottages Images
 import dukes1 from "@/assets/projects/dukes-cottages-1.jpg";
 import dukes2 from "@/assets/projects/dukes-cottages-2.jpg";
 import dukes3 from "@/assets/projects/dukes-cottages-3.jpg";
@@ -56,7 +50,6 @@ import dukes8 from "@/assets/projects/dukes-cottages-8.jpg";
 import dukes9 from "@/assets/projects/dukes-cottages-9.jpg";
 import dukes10 from "@/assets/projects/dukes-cottages-10.jpg";
 
-// Stone Lounge Images
 import stone1 from "@/assets/projects/stone-lounge-1.jpeg";
 import stone2 from "@/assets/projects/stone-lounge-2.jpeg";
 import stone3 from "@/assets/projects/stone-lounge-3.jpeg";
@@ -68,255 +61,189 @@ import stone8 from "@/assets/projects/stone-lounge-8.jpeg";
 import stone9 from "@/assets/projects/stone-lounge-9.jpeg";
 
 interface Project {
+  num: string;
   id: string;
   title: string;
   location: string;
   category: string;
+  year: string;
   description: string;
-  fullDescription: string;
   coverImage: string;
   images: string[];
-  services: string[];
 }
 
 const projects: Project[] = [
   {
-    id: "black-perch",
-    title: "Black Perch Lounge",
-    location: "Meru, Kenya",
-    category: "Commercial Construction",
-    description: "A stunning entertainment lounge featuring modern architecture with unique grass-tile flooring, ambient lighting, and lush landscaping.",
-    fullDescription: "The Black Perch Lounge in Meru is a testament to our ability to create unique, vibrant commercial spaces. This project involved complete construction from the ground up, including innovative outdoor flooring with grass-integrated tile patterns, atmospheric lighting design, landscaping with tropical plants, and custom structural elements.",
+    num: "01", id: "black-perch", title: "Black Perch Lounge", location: "Meru, Kenya", category: "Commercial", year: "2024",
+    description: "An entertainment lounge built ground-up — grass-tile flooring, ambient lighting, custom landscaping. Construction, interior and parking, delivered as one project.",
     coverImage: bp4,
     images: [bp1, bp2, bp3, bp4, bp6, bp7, bp8, bp9, bp10],
-    services: ["General Construction", "Interior Design", "Landscaping", "Road & Parking Construction"],
   },
   {
-    id: "pin-hideout",
-    title: "The Pin Hideout Limited",
-    location: "Kenya",
-    category: "Road & Cabro Construction",
-    description: "Complete cabro paving and road construction project for a commercial complex.",
-    fullDescription: "The Pin Hideout Limited project showcases our expertise in road and cabro construction. This comprehensive project involved extensive earthworks and site preparation, stone base laying, professional cabro paving installation in multiple colors and patterns, and complete drainage systems.",
+    num: "02", id: "pin-hideout", title: "The Pin Hideout", location: "Kenya", category: "Roads & Cabro", year: "2024",
+    description: "Earthworks, stone base, multi-pattern cabro paving and full drainage for a commercial complex.",
     coverImage: pin7,
     images: [pin1, pin2, pin3, pin4, pin5, pin6, pin7, pin8, pin9, pin10, pin11, pin12, pin13],
-    services: ["Road Construction", "Cabro Installation", "Earthworks & Grading", "Drainage Systems"],
   },
   {
-    id: "dukes-cottages",
-    title: "Dukes Cottages, Restaurant & Garden",
-    location: "Kenya",
-    category: "Hospitality Construction",
-    description: "An elegant hospitality complex featuring modern cottages, a fine dining restaurant, and beautifully landscaped gardens.",
-    fullDescription: "Dukes Cottages represents our expertise in hospitality sector development. This comprehensive project includes multiple luxury cottages designed for comfort and privacy, a full-service restaurant with modern kitchen facilities, and extensive garden landscaping.",
+    num: "03", id: "dukes-cottages", title: "Dukes Cottages, Restaurant & Garden", location: "Kenya", category: "Hospitality", year: "2023",
+    description: "Multiple luxury cottages, a full-service restaurant with modern kitchen, and landscaped gardens — design through delivery.",
     coverImage: dukes1,
     images: [dukes1, dukes2, dukes3, dukes4, dukes5, dukes6, dukes7, dukes8, dukes9, dukes10],
-    services: ["Architecture & Design", "General Construction", "Interior Design", "Landscaping"],
   },
   {
-    id: "stone-lounge",
-    title: "Stone Lounge & Villas",
-    location: "Kenya",
-    category: "Residential & Commercial",
-    description: "A premium development combining luxury villas with a sophisticated lounge space featuring natural stone facades.",
-    fullDescription: "Stone Lounge & Villas showcases our capability to deliver high-end residential and commercial developments. The project features distinctive natural stone architecture, modern villa design with contemporary interiors, and premium cabro paving throughout.",
+    num: "04", id: "stone-lounge", title: "Stone Lounge & Villas", location: "Kenya", category: "Residential & Commercial", year: "2024",
+    description: "Natural stone facades, contemporary villa interiors and premium cabro paving across the development.",
     coverImage: stone4,
     images: [stone1, stone2, stone3, stone4, stone5, stone6, stone7, stone8, stone9],
-    services: ["Architecture & Design", "General Construction", "Cabro Installation", "Drainage Systems", "Interior Design"],
   },
   {
-    id: "road-construction",
-    title: "Road & Infrastructure Works",
-    location: "Kenya",
-    category: "",
-    description: "Professional road construction and infrastructure development featuring precision grading, durable surfaces, and expert drainage solutions.",
-    fullDescription: "Our road construction projects demonstrate mastery in earthworks, grading, and surface finishing. Each project is delivered with attention to durability, proper drainage, and long-lasting quality.",
+    num: "05", id: "road-construction", title: "Road & Infrastructure Works", location: "Kenya", category: "Roads", year: "Ongoing",
+    description: "Earthworks, grading, surface finishing and drainage — built for durability and the climate they sit in.",
     coverImage: road1,
     images: [road1, road2, road3, road4, road5, road6, road7],
-    services: ["Road Construction", "Earthworks & Grading", "Drainage Systems"],
   },
 ];
 
 const PortfolioPage = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selected, setSelected] = useState<Project | null>(null);
+  const [idx, setIdx] = useState(0);
 
-  const openLightbox = (project: Project, imgIndex = 0) => {
-    setSelectedProject(project);
-    setCurrentImageIndex(imgIndex);
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeLightbox = () => {
-    setSelectedProject(null);
-    setCurrentImageIndex(0);
-    document.body.style.overflow = "auto";
-  };
-
-  const nextImage = () => {
-    if (selectedProject) {
-      setCurrentImageIndex((prev) => prev === selectedProject.images.length - 1 ? 0 : prev + 1);
-    }
-  };
-
-  const prevImage = () => {
-    if (selectedProject) {
-      setCurrentImageIndex((prev) => prev === 0 ? selectedProject.images.length - 1 : prev - 1);
-    }
-  };
+  const open = (p: Project, i = 0) => { setSelected(p); setIdx(i); document.body.style.overflow = "hidden"; };
+  const close = () => { setSelected(null); setIdx(0); document.body.style.overflow = "auto"; };
+  const next = () => selected && setIdx((p) => (p + 1) % selected.images.length);
+  const prev = () => selected && setIdx((p) => (p === 0 ? selected.images.length - 1 : p - 1));
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       <PageHero
-        title="Our Work"
-        subtitle="Explore our portfolio of completed projects showcasing quality and innovation."
+        eyebrow="№04 — Selected work"
+        title="Things we have built."
+        subtitle="A working archive of completed projects across roads, hospitality, commercial and residential."
+        image={projects[0].coverImage}
       />
 
-      {/* Projects - Show only 4 images per project + View Gallery */}
-      <section className="py-10 md:py-16 bg-background">
-        <div className="container-custom px-4 sm:px-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+      {/* Index ledger */}
+      <section className="border-b border-[hsl(var(--rule))]">
+        <div className="container-custom py-10">
+          <div className="grid grid-cols-12 gap-4 pb-4 border-b border-[hsl(var(--rule))] eyebrow">
+            <p className="col-span-1">№</p>
+            <p className="col-span-5">Project</p>
+            <p className="col-span-3 hidden md:block">Category</p>
+            <p className="col-span-3 hidden md:block text-right">Location · Year</p>
+          </div>
+          {projects.map((p) => (
+            <a key={p.id} href={`#${p.id}`} className="grid grid-cols-12 gap-4 py-4 border-b border-[hsl(var(--rule))] hover:bg-secondary/50 transition-colors">
+              <p className="col-span-1 font-mono text-[12px] text-muted-foreground">{p.num}</p>
+              <p className="col-span-11 md:col-span-5 font-serif text-base text-foreground">{p.title}</p>
+              <p className="col-span-12 md:col-span-3 text-muted-foreground text-sm hidden md:block">{p.category}</p>
+              <p className="col-span-12 md:col-span-3 text-muted-foreground text-sm md:text-right hidden md:block">{p.location} · {p.year}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section className="border-b border-[hsl(var(--rule))]">
+        <div className="container-custom py-12 md:py-20">
+          {projects.map((p, i) => (
+            <motion.article
+              id={p.id}
+              key={p.id}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className={`mb-14 ${index !== projects.length - 1 ? "pb-14 border-b border-border" : ""}`}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6 }}
+              className="py-14 md:py-20 border-t border-[hsl(var(--rule))] first:border-t-0"
             >
-              {/* Project Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground">
-                    {project.title}
+              {/* Heading row */}
+              <div className="grid grid-cols-12 gap-6 mb-10">
+                <p className="col-span-2 font-mono text-[11px] text-muted-foreground pt-2">{p.num}</p>
+                <div className="col-span-12 md:col-span-7">
+                  <h2 className="font-serif text-3xl md:text-5xl text-foreground tracking-tight text-balance">
+                    {p.title}
                   </h2>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm mt-1">
-                    <MapPin className="w-3.5 h-3.5" />
-                    {project.location}
-                  </div>
+                  <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-muted-foreground mt-3">
+                    {p.category} · {p.location} · {p.year}
+                  </p>
                 </div>
-                <Button variant="navyOutline" size="sm" onClick={() => openLightbox(project)}>
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  View Gallery
-                </Button>
+                <div className="col-span-12 md:col-span-3 md:text-right md:self-end">
+                  <button onClick={() => open(p)} className="font-mono text-[11px] tracking-[0.2em] uppercase border-b border-foreground pb-1 text-foreground hover:opacity-60">
+                    Open gallery ({p.images.length}) →
+                  </button>
+                </div>
               </div>
 
-              {/* Show only 4 images */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
-                {project.images.slice(0, 4).map((image, imgIndex) => (
-                  <motion.div
-                    key={imgIndex}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: imgIndex * 0.05 }}
-                    className="relative overflow-hidden rounded-xl cursor-pointer group aspect-square"
-                    onClick={() => openLightbox(project, imgIndex)}
-                  >
-                    <img
-                      src={image}
-                      alt={`${project.title} - Image ${imgIndex + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      decoding="async"
-                    />
-                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/40 transition-colors duration-300 flex items-center justify-center">
-                      <span className="text-cream opacity-0 group-hover:opacity-100 transition-opacity font-medium text-sm">
-                        View
-                      </span>
+              {/* Hero image */}
+              <div className="aspect-[16/9] overflow-hidden img-hover-zoom mb-3 cursor-pointer" onClick={() => open(p, 0)}>
+                <img src={p.coverImage} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+              </div>
+
+              {/* Thumbs + description */}
+              <div className="grid grid-cols-12 gap-3 md:gap-6 mt-6">
+                <div className="col-span-12 md:col-span-7 grid grid-cols-3 gap-3">
+                  {p.images.slice(0, 3).map((img, k) => (
+                    <div key={k} className="aspect-square overflow-hidden img-hover-zoom cursor-pointer" onClick={() => open(p, k + 1)}>
+                      <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
                     </div>
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
+                <div className="col-span-12 md:col-span-5">
+                  <p className="text-foreground/75 text-[15px] leading-[1.65] max-w-[42ch]">{p.description}</p>
+                </div>
               </div>
-
-              {/* Description */}
-              <p className="text-muted-foreground leading-relaxed text-sm max-w-3xl">
-                {project.description}
-              </p>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-navy">
-        <div className="container-custom text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-cream mb-4 uppercase tracking-wide">
-              Your Project Could Be Next
+      <section className="bg-navy-dark text-cream">
+        <div className="container-custom py-24 md:py-32">
+          <div className="grid grid-cols-12 gap-6 items-end">
+            <h2 className="col-span-12 md:col-span-9 display-lg text-cream text-balance">
+              Your project could sit here next.
             </h2>
-            <p className="text-cream/70 text-sm md:text-base max-w-2xl mx-auto mb-6">
-              Let us bring your vision to life. Contact us today to discuss your project.
-            </p>
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/contact">Start Your Project</Link>
-            </Button>
-          </motion.div>
+            <Link to="/contact" className="col-span-12 md:col-span-3 md:text-right inline-block">
+              <span className="font-mono text-[11px] tracking-[0.2em] uppercase border-b border-cream pb-1 hover:opacity-60">Start a project →</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Lightbox */}
       <AnimatePresence>
-        {selectedProject && (
+        {selected && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-navy-dark flex items-center justify-center p-6 sm:p-10"
-            onClick={closeLightbox}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-navy-dark flex flex-col p-4 md:p-8"
+            onClick={close}
           >
-            {/* Close Button - fixed top-right of screen */}
-            <button 
-              onClick={closeLightbox} 
-              className="absolute top-4 right-4 z-[110] w-10 h-10 rounded-full bg-cream/10 border border-cream/30 flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-200"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="flex items-center justify-between text-cream font-mono text-[11px] tracking-[0.2em] uppercase mb-4 pb-4 border-b border-cream/15" onClick={(e) => e.stopPropagation()}>
+              <span>{selected.title}</span>
+              <span>{String(idx + 1).padStart(2, "0")} / {String(selected.images.length).padStart(2, "0")}</span>
+              <button onClick={close} className="hover:opacity-60">Close ✕</button>
+            </div>
 
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-2xl w-full flex flex-col items-center max-h-[85vh]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="relative w-full max-h-[55vh] bg-navy rounded-2xl overflow-hidden flex-shrink-0">
-                <img src={selectedProject.images[currentImageIndex]} alt={selectedProject.title} className="w-full h-full object-contain max-h-[55vh]" />
-                {selectedProject.images.length > 1 && (
-                  <>
-                    <button onClick={prevImage} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors">
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button onClick={nextImage} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-navy/80 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-colors">
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-navy/80 px-3 py-1.5 rounded-full text-cream text-xs">
-                      {currentImageIndex + 1} / {selectedProject.images.length}
-                    </div>
-                  </>
-                )}
-              </div>
+            <div className="flex-1 flex items-center justify-center overflow-hidden" onClick={(e) => e.stopPropagation()}>
+              <img src={selected.images[idx]} alt="" className="max-h-full max-w-full object-contain" />
+            </div>
 
-              <div className="mt-3 text-center flex-shrink-0">
-                <h3 className="text-lg font-serif font-bold text-cream">{selectedProject.title}</h3>
-                <p className="text-cream/70 text-xs">{selectedProject.location}</p>
-              </div>
-
-              {selectedProject.images.length > 1 && (
-                <div className="flex gap-1.5 mt-3 overflow-x-auto pb-2 justify-center flex-shrink-0">
-                  {selectedProject.images.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentImageIndex(idx)}
-                      className={`shrink-0 w-11 h-11 rounded-lg overflow-hidden border-2 transition-colors ${idx === currentImageIndex ? "border-cream" : "border-transparent"}`}
-                    >
+            {selected.images.length > 1 && (
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-cream/15" onClick={(e) => e.stopPropagation()}>
+                <button onClick={prev} className="font-mono text-[11px] tracking-[0.2em] uppercase text-cream border-b border-cream pb-1 hover:opacity-60">← Prev</button>
+                <div className="hidden md:flex gap-2 overflow-x-auto">
+                  {selected.images.map((img, k) => (
+                    <button key={k} onClick={() => setIdx(k)} className={`w-12 h-12 overflow-hidden ${k === idx ? "outline outline-1 outline-cream" : "opacity-50 hover:opacity-100"}`}>
                       <img src={img} alt="" className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>
-              )}
-            </motion.div>
+                <button onClick={next} className="font-mono text-[11px] tracking-[0.2em] uppercase text-cream border-b border-cream pb-1 hover:opacity-60">Next →</button>
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

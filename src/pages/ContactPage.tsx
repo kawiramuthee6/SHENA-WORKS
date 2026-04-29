@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send, MessageCircle, User, Building, Clock, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,25 +8,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
-import PageHero from "@/components/PageHero";
 
 const directors = [
-  {
-    name: "Newton M Muthee",
-    role: "Director",
-    phone: "+254718971896",
-    email: "nmuthee5@gmail.com",
-    location: "Meru, Kenya",
-    mapLink: "https://maps.google.com/?q=Meru,Kenya",
-  },
-  {
-    name: "Sharon K Muthee",
-    role: "Co-Director",
-    phone: "+254707243053",
-    email: "kawiramutheesk@gmail.com",
-    location: "Nairobi, Kenya",
-    mapLink: "https://maps.google.com/?q=Nairobi,Kenya",
-  },
+  { name: "Newton M. Muthee", role: "Director", phone: "+254 718 971 896", email: "nmuthee5@gmail.com", location: "Meru, Kenya" },
+  { name: "Sharon K. Muthee", role: "Co-Director", phone: "+254 707 243 053", email: "kawiramutheesk@gmail.com", location: "Nairobi, Kenya" },
 ];
 
 const ContactPage = () => {
@@ -41,166 +25,128 @@ const ContactPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    toast({ title: "Message Sent!", description: "We'll get back to you as soon as possible." });
+    await new Promise((r) => setTimeout(r, 800));
+    toast({ title: "Message sent.", description: "We'll be in touch shortly." });
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     setIsSubmitting(false);
   };
 
   const openWhatsApp = () => {
     const phone = "254718971896";
-    const message = encodeURIComponent("Hello, I'm interested in your construction services.");
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent("Hello, I'm interested in your construction services.")}`, "_blank");
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
-      
-      <PageHero
-        title="Contact Us"
-        subtitle="Ready to start your project? Reach out and let's build something amazing together."
-      />
 
-      {/* Contact Info Cards */}
-      <section className="py-10 bg-background">
+      {/* Hero — single message, no image */}
+      <section className="border-b border-[hsl(var(--rule))]">
+        <div className="container-custom py-20 md:py-32">
+          <div className="grid grid-cols-12 gap-6 items-end">
+            <div className="col-span-12 md:col-span-9">
+              <p className="eyebrow mb-8">№06 — Reach</p>
+              <motion.h1
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="display-xl text-foreground text-balance"
+              >
+                Tell us about the site.
+              </motion.h1>
+            </div>
+            <div className="col-span-12 md:col-span-3">
+              <p className="text-foreground/70 text-[15px] leading-[1.55]">
+                A free initial consultation. We'll come back with a brief and a route to a quote.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Channels — three columns of plain info */}
+      <section className="border-b border-[hsl(var(--rule))]">
         <div className="container-custom">
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3">
             {[
-              { icon: Phone, title: "Call Us", content: <a href="tel:+254718971896" className="text-muted-foreground hover:text-navy-dark transition-colors">+254 718 971 896</a> },
-              { icon: Mail, title: "Email Us", content: <a href="mailto:shenaworksltd@gmail.com" className="text-muted-foreground hover:text-navy-dark transition-colors">shenaworksltd@gmail.com</a> },
-              { icon: Clock, title: "Working Hours", content: <p className="text-muted-foreground">Mon - Sat: 8AM - 6PM</p> },
-            ].map((item, i) => (
-              <motion.div key={item.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.1 }} className="bg-card rounded-2xl p-5 shadow-md text-center">
-                <div className="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <item.icon className="w-6 h-6 text-navy-dark" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-1 text-sm">{item.title}</h3>
-                {item.content}
-              </motion.div>
+              { label: "Email", value: "shenaworksltd@gmail.com", href: "mailto:shenaworksltd@gmail.com" },
+              { label: "Phone", value: "+254 718 971 896", href: "tel:+254718971896" },
+              { label: "Hours", value: "Mon — Sat, 8AM – 6PM" },
+            ].map((c, i) => (
+              <div key={c.label} className={`py-10 md:py-14 ${i !== 2 ? "md:border-r border-[hsl(var(--rule))]" : ""} ${i !== 2 ? "border-b md:border-b-0 border-[hsl(var(--rule))]" : ""} md:px-10`}>
+                <p className="eyebrow mb-4">{c.label}</p>
+                {c.href ? (
+                  <a href={c.href} className="font-serif text-2xl md:text-3xl text-foreground tracking-tight hover:opacity-60">{c.value}</a>
+                ) : (
+                  <p className="font-serif text-2xl md:text-3xl text-foreground tracking-tight">{c.value}</p>
+                )}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Directors */}
-      <section className="py-14 bg-background">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-10">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="bg-card rounded-2xl p-6 shadow-md">
-                <h2 className="text-xl font-serif font-bold text-foreground mb-1">Send Us a Message</h2>
-                <p className="text-muted-foreground text-sm mb-5">Fill out the form below and we'll get back to you.</p>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-1">Your Name *</label>
-                      <Input name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" required className="h-11" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-1">Email *</label>
-                      <Input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" required className="h-11" />
-                    </div>
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-1">Phone</label>
-                      <Input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+254 700 000 000" className="h-11" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-1">Subject *</label>
-                      <Input name="subject" value={formData.subject} onChange={handleChange} placeholder="Project Inquiry" required className="h-11" />
-                    </div>
+      {/* Form + Directors */}
+      <section className="border-b border-[hsl(var(--rule))]">
+        <div className="container-custom py-20 md:py-28">
+          <div className="grid grid-cols-12 gap-10">
+            {/* Form */}
+            <div className="col-span-12 lg:col-span-7">
+              <p className="eyebrow mb-4">Send a message</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground tracking-tight mb-10">Project brief</h2>
+
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid sm:grid-cols-2 gap-8">
+                  <div>
+                    <label className="eyebrow block mb-2">Name</label>
+                    <Input name="name" value={formData.name} onChange={handleChange} required className="h-12 border-0 border-b border-foreground rounded-none bg-transparent px-0 focus-visible:ring-0 focus-visible:border-foreground" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1">Your Message *</label>
-                    <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." required rows={4} />
-                  </div>
-                  <Button type="submit" variant="navy" size="lg" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : (<>Send Message <Send className="ml-2 h-4 w-4" /></>)}
-                  </Button>
-                </form>
-              </div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-5">
-              <div className="bg-navy rounded-2xl p-5">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-cream/10 rounded-xl flex items-center justify-center shrink-0">
-                    <Building className="w-6 h-6 text-cream" />
+                    <label className="eyebrow block mb-2">Email</label>
+                    <Input type="email" name="email" value={formData.email} onChange={handleChange} required className="h-12 border-0 border-b border-foreground rounded-none bg-transparent px-0 focus-visible:ring-0" />
                   </div>
                   <div>
-                    <h3 className="text-base font-serif font-bold text-cream">Shena Works Limited</h3>
-                    <p className="text-cream/70 text-xs">Roads & Building Construction Contractors</p>
+                    <label className="eyebrow block mb-2">Phone</label>
+                    <Input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="h-12 border-0 border-b border-foreground rounded-none bg-transparent px-0 focus-visible:ring-0" />
+                  </div>
+                  <div>
+                    <label className="eyebrow block mb-2">Subject</label>
+                    <Input name="subject" value={formData.subject} onChange={handleChange} required className="h-12 border-0 border-b border-foreground rounded-none bg-transparent px-0 focus-visible:ring-0" />
                   </div>
                 </div>
-              </div>
+                <div>
+                  <label className="eyebrow block mb-2">Message</label>
+                  <Textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className="border-0 border-b border-foreground rounded-none bg-transparent px-0 focus-visible:ring-0 resize-none" />
+                </div>
+                <div className="pt-4 flex items-center justify-between">
+                  <button type="submit" disabled={isSubmitting} className="font-mono text-[12px] tracking-[0.2em] uppercase border-b border-foreground pb-1 text-foreground hover:opacity-60 disabled:opacity-40">
+                    {isSubmitting ? "Sending…" : "Send message →"}
+                  </button>
+                  <button type="button" onClick={openWhatsApp} className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground">
+                    Or WhatsApp →
+                  </button>
+                </div>
+              </form>
+            </div>
 
-              {directors.map((director, index) => (
-                <motion.div key={director.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="bg-card rounded-2xl p-5 shadow-md">
-                  <div className="flex items-start gap-3">
-                    <div className="w-12 h-12 bg-navy rounded-xl flex items-center justify-center shrink-0">
-                      <User className="w-6 h-6 text-cream" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-base font-serif font-bold text-foreground">{director.name}</h4>
-                      <p className="text-navy-dark text-xs font-medium mb-3">{director.role}</p>
-                      <div className="space-y-2 text-sm">
-                        <a href={`tel:${director.phone}`} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-                          <Phone className="w-3.5 h-3.5 text-navy-dark" /> {director.phone}
-                        </a>
-                        <a href={`mailto:${director.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-                          <Mail className="w-3.5 h-3.5 text-navy-dark" /> {director.email}
-                        </a>
-                        <a href={director.mapLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-                          <MapPin className="w-3.5 h-3.5 text-navy-dark" /> {director.location}
-                        </a>
-                      </div>
+            {/* Directors */}
+            <div className="col-span-12 lg:col-span-4 lg:col-start-9">
+              <p className="eyebrow mb-4">Direct contact</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground tracking-tight mb-10">The directors</h2>
+
+              <div>
+                {directors.map((d, i) => (
+                  <div key={d.name} className={`py-6 border-t border-[hsl(var(--rule))] ${i === directors.length - 1 ? "border-b" : ""}`}>
+                    <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-2">{d.role} · {d.location}</p>
+                    <h3 className="font-serif text-xl text-foreground mb-3">{d.name}</h3>
+                    <div className="space-y-1 text-sm">
+                      <a href={`tel:${d.phone.replace(/\s/g, "")}`} className="block text-foreground hover:opacity-60">{d.phone}</a>
+                      <a href={`mailto:${d.email}`} className="block text-muted-foreground hover:text-foreground">{d.email}</a>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-
-              <motion.button initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} onClick={openWhatsApp} className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-2xl p-5 flex items-center justify-center gap-3 transition-all duration-300 hover:shadow-lg group">
-                <MessageCircle className="w-7 h-7 group-hover:scale-110 transition-transform" />
-                <div className="text-left">
-                  <p className="text-xs opacity-90">Chat with us on</p>
-                  <p className="text-lg font-bold">WhatsApp</p>
-                </div>
-              </motion.button>
-
-              <div className="bg-secondary rounded-2xl p-5">
-                <h3 className="font-semibold text-foreground mb-3 text-sm">Why Choose Shena Works?</h3>
-                <ul className="space-y-2">
-                  {["Free initial consultation", "Competitive pricing", "Experienced professionals", "On-time delivery", "Quality guaranteed"].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-muted-foreground text-sm">
-                      <CheckCircle className="w-4 h-4 text-navy-dark shrink-0" /> {item}
-                    </li>
-                  ))}
-                </ul>
+                ))}
               </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map */}
-      <section className="bg-navy py-12">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { title: "Meru Office", desc: "Main Office - Meru, Kenya", link: "https://maps.google.com/?q=Meru,Kenya" },
-              { title: "Nairobi Office", desc: "Branch Office - Nairobi, Kenya", link: "https://maps.google.com/?q=Nairobi,Kenya" },
-            ].map((office, i) => (
-              <motion.div key={office.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-navy-light/50 rounded-2xl p-6 border border-cream/10">
-                <MapPin className="w-8 h-8 text-cream mb-3" />
-                <h3 className="text-lg font-serif font-bold text-cream mb-1">{office.title}</h3>
-                <p className="text-cream/70 text-sm mb-3">{office.desc}</p>
-                <a href={office.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-cream/90 hover:text-cream transition-colors text-sm">
-                  View on Google Maps <MapPin className="w-3.5 h-3.5" />
-                </a>
-              </motion.div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
