@@ -1,115 +1,88 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { 
-  Facebook, 
-  Instagram, 
-  Twitter, 
-  Linkedin,
-  Mail,
-  Phone,
-  MapPin,
-  ArrowUp
-} from "lucide-react";
 import logo from "@/assets/shena-works-logo.png";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy-dark pt-12 sm:pt-16 pb-8">
-      <div className="container-custom px-4 sm:px-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <img src={logo} alt="Shena Works Limited" className="h-16 mb-4" />
-            <p className="text-cream/70 mb-4">
-              Roads & Building Construction Contractors.
+    <footer className="bg-navy-dark text-cream">
+      {/* Massive editorial wordmark */}
+      <div className="container-custom pt-20 pb-12 border-b border-cream/15">
+        <div className="grid grid-cols-12 gap-6 items-end">
+          <div className="col-span-12 md:col-span-7">
+            <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-cream/50 mb-4">Let's build —</p>
+            <h2 className="font-serif text-[clamp(2.5rem,7vw,6rem)] leading-[0.9] tracking-tight text-cream">
+              shenaworksltd
               <br />
-              Connecting Communities. Building the Future.
+              <span className="text-cream/40">@gmail.com</span>
+            </h2>
+          </div>
+          <div className="col-span-12 md:col-span-5 md:text-right">
+            <a href="mailto:shenaworksltd@gmail.com" className="inline-block border-b border-cream pb-1 font-mono text-xs uppercase tracking-[0.2em] text-cream hover:text-cream/70 transition-colors">
+              Start a project →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Columns */}
+      <div className="container-custom py-14">
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-4">
+            <img src={logo} alt="" className="h-10 w-auto mb-5 brightness-0 invert opacity-70" />
+            <p className="text-cream/60 text-sm leading-relaxed max-w-sm">
+              A construction and design firm based in Kenya. We build roads, buildings, and the systems that connect them.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-cream/10 rounded-lg flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-300">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-cream/10 rounded-lg flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-300">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-cream/10 rounded-lg flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-300">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-cream/10 rounded-lg flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-300">
-                <Linkedin className="w-5 h-5" />
+          </div>
+
+          <div className="col-span-6 md:col-span-2">
+            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-cream/40 mb-4">Pages</p>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link to="/" className="text-cream/80 hover:text-cream">Index</Link></li>
+              <li><Link to="/about" className="text-cream/80 hover:text-cream">Studio</Link></li>
+              <li><Link to="/services" className="text-cream/80 hover:text-cream">Practice</Link></li>
+              <li><Link to="/portfolio" className="text-cream/80 hover:text-cream">Work</Link></li>
+              <li><Link to="/contact" className="text-cream/80 hover:text-cream">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div className="col-span-6 md:col-span-3">
+            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-cream/40 mb-4">Practice</p>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link to="/services/road-construction" className="text-cream/80 hover:text-cream">Road Construction</Link></li>
+              <li><Link to="/services/general-construction" className="text-cream/80 hover:text-cream">General Construction</Link></li>
+              <li><Link to="/services/architecture" className="text-cream/80 hover:text-cream">Architecture</Link></li>
+              <li><Link to="/services/interior-design" className="text-cream/80 hover:text-cream">Interior Design</Link></li>
+              <li><Link to="/services/bills-of-quantities" className="text-cream/80 hover:text-cream">Bills of Quantities</Link></li>
+              <li><Link to="/services/project-management" className="text-cream/80 hover:text-cream">Project Management</Link></li>
+            </ul>
+          </div>
+
+          <div className="col-span-12 md:col-span-3">
+            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-cream/40 mb-4">Offices</p>
+            <div className="space-y-4 text-sm">
+              <div>
+                <p className="text-cream">Meru</p>
+                <a href="tel:+254718971896" className="text-cream/60 hover:text-cream block">+254 718 971 896</a>
+              </div>
+              <div>
+                <p className="text-cream">Nairobi</p>
+                <a href="tel:+254707243053" className="text-cream/60 hover:text-cream block">+254 707 243 053</a>
+              </div>
+              <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="inline-block text-cream/60 hover:text-cream pt-2">
+                Instagram ↗
               </a>
             </div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-            <h4 className="text-lg font-serif font-bold text-cream mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              <li><Link to="/" className="text-cream/70 hover:text-cream transition-colors">Home</Link></li>
-              <li><Link to="/about" className="text-cream/70 hover:text-cream transition-colors">About Us</Link></li>
-              <li><Link to="/services" className="text-cream/70 hover:text-cream transition-colors">What We Do</Link></li>
-              <li><Link to="/portfolio" className="text-cream/70 hover:text-cream transition-colors">Our Work</Link></li>
-              <li><Link to="/contact" className="text-cream/70 hover:text-cream transition-colors">Contact Us</Link></li>
-            </ul>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
-            <h4 className="text-lg font-serif font-bold text-cream mb-6">Our Services</h4>
-            <ul className="space-y-3">
-              <li><Link to="/services/road-construction" className="text-cream/70 hover:text-cream transition-colors">Road Construction</Link></li>
-              <li><Link to="/services/general-construction" className="text-cream/70 hover:text-cream transition-colors">General Construction</Link></li>
-              <li><Link to="/services/architecture" className="text-cream/70 hover:text-cream transition-colors">Architecture</Link></li>
-              <li><Link to="/services/interior-design" className="text-cream/70 hover:text-cream transition-colors">Interior Design</Link></li>
-              <li><Link to="/services/bills-of-quantities" className="text-cream/70 hover:text-cream transition-colors">Bills of Quantities</Link></li>
-              <li><Link to="/services/project-management" className="text-cream/70 hover:text-cream transition-colors">Project Management</Link></li>
-            </ul>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
-            <h4 className="text-lg font-serif font-bold text-cream mb-6">Contact Us</h4>
-            <ul className="space-y-4">
-              <li>
-                <a href="tel:+254718971896" className="flex items-center gap-3 text-cream/70 hover:text-cream transition-colors">
-                  <Phone className="w-5 h-5 text-cream/50" />
-                  +254 718 971 896
-                </a>
-              </li>
-              <li>
-                <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-3 text-cream/70 hover:text-cream transition-colors">
-                  <Mail className="w-5 h-5 text-cream/50" />
-                  shenaworksltd@gmail.com
-                </a>
-              </li>
-              <li>
-                <a href="https://maps.google.com/?q=Meru,Kenya" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-cream/70 hover:text-cream transition-colors">
-                  <MapPin className="w-5 h-5 text-cream/50" />
-                  Meru & Nairobi, Kenya
-                </a>
-              </li>
-            </ul>
-          </motion.div>
+          </div>
         </div>
+      </div>
 
-        <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-cream/50 text-sm text-center md:text-left">
-            © {currentYear} Shena Works Limited. All rights reserved.
-          </p>
-          
-          <button
-            onClick={scrollToTop}
-            className="w-12 h-12 bg-cream/10 rounded-full flex items-center justify-center text-cream hover:bg-cream hover:text-navy-dark transition-all duration-300"
-          >
-            <ArrowUp className="w-5 h-5" />
-          </button>
+      {/* Baseline */}
+      <div className="border-t border-cream/15">
+        <div className="container-custom py-5 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[10px] tracking-[0.18em] uppercase text-cream/40">
+          <p>© {currentYear} Shena Works Limited</p>
+          <p>Roads & Building Construction Contractors</p>
+          <p>Kenya</p>
         </div>
       </div>
     </footer>
