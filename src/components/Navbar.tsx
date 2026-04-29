@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, ChevronRight, Mail, Phone, Instagram } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/shena-works-logo.png";
 
 const navItems = [
-  { name: "HOME", href: "/" },
-  { name: "ABOUT US", href: "/about" },
+  { name: "Index", href: "/" },
+  { name: "Studio", href: "/about" },
   {
-    name: "WHAT WE DO",
+    name: "Work",
+    href: "/portfolio",
+    dropdown: [
+      { name: "All Projects", href: "/portfolio" },
+      { name: "Commercial", href: "/portfolio/commercial" },
+      { name: "Roads & Cabro", href: "/portfolio/road-cabro" },
+      { name: "Hospitality", href: "/portfolio/hospitality" },
+    ]
+  },
+  {
+    name: "Practice",
     href: "/services",
     dropdown: [
       { name: "Road Construction", href: "/services/road-construction" },
@@ -19,246 +28,180 @@ const navItems = [
       { name: "Project Management", href: "/services/project-management" },
     ]
   },
-  {
-    name: "OUR WORK",
-    href: "/portfolio",
-    dropdown: [
-      { name: "All Projects", href: "/portfolio" },
-      { name: "Commercial Construction", href: "/portfolio/commercial" },
-      { name: "Road & Cabro Construction", href: "/portfolio/road-cabro" },
-      { name: "Hospitality Construction", href: "/portfolio/hospitality" },
-    ]
-  },
-  { name: "CONTACT US", href: "/contact" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  const isActive = (href: string) => {
-    if (href === "/") return location.pathname === "/";
-    return location.pathname.startsWith(href);
-  };
+  const isActive = (href: string) =>
+    href === "/" ? location.pathname === "/" : location.pathname.startsWith(href);
 
   return (
     <>
-      {/* Top Info Bar - always visible */}
-      <div className="hidden lg:block bg-white text-navy-dark text-xs border-b border-border/30">
-        <div className="container-custom h-7 flex items-center justify-between">
-          <div className="flex items-center gap-5">
-            <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1.5 hover:text-red-500 transition-colors">
-              <Mail className="h-3 w-3" />
-              shenaworksltd@gmail.com
-            </a>
-            <a href="tel:+254718971896" className="flex items-center gap-1.5 hover:text-red-500 transition-colors">
-              <Phone className="h-3 w-3" />
-              (+254) 718-971896
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-red-500 transition-colors">
-              <Instagram className="h-3 w-3" />
-              Follow Us
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navbar - always white bg */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`sticky top-0 left-0 right-0 z-50 bg-white transition-all duration-500 ${scrolled ? "shadow-md border-b border-border/30" : ""}`}
-      >
+      <header className="sticky top-0 z-50 bg-background border-b border-[hsl(var(--rule))]">
         <div className="container-custom">
-          <div className="flex items-center justify-between h-[72px]">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 flex-shrink-0" onClick={() => setIsOpen(false)}>
-              <img src={logo} alt="Shena Works Limited" className="h-16 w-auto" />
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Wordmark + logo */}
+            <Link to="/" className="flex items-center gap-3 flex-shrink-0" onClick={() => setIsOpen(false)}>
+              <img src={logo} alt="" className="h-9 w-auto" />
+              <span className="hidden sm:flex flex-col leading-none">
+                <span className="font-serif text-[17px] tracking-tight text-foreground">Shena Works</span>
+                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-1">Est. Kenya</span>
+              </span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center justify-center flex-1 px-8">
-              <div className="flex items-center space-x-1">
-                {navItems.map((item) => (
-                  <div
-                    key={item.name}
-                    className="relative"
-                    onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
-                    onMouseLeave={() => setActiveDropdown(null)}
+            {/* Desktop nav — flat, no underline boxes */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {navItems.map((item) => (
+                <div
+                  key={item.name}
+                  className="relative h-20 flex items-center"
+                  onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <Link
+                    to={item.href}
+                    className={`text-[13px] tracking-wide transition-colors relative ${
+                      isActive(item.href)
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
-                    <Link
-                      to={item.href}
-                      className={`px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1 ${
-                        isActive(item.href)
-                          ? "text-navy-dark border-b-2 border-red-500"
-                          : "text-navy-dark hover:text-red-500"
-                      }`}
-                    >
-                      {item.name}
-                      {item.dropdown && (
-                        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""}`} />
-                      )}
-                    </Link>
+                    {item.name}
+                    {isActive(item.href) && (
+                      <span className="absolute -bottom-[31px] left-0 right-0 h-px bg-foreground" />
+                    )}
+                  </Link>
 
-                    <AnimatePresence>
-                      {item.dropdown && activeDropdown === item.name && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.15 }}
-                          className="absolute top-full left-0 mt-1 w-60 bg-white rounded-lg shadow-lg border border-border/50 overflow-hidden z-50"
-                        >
-                          {item.dropdown.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              to={subItem.href}
-                              className={`block px-4 py-3 text-sm transition-colors border-l-2 ${
-                                isActive(subItem.href)
-                                  ? "bg-muted text-navy-dark border-navy-dark font-medium"
-                                  : "text-muted-foreground hover:bg-muted/50 hover:text-navy-dark border-transparent hover:border-navy-dark/50"
-                              }`}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
+                  <AnimatePresence>
+                    {item.dropdown && activeDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 4 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute top-full left-0 min-w-[240px] bg-background border-x border-b border-[hsl(var(--rule))]"
+                      >
+                        {item.dropdown.map((subItem, i) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.href}
+                            className={`flex items-center gap-3 px-5 py-3 text-[13px] transition-colors ${
+                              i !== 0 ? "border-t border-[hsl(var(--rule))]" : ""
+                            } ${
+                              isActive(subItem.href)
+                                ? "text-foreground bg-secondary"
+                                : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                            }`}
+                          >
+                            <span className="font-mono text-[10px] text-muted-foreground/60">{String(i + 1).padStart(2, "0")}</span>
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </nav>
+
+            {/* Right meta — desktop */}
+            <div className="hidden lg:flex items-center gap-5">
+              <a href="mailto:shenaworksltd@gmail.com" className="font-mono text-[11px] tracking-wider uppercase text-muted-foreground hover:text-foreground transition-colors">
+                shenaworksltd@gmail.com
+              </a>
             </div>
 
-            <div className="hidden lg:block w-16 flex-shrink-0" />
-
-            {/* Mobile menu button */}
+            {/* Mobile toggle — text, no icon */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+              className="lg:hidden font-mono text-[11px] tracking-[0.2em] uppercase text-foreground px-2"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? "Close" : "Menu"}
             </button>
           </div>
         </div>
-      </motion.nav>
+      </header>
 
-      {/* Mobile Navigation */}
+      {/* Mobile menu — full width, no drawer rounding */}
       <AnimatePresence>
         {isOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] lg:hidden"
-            />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-gradient-to-b from-navy-dark to-navy z-[70] lg:hidden flex flex-col shadow-2xl"
-            >
-              <div className="flex items-center justify-between px-5 h-20 border-b border-cream/10">
-                <img src={logo} alt="Shena Works" className="h-12 w-auto rounded-md" />
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-full bg-cream/10 hover:bg-cream/20 transition-colors"
-                  aria-label="Close menu"
-                >
-                  <X className="h-5 w-5 text-cream" />
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-y-auto py-6">
-                {navItems.map((item) => (
-                  <div key={item.name}>
-                    {item.dropdown ? (
-                      <div>
-                        <button
-                          onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                          className={`flex items-center justify-between w-full px-6 py-4 text-[13px] font-semibold tracking-widest uppercase transition-colors ${
-                            isActive(item.href) ? "text-cream" : "text-cream/80 hover:text-cream"
-                          }`}
-                        >
-                          {item.name}
-                          <ChevronRight className={`h-4 w-4 text-cream/50 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-90" : ""}`} />
-                        </button>
-                        <AnimatePresence>
-                          {activeDropdown === item.name && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="overflow-hidden bg-cream/5"
-                            >
-                              {item.dropdown.map((subItem) => (
-                                <Link
-                                  key={subItem.name}
-                                  to={subItem.href}
-                                  onClick={() => { setIsOpen(false); setActiveDropdown(null); }}
-                                  className={`block pl-10 pr-6 py-3 text-sm transition-colors ${
-                                    isActive(subItem.href) ? "text-cream font-medium" : "text-cream/60 hover:text-cream"
-                                  }`}
-                                >
-                                  {subItem.name}
-                                </Link>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    ) : (
-                      <Link
-                        to={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`block px-6 py-4 text-[13px] font-semibold tracking-widest uppercase transition-colors ${
-                          isActive(item.href) ? "text-cream" : "text-cream/80 hover:text-cream"
-                        }`}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 top-16 z-40 bg-background lg:hidden flex flex-col overflow-y-auto"
+          >
+            <div className="container-custom py-8 flex-1">
+              <p className="eyebrow mb-6">Navigate</p>
+              {navItems.map((item, i) => (
+                <div key={item.name} className="border-t border-[hsl(var(--rule))]">
+                  {item.dropdown ? (
+                    <>
+                      <button
+                        onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                        className="w-full flex items-baseline justify-between py-5 text-left"
                       >
-                        {item.name}
-                      </Link>
-                    )}
-                    <div className="mx-6 border-b border-cream/10" />
-                  </div>
-                ))}
-              </div>
-
-              <div className="p-5 border-t border-cream/10">
-                <div className="flex items-center justify-center gap-4 text-xs text-cream/50">
-                  <a href="tel:+254707243053" className="flex items-center gap-1.5 hover:text-cream transition-colors">
-                    <Phone className="h-3.5 w-3.5" /> Call Us
-                  </a>
-                  <span className="text-cream/20">|</span>
-                  <a href="mailto:shenaworksltd@gmail.com" className="flex items-center gap-1.5 hover:text-cream transition-colors">
-                    <Mail className="h-3.5 w-3.5" /> Email
-                  </a>
-                  <span className="text-cream/20">|</span>
-                  <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cream transition-colors">
-                    <Instagram className="h-3.5 w-3.5" /> Instagram
-                  </a>
+                        <span className="flex items-baseline gap-3">
+                          <span className="font-mono text-[11px] text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                          <span className="font-serif text-2xl text-foreground">{item.name}</span>
+                        </span>
+                        <span className="font-mono text-[11px] text-muted-foreground">{activeDropdown === item.name ? "—" : "+"}</span>
+                      </button>
+                      <AnimatePresence>
+                        {activeDropdown === item.name && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden pl-8 pb-4"
+                          >
+                            {item.dropdown.map((sub) => (
+                              <Link
+                                key={sub.name}
+                                to={sub.href}
+                                onClick={() => setIsOpen(false)}
+                                className="block py-2 text-[14px] text-muted-foreground hover:text-foreground"
+                              >
+                                {sub.name}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-baseline gap-3 py-5"
+                    >
+                      <span className="font-mono text-[11px] text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="font-serif text-2xl text-foreground">{item.name}</span>
+                    </Link>
+                  )}
                 </div>
+              ))}
+              <div className="border-t border-[hsl(var(--rule))]" />
+
+              <div className="mt-12 grid gap-2">
+                <p className="eyebrow">Reach</p>
+                <a href="mailto:shenaworksltd@gmail.com" className="font-serif text-xl text-foreground">shenaworksltd@gmail.com</a>
+                <a href="tel:+254718971896" className="text-muted-foreground">+254 718 971 896</a>
+                <a href="https://www.instagram.com/shenaworksltd" target="_blank" rel="noopener noreferrer" className="text-muted-foreground">Instagram — @shenaworksltd</a>
               </div>
-            </motion.div>
-          </>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
