@@ -136,7 +136,7 @@ const Index = () => {
                 className={`col-span-12 md:col-span-4 ${i === 1 ? "md:mt-16" : ""}`}
               >
                 <Link to="/portfolio" className="block group">
-                  <div className="aspect-[4/5] overflow-hidden img-hover-zoom mb-5">
+                  <div className="aspect-[4/3] overflow-hidden img-hover-zoom mb-5">
                     <img src={p.image} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div className="flex items-baseline justify-between border-t border-cream/15 pt-4">
