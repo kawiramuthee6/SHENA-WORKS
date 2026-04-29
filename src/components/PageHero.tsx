@@ -41,8 +41,8 @@ const PageHero = ({ title, subtitle, eyebrow, image, children }: PageHeroProps) 
       </div>
 
       {/* Optional inset image strip */}
-      <div className="container-custom pb-8 md:pb-12">
-        <div className="aspect-[16/6] w-full overflow-hidden max-h-[380px]">
+      <div className="container-custom pb-10 md:pb-14">
+        <div className="aspect-[16/7] w-full overflow-hidden">
           <img
             src={image || heroImage}
             alt=""
