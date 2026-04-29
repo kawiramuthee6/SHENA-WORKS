@@ -40,7 +40,7 @@ const Index = () => {
         <div className="container-custom py-20 md:py-28">
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12 md:col-span-5">
-              <p className="eyebrow mb-6">№02 — Studio</p>
+              <p className="eyebrow mb-6">About</p>
               <h2 className="display-lg text-foreground text-balance">
                 A construction practice run by people who lay the steel themselves.
               </h2>
@@ -50,12 +50,12 @@ const Index = () => {
                 Shena Works is a registered Kenyan firm in road construction, general building, architecture, interior design and project management. Our team — civil engineers, architects, plant operators, finishers — works the same site, from earthworks to handover.
               </p>
               <Link to="/about" className="font-mono text-[11px] tracking-[0.2em] uppercase text-foreground border-b border-foreground self-start pb-1 hover:opacity-60">
-                Read the studio →
+                More about us →
               </Link>
             </div>
           </div>
 
-          <div className="mt-16 aspect-[21/9] overflow-hidden img-hover-zoom">
+          <div className="mt-12 aspect-[21/8] overflow-hidden img-hover-zoom max-h-[420px]">
             <img src={aboutImg} alt="Shena Works on site" className="w-full h-full object-cover" />
           </div>
         </div>
@@ -65,7 +65,7 @@ const Index = () => {
       <section className="border-b border-[hsl(var(--rule))]">
         <div className="container-custom py-20 md:py-28">
           <div className="flex items-baseline justify-between mb-10 md:mb-16">
-            <p className="eyebrow">№03 — Practice</p>
+            <p className="eyebrow">Services</p>
             <Link to="/services" className="font-mono text-[11px] tracking-[0.2em] uppercase text-foreground border-b border-foreground pb-1 hover:opacity-60">
               All services →
             </Link>
@@ -115,7 +115,7 @@ const Index = () => {
       <section className="bg-navy-dark text-cream border-b border-cream/15">
         <div className="container-custom py-20 md:py-28">
           <div className="flex items-baseline justify-between mb-10 md:mb-14">
-            <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-cream/50">№04 — Selected work</p>
+            <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-cream/50">Selected Work</p>
             <Link to="/portfolio" className="font-mono text-[11px] tracking-[0.2em] uppercase text-cream border-b border-cream pb-1 hover:opacity-60">
               Full archive →
             </Link>
@@ -165,7 +165,7 @@ const Index = () => {
         <div className="container-custom py-24 md:py-36">
           <div className="grid grid-cols-12 gap-6 items-end">
             <div className="col-span-12 md:col-span-9">
-              <p className="eyebrow mb-8">№06 — Reach</p>
+              <p className="eyebrow mb-8">Contact</p>
               <h2 className="display-xl text-foreground text-balance">
                 Have a site, a brief, or a road that needs to exist? <span className="text-muted-foreground/60">Write to us.</span>
               </h2>

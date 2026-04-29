@@ -10,15 +10,9 @@ const Hero = () => {
 
   return (
     <section ref={ref} id="home" className="relative bg-background border-b border-[hsl(var(--rule))]">
-      <div className="container-custom pt-10 md:pt-16 pb-0">
-        {/* Top meta row */}
-        <div className="flex items-baseline justify-between mb-8 md:mb-12">
-          <p className="eyebrow">Shena Works Limited — №01 / Index</p>
-          <p className="hidden sm:block eyebrow">Meru · Nairobi</p>
-        </div>
-
+      <div className="container-custom pt-10 md:pt-14 pb-0">
         {/* The single, dominant message */}
-        <div className="grid grid-cols-12 gap-4 mb-12 md:mb-16">
+        <div className="grid grid-cols-12 gap-4 mb-10 md:mb-14">
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,8 +25,8 @@ const Hero = () => {
           </motion.h1>
         </div>
 
-        {/* Image — full bleed of container, with parallax */}
-        <div className="relative overflow-hidden h-[58vh] min-h-[420px] max-h-[680px]">
+        {/* Image — sensible height, with parallax */}
+        <div className="relative overflow-hidden h-[42vh] min-h-[280px] max-h-[460px]">
           <motion.img
             style={{ y }}
             src={heroImage}
@@ -44,19 +38,14 @@ const Hero = () => {
 
         {/* Caption row beneath image */}
         <div className="grid grid-cols-12 gap-4 py-6 border-b border-[hsl(var(--rule))] mt-0">
-          <div className="col-span-12 md:col-span-4">
-            <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
-              Fig. 01 — Project in progress, Meru
-            </p>
-          </div>
-          <div className="col-span-12 md:col-span-5 md:col-start-6">
+          <div className="col-span-12 md:col-span-7">
             <p className="text-foreground/80 text-[15px] leading-[1.55]">
               A registered Kenyan firm working across roads, buildings, and the design that joins them. Run by civil engineers, architects, and the crews who know the ground.
             </p>
           </div>
-          <div className="col-span-12 md:col-span-2 md:col-start-11 flex md:justify-end items-end">
+          <div className="col-span-12 md:col-span-3 md:col-start-10 flex md:justify-end items-end">
             <Link to="/services" className="font-mono text-[11px] tracking-[0.2em] uppercase text-foreground border-b border-foreground pb-1 hover:opacity-60 transition-opacity">
-              Practice →
+              Our Services →
             </Link>
           </div>
         </div>

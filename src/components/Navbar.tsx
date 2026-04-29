@@ -4,10 +4,10 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/shena-works-logo.png";
 
 const navItems = [
-  { name: "Index", href: "/" },
-  { name: "Studio", href: "/about" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
   {
-    name: "Work",
+    name: "Projects",
     href: "/portfolio",
     dropdown: [
       { name: "All Projects", href: "/portfolio" },
@@ -17,7 +17,7 @@ const navItems = [
     ]
   },
   {
-    name: "Practice",
+    name: "Services",
     href: "/services",
     dropdown: [
       { name: "Road Construction", href: "/services/road-construction" },
