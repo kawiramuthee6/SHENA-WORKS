@@ -2,10 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, FileText, DollarSign, TrendingUp, Shield, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 
 const features = ["Quantity Takeoffs","Cost Estimation","Tender Documentation","Contract Administration","Valuations & Payments","Final Account Settlement","Variation Assessments","Life Cycle Costing"];
 const benefits = [
@@ -18,8 +14,7 @@ const benefits = [
 const BillsOfQuantitiesPage = () => {
   return (
     <div className="min-h-screen">
-      <Navbar />
-      <section className="relative pb-32 overflow-hidden bg-gradient-to-b from-navy via-navy-dark to-navy">
+<section className="relative pb-32 overflow-hidden bg-gradient-to-b from-navy via-navy-dark to-navy">
         <div className="container-custom relative z-10 pt-20">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-8">
             <Link to="/services" className="inline-flex items-center gap-2 text-cream/70 hover:text-cream hover:bg-cream/10 px-4 py-2 rounded-full transition-all backdrop-blur-sm border border-cream/10 hover:border-cream/30"><ArrowLeft className="w-4 h-4" /><span className="font-medium">Back to Services</span></Link>
@@ -97,8 +92,7 @@ const BillsOfQuantitiesPage = () => {
           </motion.div>
         </div>
       </section>
-      <Footer /><WhatsAppButton /><BackToTop />
-    </div>
+</div>
   );
 };
 

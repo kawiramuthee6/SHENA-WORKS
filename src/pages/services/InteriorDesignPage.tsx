@@ -2,10 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import interiorImg from "@/assets/services/interior.jpg";
 import dc1 from "@/assets/services/interior/int1.jpeg";
 import dc2 from "@/assets/services/interior/int2.jpeg";
@@ -20,8 +16,7 @@ const galleryImages = [{ src: dc1, alt: "Interior 1" },{ src: dc2, alt: "Interio
 const InteriorDesignPage = () => {
   return (
     <div className="min-h-screen">
-      <Navbar />
-      <section className="relative pb-32 overflow-hidden">
+<section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0"><img src={interiorImg} alt="Interior Design" className="w-full h-full object-cover" decoding="async" /><div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" /></div>
         <div className="container-custom relative z-10 pt-20">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-8">
@@ -78,8 +73,7 @@ const InteriorDesignPage = () => {
           </motion.div>
         </div>
       </section>
-      <Footer /><WhatsAppButton /><BackToTop />
-    </div>
+</div>
   );
 };
 

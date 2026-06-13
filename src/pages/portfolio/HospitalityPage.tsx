@@ -3,11 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
-
 
 import heroImage from "@/assets/projects/dukes-cottages-4.jpg";
 
@@ -101,9 +96,7 @@ const HospitalityPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
-      
-      {/* Hero Section */}
+{/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Hospitality Construction" className="w-full h-full object-cover" decoding="async" />
@@ -368,12 +361,7 @@ const HospitalityPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-      
-    </div>
+</div>
   );
 };
 

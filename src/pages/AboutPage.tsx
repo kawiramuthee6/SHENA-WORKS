@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Target, Eye, Award, Users, Clock, Shield, Lightbulb, Handshake, ChevronDown } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import PageHero from "@/components/PageHero";
 import aboutImg from "@/assets/hero/hero-4.jpg";
 
@@ -65,9 +61,7 @@ const AccordionSection = ({ title, defaultOpen = false, children, id }: Accordio
 const AboutPage = () => {
   return (
     <div className="min-h-screen">
-      <Navbar />
-      
-      <PageHero
+<PageHero
         title="About Us"
         subtitle="Shena Works Limited — a leading construction and design firm dedicated to transforming visions into reality."
       />
@@ -249,11 +243,7 @@ const AboutPage = () => {
 
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-    </div>
+</div>
   );
 };
 

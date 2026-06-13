@@ -5,10 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import PageHero from "@/components/PageHero";
 
 const directors = [
@@ -55,9 +51,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
-      
-      <PageHero
+<PageHero
         title="Contact Us"
         subtitle="Ready to start your project? Reach out and let's build something amazing together."
       />
@@ -204,11 +198,7 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-    </div>
+</div>
   );
 };
 
