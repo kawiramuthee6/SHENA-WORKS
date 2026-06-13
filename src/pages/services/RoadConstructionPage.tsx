@@ -3,10 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle, ArrowLeft, X, ChevronLeft, ChevronRight, Images } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import roadsImg from "@/assets/services/roads.jpg";
 
 import road1 from "@/assets/services/roads/road1.jpeg";
@@ -55,9 +51,7 @@ const RoadConstructionPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
-      
-      {/* Hero Section */}
+{/* Hero Section */}
       <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
           <img src={roadsImg} alt="Road Construction" className="w-full h-full object-cover" decoding="async" fetchPriority="high" />
@@ -192,11 +186,7 @@ const RoadConstructionPage = () => {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-    </div>
+</div>
   );
 };
 

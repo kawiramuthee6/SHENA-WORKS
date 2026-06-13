@@ -2,10 +2,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import Testimonials from "@/components/Testimonials";
 import PageHero from "@/components/PageHero";
 import roadsImg from "@/assets/services/roads.jpg";
@@ -52,9 +48,7 @@ const projects = [
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Navbar />
-      
-      <PageHero
+<PageHero
         title="Shena Works Limited"
         subtitle="Roads & Building Construction Contractors"
       />
@@ -139,7 +133,6 @@ const Index = () => {
         </div>
       </section>
 
-
       {/* Testimonials */}
       <Testimonials />
 
@@ -187,11 +180,7 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-    </div>
+</div>
   );
 };
 

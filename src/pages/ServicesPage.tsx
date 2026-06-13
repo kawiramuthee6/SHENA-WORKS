@@ -2,10 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import PageHero from "@/components/PageHero";
 import EquipmentCarousel from "@/components/EquipmentCarousel";
 
@@ -104,9 +100,7 @@ const equipment = [
 const ServicesPage = () => {
   return (
     <div className="min-h-screen">
-      <Navbar />
-      
-      <PageHero
+<PageHero
         title="Our Services"
         subtitle="From roads that connect communities to buildings that inspire, we offer comprehensive construction and design solutions."
       />
@@ -196,11 +190,7 @@ const ServicesPage = () => {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-    </div>
+</div>
   );
 };
 

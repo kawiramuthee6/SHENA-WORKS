@@ -3,10 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle, ArrowLeft, X, ChevronLeft, ChevronRight, Images } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 
 import bp1 from "@/assets/services/general const/gc1.jpeg";
 import bp2 from "@/assets/services/general const/gc2.jpeg";
@@ -55,8 +51,7 @@ const GeneralConstructionPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
-      {/* Hero with image instead of video */}
+{/* Hero with image instead of video */}
       <section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImg} alt="General Construction" className="w-full h-full object-cover" loading="eager" fetchPriority="high" />
@@ -201,11 +196,7 @@ const GeneralConstructionPage = () => {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-    </div>
+</div>
   );
 };
 

@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import Layout from "./components/Layout";
 
 // Lazy load all pages for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -57,22 +58,24 @@ const App = () => (
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/road-construction" element={<RoadConstructionPage />} />
-          <Route path="/services/general-construction" element={<GeneralConstructionPage />} />
-          <Route path="/services/architecture" element={<ArchitecturePage />} />
-          <Route path="/services/interior-design" element={<InteriorDesignPage />} />
-          <Route path="/services/bills-of-quantities" element={<BillsOfQuantitiesPage />} />
-          <Route path="/services/project-management" element={<ProjectManagementPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/portfolio/commercial" element={<CommercialPage />} />
-          <Route path="/portfolio/road-cabro" element={<RoadCabroPage />} />
-          <Route path="/portfolio/hospitality" element={<HospitalityPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/road-construction" element={<RoadConstructionPage />} />
+            <Route path="/services/general-construction" element={<GeneralConstructionPage />} />
+            <Route path="/services/architecture" element={<ArchitecturePage />} />
+            <Route path="/services/interior-design" element={<InteriorDesignPage />} />
+            <Route path="/services/bills-of-quantities" element={<BillsOfQuantitiesPage />} />
+            <Route path="/services/project-management" element={<ProjectManagementPage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/portfolio/commercial" element={<CommercialPage />} />
+            <Route path="/portfolio/road-cabro" element={<RoadCabroPage />} />
+            <Route path="/portfolio/hospitality" element={<HospitalityPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
       </Suspense>
     </BrowserRouter>

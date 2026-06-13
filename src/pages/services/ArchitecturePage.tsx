@@ -2,10 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import architectureImg from "@/assets/services/architecture.jpg";
 import sl1 from "@/assets/services/arch/arch1.jpeg";
 import sl2 from "@/assets/services/arch/arch2.jpeg";
@@ -20,8 +16,7 @@ const galleryImages = [{ src: sl1, alt: "Arch 1" },{ src: sl2, alt: "Arch 2" },{
 const ArchitecturePage = () => {
   return (
     <div className="min-h-screen">
-      <Navbar />
-      <section className="relative pb-32 overflow-hidden">
+<section className="relative pb-32 overflow-hidden">
         <div className="absolute inset-0"><img src={architectureImg} alt="Architecture" className="w-full h-full object-cover" decoding="async" /><div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy" /></div>
         <div className="container-custom relative z-10 pt-20">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-8">
@@ -78,8 +73,7 @@ const ArchitecturePage = () => {
           </motion.div>
         </div>
       </section>
-      <Footer /><WhatsAppButton /><BackToTop />
-    </div>
+</div>
   );
 };
 

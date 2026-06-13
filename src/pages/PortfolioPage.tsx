@@ -3,10 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, MapPin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import BackToTop from "@/components/BackToTop";
 import PageHero from "@/components/PageHero";
 
 // Black Perch Images
@@ -167,9 +163,7 @@ const PortfolioPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
-      
-      <PageHero
+<PageHero
         title="Our Work"
         subtitle="Explore our portfolio of completed projects showcasing quality and innovation."
       />
@@ -320,11 +314,7 @@ const PortfolioPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-    </div>
+</div>
   );
 };
 
