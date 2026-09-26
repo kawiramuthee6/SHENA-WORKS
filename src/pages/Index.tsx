@@ -1,187 +1,157 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CornerDownRight } from "lucide-react";
 import Testimonials from "@/components/Testimonials";
-import PageHero from "@/components/PageHero";
+import heroImg from "@/assets/projects/black-perch-4.jpeg";
+import heroThumb from "@/assets/projects/dukes-cottages-1.jpg";
+import wideImg from "@/assets/projects/stone-lounge-4.jpeg";
 import roadsImg from "@/assets/services/roads.jpg";
-import bp4 from "@/assets/projects/black-perch-4.jpeg";
+import archImg from "@/assets/services/architecture.jpg";
 import interiorImg from "@/assets/services/interior.jpg";
-import dukesImg from "@/assets/projects/dukes-cottages-1.jpg";
-import stoneImg from "@/assets/projects/stone-lounge-4.jpeg";
-import aboutImg from "@/assets/hero/hero-4.jpg";
+import constructionImg from "@/assets/projects/pin-hideout-1.jpeg";
 import excavatorImg from "@/assets/equipment/excavator.jpeg";
+import p1 from "@/assets/projects/black-perch-1.jpeg";
+import p2 from "@/assets/projects/dukes-cottages-3.jpg";
+import p3 from "@/assets/projects/stone-lounge-2.jpeg";
+import p4 from "@/assets/projects/pin-hideout-5.jpeg";
 
 const services = [
-  {
-    title: "Road Construction",
-    description: "We build and maintain roads, drainage systems, cabro installations, and tarmac works that connect communities and support economic growth across Kenya.",
-    image: roadsImg,
-    path: "/services/road-construction",
-  },
-  {
-    title: "General Construction",
-    description: "From residential homes to commercial buildings, we deliver quality structures built to last — on time, on budget, and to the highest standards.",
-    image: bp4,
-    path: "/services/general-construction",
-  },
-  {
-    title: "Interior Design",
-    description: "Our design team creates innovative interiors that blend functionality with modern aesthetics, transforming spaces into experiences.",
-    image: interiorImg,
-    path: "/services/interior-design",
-  },
-  {
-    title: "Machinery & Equipment",
-    description: "We own and operate heavy machinery including excavators, graders, rollers, and more — available for hire and delivered to your project site across Kenya.",
-    image: excavatorImg,
-    path: "/services",
-  },
+  { title: "Building Construction in Meru", text: "Residential homes, commercial buildings, lodges and villas — built to last, on time and on budget.", image: constructionImg, path: "/services/general-construction" },
+  { title: "Road Construction in Meru", text: "Roads, drainage, cabro paving and tarmac works connecting communities across Meru County and Kenya.", image: roadsImg, path: "/services/road-construction" },
+  { title: "Architecture in Meru", text: "Architectural design and drawings that turn your ideas into buildable, approved plans.", image: archImg, path: "/services/architecture" },
+  { title: "Interior Design in Meru", text: "Modern interiors that blend function and beauty for homes, hotels and offices.", image: interiorImg, path: "/services/interior-design" },
 ];
 
-const projects = [
-  { title: "Black Perch Lounge", location: "Meru, Kenya", image: bp4 },
-  { title: "Dukes Cottages", location: "Kenya", image: dukesImg },
-  { title: "Stone Lounge & Villas", location: "Kenya", image: stoneImg },
+const works = [
+  { title: "Black Perch Lounge", place: "Meru", image: p1 },
+  { title: "Dukes Cottages", place: "Kenya", image: p2 },
+  { title: "Stone Lounge & Villas", place: "Kenya", image: p3 },
+  { title: "Pin Hideout", place: "Kenya", image: p4 },
 ];
 
-const Index = () => {
-  return (
-    <div className="min-h-screen">
-<PageHero
-        title="Shena Works Limited"
-        subtitle="Roads & Building Construction Contractors"
-      />
+const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.7 } };
 
-      {/* About Us Mini Section */}
-      <section className="py-10 md:py-14 bg-background">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl overflow-hidden"
-            >
-              <img src={aboutImg} alt="About Shena Works" className="w-full h-[280px] md:h-[380px] object-cover" decoding="async" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl md:text-3xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-5">
-                ABOUT COMPANY
-              </h2>
-              <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-4">
-                Shena Works Limited is a registered construction and design firm based in Kenya. We specialize in road construction, general building, architectural consultancy, interior design, and project management.
-              </p>
-              <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-6">
-                With a team of experienced civil engineers, architects, and skilled tradespeople, we deliver projects that meet the highest standards of quality, safety, and innovation.
-              </p>
-              <Button variant="navy" size="lg" asChild>
-                <Link to="/about">Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+const ArrowLink = ({ to, children, light }: { to: string; children: React.ReactNode; light?: boolean }) => (
+  <Link to={to} className={`group inline-flex items-center gap-4 text-sm font-medium ${light ? "text-cream" : "text-foreground"}`}>
+    {children}
+    <CornerDownRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+  </Link>
+);
 
-      {/* What We Do */}
-      <section className="py-14 md:py-20 bg-muted/30">
-        <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-3">
-              WHAT WE DO
-            </h2>
-            <p className="text-muted-foreground text-sm md:text-base">From roads that connect communities to buildings that stand the test of time.</p>
-          </motion.div>
-
-          <div className="space-y-10 md:space-y-16">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className={`grid md:grid-cols-2 gap-6 md:gap-10 items-center`}
-              >
-                <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                  <div className="rounded-2xl overflow-hidden">
-                    <img src={service.image} alt={service.title} className="w-full h-[220px] md:h-[300px] object-cover" decoding="async" />
-                  </div>
-                </div>
-                <div className={index % 2 === 1 ? "md:order-1" : ""}>
-                  <h3 className="text-lg md:text-xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base mb-4">{service.description}</p>
-                  <Link to={service.path} className="inline-flex items-center text-navy-dark font-semibold text-sm uppercase tracking-wide hover:text-navy-light transition-colors">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-10">
-            <Button variant="navy" size="lg" asChild>
-              <Link to="/services">See All Services <ArrowRight className="ml-2 h-5 w-5" /></Link>
-            </Button>
+const Index = () => (
+  <div className="bg-background">
+    {/* Hero — split */}
+    <section className="bg-navy p-2.5 md:p-3">
+      <div className="grid md:grid-cols-2 min-h-[80vh]">
+        <img
+          src={heroImg}
+          alt="Black Perch Lounge built by Shena Works, a construction company in Meru, Kenya"
+          width={1200}
+          height={1400}
+          fetchPriority="high"
+          loading="eager"
+          className="w-full h-[55vh] md:h-full object-cover"
+        />
+        <div className="flex flex-col items-center justify-center text-center px-6 py-14">
+          <motion.h1 {...fade} className="text-4xl md:text-6xl leading-[1.02] text-cream max-w-lg">
+            Building Meru, From Vision to Reality
+          </motion.h1>
+          <motion.p {...fade} className="mt-5 text-cream/80 max-w-sm text-sm md:text-base">
+            Construction, roads, architecture and interior design contractors in Meru, Kenya
+          </motion.p>
+          <motion.div {...fade} className="mt-10 flex flex-col items-center gap-5">
+            <img src={heroThumb} alt="Dukes Cottages project" width={160} height={160} className="w-40 h-40 object-cover" />
+            <ArrowLink to="/portfolio" light>Discover Projects</ArrowLink>
           </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Testimonials */}
-      <Testimonials />
+    {/* Intro */}
+    <section className="px-5 md:px-6 pt-14 md:pt-20">
+      <motion.div {...fade} className="max-w-xl">
+        <p className="text-sm text-foreground/80 mb-4">Shena Works Limited</p>
+        <h2 className="text-3xl md:text-4xl leading-tight text-foreground mb-5">
+          Trusted Construction Company in Meru, Kenya
+        </h2>
+        <p className="text-foreground/80 leading-relaxed">
+          Shena Works Limited is a Meru-based construction and design firm. We handle building construction, road construction,
+          architecture, interior design, bills of quantities and project management — with our own fleet of excavators,
+          graders, rollers and dozers. From Meru town to projects across Kenya, we make the unbuilt feel inevitable.
+        </p>
+      </motion.div>
+    </section>
 
-      {/* Featured Projects - Show only 3 images with View Gallery */}
-      <section className="py-14 md:py-20 bg-navy">
-        <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto mb-10">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-cream uppercase tracking-wide mb-3">
-              FEATURED PROJECTS
-            </h2>
-          </motion.div>
+    <section className="px-2.5 md:px-3 mt-12">
+      <div className="relative">
+        <img src={wideImg} alt="Stone Lounge & Villas construction project" width={1600} height={800} loading="lazy" decoding="async" className="w-full h-[50vh] md:h-[80vh] object-cover" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      </div>
+    </section>
 
-          <div className="grid sm:grid-cols-3 gap-5 md:gap-6">
-            {projects.map((project, index) => (
-              <motion.div key={project.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group relative overflow-hidden rounded-2xl aspect-[4/3]">
-                <Link to="/portfolio">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" decoding="async" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
-                    <h3 className="text-base md:text-lg font-serif font-bold text-cream">{project.title}</h3>
-                    <p className="text-cream/70 text-xs">{project.location}</p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-8">
-            <Button variant="heroOutline" size="lg" asChild>
-              <Link to="/portfolio">View Gallery <ArrowRight className="ml-2 h-5 w-5" /></Link>
-            </Button>
-          </motion.div>
+    {/* Services */}
+    <section className="px-5 md:px-6 py-16 md:py-24">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-12">
+        <motion.h2 {...fade} className="text-3xl md:text-4xl text-foreground">What We Build</motion.h2>
+        <div className="max-w-xs">
+          <p className="text-sm text-foreground/80 mb-3">Construction, roads, architecture and interiors — all under one roof in Meru.</p>
+          <ArrowLink to="/services">All Services</ArrowLink>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-14 md:py-20 bg-background">
-        <div className="container-custom text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-navy-dark uppercase tracking-wide mb-5">Ready to Start Your Project?</h2>
-            <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto mb-6">Contact us today for a free consultation. Let's build something amazing together.</p>
-            <Button variant="navy" size="lg" asChild>
-              <Link to="/contact">Contact Us <ArrowRight className="ml-2 h-5 w-5" /></Link>
-            </Button>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-x-6 gap-y-12">
+        {services.map((s) => (
+          <motion.div key={s.title} {...fade}>
+            <Link to={s.path} className="group block">
+              <div className="overflow-hidden">
+                <img src={s.image} alt={s.title} width={800} height={600} loading="lazy" decoding="async" className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <h3 className="mt-4 text-xl md:text-2xl text-foreground">{s.title}</h3>
+              <p className="mt-2 text-sm text-foreground/75 max-w-md">{s.text}</p>
+            </Link>
           </motion.div>
+        ))}
+      </div>
+    </section>
+
+    {/* Works */}
+    <section className="px-5 md:px-6 pb-16 md:pb-24">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-12">
+        <motion.h2 {...fade} className="text-3xl md:text-4xl text-foreground">Bringing Concepts to Life</motion.h2>
+        <div className="max-w-xs">
+          <p className="text-sm text-foreground/80 mb-3">A journey through our completed projects</p>
+          <ArrowLink to="/portfolio">Browse Works</ArrowLink>
         </div>
-      </section>
-</div>
-  );
-};
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {works.map((w, i) => (
+          <motion.div key={w.title} {...fade} transition={{ duration: 0.7, delay: i * 0.08 }} className={i % 2 ? "md:mt-16" : ""}>
+            <Link to="/portfolio" className="group block">
+              <div className="overflow-hidden">
+                <img src={w.image} alt={`${w.title} — ${w.place}`} width={600} height={800} loading="lazy" decoding="async" className="w-full aspect-[3/4] object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <p className="mt-3 text-foreground">{w.title}</p>
+              <p className="text-xs text-foreground/60">{w.place}</p>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+
+    {/* Machinery */}
+    <section className="px-2.5 md:px-3 pb-16 md:pb-24">
+      <div className="grid md:grid-cols-2 bg-navy">
+        <img src={excavatorImg} alt="Shena Works excavator available for hire in Meru" width={1000} height={800} loading="lazy" decoding="async" className="w-full h-full min-h-[320px] object-cover" />
+        <div className="p-8 md:p-14 flex flex-col justify-center">
+          <p className="text-sm text-cream/70 mb-4">Our Fleet</p>
+          <h2 className="text-3xl md:text-4xl text-cream mb-5">Machinery Hire in Meru</h2>
+          <p className="text-cream/80 mb-8 max-w-md">Excavators, graders, rollers and dozers — operated by our experienced team and delivered to your site.</p>
+          <ArrowLink to="/services" light>See the Machines</ArrowLink>
+        </div>
+      </div>
+    </section>
+
+    <Testimonials />
+  </div>
+);
 
 export default Index;
